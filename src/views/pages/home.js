@@ -9,6 +9,7 @@ import Toast from '../../Toast'
 import * as React from 'react'
 import { renderReactComponent } from '../../components/react/reactHelper'
 import eventCard from '../../components/react/sc-event-card'
+import { Button } from '@mui/material'
 
 class HomeView {
   init(){
@@ -44,6 +45,14 @@ class HomeView {
 
         <!--EVENTS-->
         <!-- use react grid to create events layout -->
+
+        <div id="filter-container">
+          <div id="sections-container">
+            <Button>Eat + Drink</Button>
+            <Button>Entertainment</Button>
+            <Button>Shop</Button>
+          </div>
+        </div>
 
         <div id="card-container"></div>
 

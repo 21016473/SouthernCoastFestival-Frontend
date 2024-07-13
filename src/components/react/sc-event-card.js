@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Card, CardContent, CardMedia, Typography, Box, IconButton } from '@mui/material'
-import placeholderImg from '../../../static/images/placeholder.png'
+import placeholderImg from '../../../static/images/chef-bryan-entertainment.jpg'
 import '../../scss/react.scss'
 
 const eventCard = () => {
@@ -14,16 +14,15 @@ const eventCard = () => {
     return (
         <Card className="event-card" >
             <CardContent className="event-content">
-                <CardMedia
-                    component="img"
+                <CardMedia                                component="img"
                     alt="placeholder"
-                    height="100"
+                    height="150"
                     image={placeholderImg}
                     className="event-image"
                 />
                 <Box className="event-title-box">
                     <Typography className="event-title">
-                        Title
+                        Chef Bryan
                     </Typography>
                     <IconButton className="event-button">
                         <span className="material-icons">
@@ -32,10 +31,11 @@ const eventCard = () => {
                     </IconButton>
                 </Box>
                 <Typography className="event-description">
-                    Description lorem ipsum
+                    Watch past MasterChef contestant Bryan cook up a storm at the stage
                 </Typography>
                 <Typography className="event-times">
-                    Times: times
+                    Sat — 19:00-19:45<br></br>
+                    Sun — 19:00-19:45
                 </Typography>
             </CardContent>
         </Card>

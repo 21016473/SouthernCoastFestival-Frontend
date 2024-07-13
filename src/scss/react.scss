@@ -10,6 +10,10 @@
         padding: 0;
     }
 
+    .event-image {
+        display: flex;
+    }
+
     .event-title-box {
         display: flex;
         align-items: center;
@@ -52,8 +56,5 @@
             color: #bdbdbd;
             width: 24px;
         }
-    }
-    .event-button.active .material-icons {
-        color: #FFC600;
     }
 }
