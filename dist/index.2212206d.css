@@ -1,3 +1,60 @@
+.event-card {
+  min-width: 200px;
+  max-width: 40%;
+  background-color: #2b2b2b !important;
+}
+
+.event-card .event-content {
+  padding: 0;
+}
+
+.event-card .event-title-box {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.event-card .event-title-box .event-title {
+  font-family: var(--base-font-family);
+  color: #fff;
+  padding: 1em;
+  font-size: 100%;
+  font-weight: bold;
+}
+
+.event-card .event-description {
+  font-family: var(--base-font-family);
+  color: #fff;
+  padding: 0 1.5em;
+  font-size: 75%;
+}
+
+.event-card .event-times {
+  font-family: var(--base-font-family);
+  color: #fff;
+  float: right;
+  padding: 1em 1.5em;
+  font-size: 75%;
+}
+
+.event-card .event-button {
+  z-index: 10;
+  background-color: #2b2b2b;
+  border: none;
+  justify-content: center;
+  padding: 0 1em;
+  display: flex;
+}
+
+.event-card .event-button .material-icons {
+  color: #bdbdbd;
+  width: 24px;
+}
+
+.event-card .event-button.active .material-icons {
+  color: #ffc600;
+}
+
 #root {
   position: absolute;
   inset: 0;
