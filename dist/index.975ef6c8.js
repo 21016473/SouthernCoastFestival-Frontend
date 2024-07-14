@@ -5825,6 +5825,8 @@ class HomeView {
         document.title = "Home";
         this.render();
         (0, _utilsDefault.default).pageIntroAnim();
+        const jumpTo = document.getElementById("jumpTo");
+        jumpTo.addEventListener("click", this.scrollTo);
     }
     async getEvents() {
         try {
@@ -5835,6 +5837,13 @@ class HomeView {
             (0, _toastDefault.default).show(err, "error");
         }
     }
+    scrollTo() {
+        const eventsSection = document.getElementById("events");
+        eventsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
     render() {
         const template = (0, _litHtml.html)`
 
@@ -5843,59 +5852,75 @@ class HomeView {
       <div class="page-content">        
         
         <!--HERO-->
-        <div class="hero-banner">
-          <div id="hero-content">
-
+        <div id="home">
+          <div class="hero-banner">
+            <div id="hero-content">
+              <h1>Watch the Light Show</h1>
+              <p>Come along to see Geelong's least kept secret, the Festival of Lights</p>
+              <p>Over 2,000 bulbs and neons to light up your imagination</p>
+              <button id="jumpTo">Find an event</button>
+            </div>
           </div>
         </div>
 
         <!--EVENTS-->
         <!-- use react grid to create events layout -->
 
-        <div id="filter-container">
-          <div id="sections-container">
-            <button class="section-button">Eat + Drink</button>
-            <button class="section-button">Entertainment</button>
-            <button class="section-button">Shop</button>
+        <div id="events">
+          <div id="filter-container">
+            <!--MAIN FILTERS-->
+            <div id="sections-container">
+              <button class="section-button">Eat + Drink</button>
+              <button class="section-button">Entertainment</button>
+              <button class="section-button">Shop</button>
+            </div>
+            <!--TAGS-->
+            <div id="tag-container">
+              <button class="tag-button">All</button>
+              <button class="tag-button">Drinks</button>
+              <button class="tag-button">Food</button>
+              <button class="tag-button">Alcholic</button>
+              <button class="tag-button">Gluten Free</button>
+              <button class="tag-button">Nut Free</button>
+              <button class="tag-button">Gourmet</button>
+              <button class="tag-button">
+                <span class="material-icons">favorite_border</span>
+                Favourites
+              </button>
+              <!-- <button class="tag-button"></button> -->
+              <p class="message">Showing all __ items</p>
+            </div>
           </div>
-          <div id="tag-container">
-            <button class="tag-button">All</button>
-            <button class="tag-button">Drinks</button>
-            <button class="tag-button">Food</button>
-            <button class="tag-button">Alcholic</button>
-            <button class="tag-button">Gluten Free</button>
-            <button class="tag-button">Nut Free</button>
-            <button class="tag-button">Gourmet</button>
-            <button class="tag-button">
-              <span class="material-icons">favorite_border</span>
-              Favourites
-            </button>
-            <!-- <button class="tag-button"></button> -->
-            <p class="message">Showing all __ items</p>
+          <div class="events-grid">
+            <div id="card-container"></div>
           </div>
-        </div>
-        <div class="events-grid">
-          <div id="card-container"></div>
-        </div>
 
-        <div class="event-grid">
-          ${this.events == null ? (0, _litHtml.html)`
-              <Skeleton variant="rectangular" width={210} height={118} />
-            ` : (0, _litHtml.html)`
-              ${this.events.map((event)=>(0, _litHtml.html)`
-                <sc-event class="event-card"
-                  name="${event.name}",
-                  description="${event.description}",
-                  image="${event.image}",
-                  length="${event.length}",
-                  artist="${event.artist}"
-              `)}
-            `}
+          <!--EVENTS-->
+          <div class="event-grid">
+            ${this.events == null ? (0, _litHtml.html)`
+                <Skeleton variant="rectangular" width={210} height={118} />
+              ` : (0, _litHtml.html)`
+                ${this.events.map((event)=>(0, _litHtml.html)`
+                  <sc-event class="event-card"
+                    name="${event.name}",
+                    description="${event.description}",
+                    image="${event.image}",
+                    length="${event.length}",
+                    artist="${event.artist}"
+                `)}
+              `}
+          </div>
         </div>
 
         <!--VENUE-->
+        <div id="venue">
+
+        </div>
 
         <!--ABOUT-->
+        <div id="about">
+
+        </div>
         
       </div>      
     `;
@@ -44966,6 +44991,7 @@ class AppHeader extends (0, _lit.LitElement) {
     }
     firstUpdated() {
         this.navActiveLinks();
+        this.scrollTo();
     }
     navActiveLinks() {
         const links = this.shadowRoot.querySelectorAll(".nav-item");
@@ -44974,6 +45000,20 @@ class AppHeader extends (0, _lit.LitElement) {
                 event.preventDefault();
                 links.forEach((link)=>link.classList.remove("active"));
                 event.currentTarget.classList.add("active");
+            });
+        });
+    }
+    scrollTo() {
+        const links = this.shadowRoot.querySelectorAll(".nav-item");
+        links.forEach((link)=>{
+            link.addEventListener("click", (event)=>{
+                event.preventDefault();
+                const targetId = link.getAttribute("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) targetElement.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
             });
         });
     }
@@ -45011,6 +45051,9 @@ class AppHeader extends (0, _lit.LitElement) {
                     justify-content: space-between;
                     align-items: center;
                     z-index: 10;
+
+                    position: sticky;
+                    top: 0;
                 }
                 .app-header-left {
                     width: 6.5em;
