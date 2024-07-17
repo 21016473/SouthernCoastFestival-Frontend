@@ -2958,7 +2958,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     (0, _appDefault.default).init();
 });
 
-},{"./App":"2kQhy","./components/sc-app-header":"kDC1R","./scss/master.scss":"gpsI5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./components/sc-app-footer":"eSeCb"}],"2kQhy":[function(require,module,exports) {
+},{"./App":"2kQhy","./components/sc-app-header":"kDC1R","./components/sc-app-footer":"eSeCb","./scss/master.scss":"gpsI5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2kQhy":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _router = require("./Router");
@@ -3054,7 +3054,7 @@ function anchorRoute(e) {
     AppRouter.gotoRoute(pathname);
 }
 
-},{"./views/pages/home":"5Djc2","./views/pages/404":"BO0AV","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./views/pages/admin":"aT5rw","./views/pages/events":"j0aCk","./views/pages/new-event":"j1mpb"}],"5Djc2":[function(require,module,exports) {
+},{"./views/pages/home":"5Djc2","./views/pages/404":"BO0AV","./views/pages/admin":"aT5rw","./views/pages/events":"j0aCk","./views/pages/new-event":"j1mpb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Djc2":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7d32 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -3154,22 +3154,6 @@ class HomeView {
           <div class="events-grid">
             <div id="card-container"></div>
           </div>
-
-          <!--EVENTS-->
-          <div class="event-grid">
-            ${this.events == null ? (0, _litHtml.html)`
-                <Skeleton variant="rectangular" width={210} height={118} />
-              ` : (0, _litHtml.html)`
-                ${this.events.map((event)=>(0, _litHtml.html)`
-                  <sc-event class="event-card"
-                    name="${event.name}",
-                    description="${event.description}",
-                    image="${event.image}",
-                    length="${event.length}",
-                    artist="${event.artist}"
-                `)}
-              `}
-          </div>
         </div>
 
         <!--VENUE-->
@@ -3252,7 +3236,7 @@ exports.default = new HomeView();
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"../../App":"2kQhy","lit-html":"1cmQt","../../Router":"kOSdl","../../Auth":"wuqrX","../../Utils":"iRY6S","../../Event":"cqvk6","../../Toast":"4N7Ir","react":"21dqq","../../components/react/reactHelper":"3QXBS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../components/react/sc-event-card":"8huJy"}],"1cmQt":[function(require,module,exports) {
+},{"../../App":"2kQhy","lit-html":"1cmQt","../../Router":"kOSdl","../../Auth":"wuqrX","../../Utils":"iRY6S","../../Event":"cqvk6","../../Toast":"4N7Ir","react":"21dqq","../../components/react/reactHelper":"3QXBS","../../components/react/sc-event-card":"8huJy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"1cmQt":[function(require,module,exports) {
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -32570,119 +32554,137 @@ var _reactScss = require("../../scss/react.scss");
 var _eventdata = require("../../eventdata");
 var _eventdataDefault = parcelHelpers.interopDefault(_eventdata);
 const eventCard = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Grid), {
+        container: true,
+        spacing: 3,
+        className: "card-grid",
         children: (0, _eventdataDefault.default).map((event)=>{
             const imageUrl = event.eventimage || (0, _chefBryanEntertainmentJpgDefault.default);
             console.log("Image URL:", imageUrl);
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Card), {
-                className: "event-card",
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.CardContent), {
-                    className: "event-content",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.CardMedia), {
-                            component: "img",
-                            alt: "placeholder",
-                            height: "150",
-                            image: event.eventimage,
-                            className: "event-image"
-                        }, void 0, false, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 17,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
-                            className: "event-title-box",
-                            children: [
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                                    className: "event-title",
-                                    children: event.eventdisplayname
-                                }, void 0, false, {
-                                    fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 24,
-                                    columnNumber: 29
-                                }, undefined),
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.IconButton), {
-                                    className: "event-button",
-                                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                        className: "material-icons",
-                                        children: "favorite_border"
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Grid), {
+                item: true,
+                xs: 12,
+                sm: 6,
+                md: 4,
+                lg: 3,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Card), {
+                    className: "card",
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.CardContent), {
+                        className: "event-content",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.CardMedia), {
+                                component: "img",
+                                alt: "placeholder",
+                                height: "150",
+                                image: event.eventimage,
+                                className: "event-image"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 18,
+                                columnNumber: 33
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                                className: "event-title-box",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "event-title",
+                                        children: event.eventdisplayname
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-event-card.js",
+                                        lineNumber: 25,
+                                        columnNumber: 37
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.IconButton), {
+                                        className: "event-button",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                            className: "material-icons",
+                                            children: "favorite_border"
+                                        }, void 0, false, {
+                                            fileName: "src/components/react/sc-event-card.js",
+                                            lineNumber: 29,
+                                            columnNumber: 41
+                                        }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/react/sc-event-card.js",
                                         lineNumber: 28,
-                                        columnNumber: 33
+                                        columnNumber: 37
                                     }, undefined)
-                                }, void 0, false, {
-                                    fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 27,
-                                    columnNumber: 29
-                                }, undefined)
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 23,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                            className: "event-description",
-                            children: event.eventdescription
-                        }, void 0, false, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 33,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                            className: "event-times",
-                            children: [
-                                event.eventoperationdatetimestart,
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                    fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 37,
-                                    columnNumber: 64
-                                }, undefined),
-                                event.eventoperationdatetimeend
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 36,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                            className: "hidden",
-                            children: event.eventstallnumber
-                        }, void 0, false, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 40,
-                            columnNumber: 25
-                        }, undefined),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                            className: "hidden",
-                            children: [
-                                event.eventcategory,
-                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                                    fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 44,
-                                    columnNumber: 50
-                                }, undefined),
-                                event.eventtag
-                            ]
-                        }, void 0, true, {
-                            fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 43,
-                            columnNumber: 25
-                        }, undefined)
-                    ]
-                }, void 0, true, {
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 24,
+                                columnNumber: 33
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "event-description",
+                                children: event.eventdescription
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 34,
+                                columnNumber: 33
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "event-times",
+                                children: [
+                                    event.eventoperationdatetimestart,
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                        fileName: "src/components/react/sc-event-card.js",
+                                        lineNumber: 38,
+                                        columnNumber: 72
+                                    }, undefined),
+                                    event.eventoperationdatetimeend
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 37,
+                                columnNumber: 33
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "hidden",
+                                children: event.eventstallnumber
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 41,
+                                columnNumber: 33
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "hidden",
+                                children: [
+                                    event.eventcategory,
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
+                                        fileName: "src/components/react/sc-event-card.js",
+                                        lineNumber: 45,
+                                        columnNumber: 58
+                                    }, undefined),
+                                    event.eventtag
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-event-card.js",
+                                lineNumber: 44,
+                                columnNumber: 33
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-event-card.js",
+                        lineNumber: 17,
+                        columnNumber: 29
+                    }, undefined)
+                }, void 0, false, {
                     fileName: "src/components/react/sc-event-card.js",
                     lineNumber: 16,
-                    columnNumber: 21
+                    columnNumber: 25
                 }, undefined)
             }, event._id, false, {
                 fileName: "src/components/react/sc-event-card.js",
                 lineNumber: 15,
-                columnNumber: 17
+                columnNumber: 21
             }, undefined);
         })
-    }, void 0, false);
+    }, void 0, false, {
+        fileName: "src/components/react/sc-event-card.js",
+        lineNumber: 9,
+        columnNumber: 9
+    }, undefined);
 };
 exports.default = eventCard;
 
@@ -32691,7 +32693,7 @@ exports.default = eventCard;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../../static/images/chef-bryan-entertainment.jpg":"aMs6C","../../scss/react.scss":"aLSRg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../eventdata":"5Y3fe"}],"40376":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","../../../static/images/chef-bryan-entertainment.jpg":"aMs6C","../../scss/react.scss":"aLSRg","../../eventdata":"5Y3fe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"40376":[function(require,module,exports) {
 /**
  * @mui/material v5.16.1
  *
@@ -33256,7 +33258,7 @@ var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtili
 var _unstableTrapFocus = require("./Unstable_TrapFocus");
 var _unstableTrapFocusDefault = parcelHelpers.interopDefault(_unstableTrapFocus);
 
-},{"./colors":false,"./styles":false,"./utils":false,"./Accordion":false,"./AccordionActions":false,"./AccordionDetails":false,"./AccordionSummary":false,"./Alert":false,"./AlertTitle":false,"./AppBar":false,"./Autocomplete":false,"./Avatar":false,"./AvatarGroup":false,"./Backdrop":false,"./Badge":false,"./BottomNavigation":false,"./BottomNavigationAction":false,"./Box":"eQD0H","./Breadcrumbs":false,"./Button":false,"./ButtonBase":false,"./ButtonGroup":false,"./Card":"hWYZ3","./CardActionArea":false,"./CardActions":false,"./CardContent":"lVecn","./CardHeader":false,"./CardMedia":"kaOTJ","./Checkbox":false,"./Chip":false,"./CircularProgress":false,"./ClickAwayListener":false,"./Collapse":false,"./Container":false,"./CssBaseline":false,"./darkScrollbar":false,"./Dialog":false,"./DialogActions":false,"./DialogContent":false,"./DialogContentText":false,"./DialogTitle":false,"./Divider":false,"./Drawer":false,"./Fab":false,"./Fade":false,"./FilledInput":false,"./FormControl":false,"./FormControlLabel":false,"./FormGroup":false,"./FormHelperText":false,"./FormLabel":false,"./Grid":false,"./Unstable_Grid2":false,"./Grow":false,"./Hidden":false,"./Icon":false,"./IconButton":"38BrD","./ImageList":false,"./ImageListItem":false,"./ImageListItemBar":false,"./Input":false,"./InputAdornment":false,"./InputBase":false,"./InputLabel":false,"./LinearProgress":false,"./Link":false,"./List":false,"./ListItem":false,"./ListItemAvatar":false,"./ListItemButton":false,"./ListItemIcon":false,"./ListItemSecondaryAction":false,"./ListItemText":false,"./ListSubheader":false,"./Menu":false,"./MenuItem":false,"./MenuList":false,"./MobileStepper":false,"./Modal":false,"./NativeSelect":false,"./NoSsr":false,"./OutlinedInput":false,"./Pagination":false,"./PaginationItem":false,"./Paper":false,"./Popover":false,"./Popper":false,"./Portal":false,"./Radio":false,"./RadioGroup":false,"./Rating":false,"./ScopedCssBaseline":false,"./Select":false,"./Skeleton":false,"./Slide":false,"./Slider":false,"./Snackbar":false,"./SnackbarContent":false,"./SpeedDial":false,"./SpeedDialAction":false,"./SpeedDialIcon":false,"./Stack":false,"./Step":false,"./StepButton":false,"./StepConnector":false,"./StepContent":false,"./StepIcon":false,"./StepLabel":false,"./Stepper":false,"./SvgIcon":false,"./SwipeableDrawer":false,"./Switch":false,"./Tab":false,"./Table":false,"./TableBody":false,"./TableCell":false,"./TableContainer":false,"./TableFooter":false,"./TableHead":false,"./TablePagination":false,"./TableRow":false,"./TableSortLabel":false,"./Tabs":false,"./TabScrollButton":false,"./TextField":false,"./TextareaAutosize":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Toolbar":false,"./Tooltip":false,"./Typography":"faxSz","./useMediaQuery":false,"./usePagination":false,"./useScrollTrigger":false,"./Zoom":false,"./useAutocomplete":false,"./GlobalStyles":false,"@mui/base/composeClasses":false,"./generateUtilityClass":false,"./generateUtilityClasses":false,"./Unstable_TrapFocus":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1lzai":[function(require,module,exports) {
+},{"./colors":false,"./styles":false,"./utils":false,"./Accordion":false,"./AccordionActions":false,"./AccordionDetails":false,"./AccordionSummary":false,"./Alert":false,"./AlertTitle":false,"./AppBar":false,"./Autocomplete":false,"./Avatar":false,"./AvatarGroup":false,"./Backdrop":false,"./Badge":false,"./BottomNavigation":false,"./BottomNavigationAction":false,"./Box":"eQD0H","./Breadcrumbs":false,"./Button":false,"./ButtonBase":false,"./ButtonGroup":false,"./Card":"hWYZ3","./CardActionArea":false,"./CardActions":false,"./CardContent":"lVecn","./CardHeader":false,"./CardMedia":"kaOTJ","./Checkbox":false,"./Chip":false,"./CircularProgress":false,"./ClickAwayListener":false,"./Collapse":false,"./Container":false,"./CssBaseline":false,"./darkScrollbar":false,"./Dialog":false,"./DialogActions":false,"./DialogContent":false,"./DialogContentText":false,"./DialogTitle":false,"./Divider":false,"./Drawer":false,"./Fab":false,"./Fade":false,"./FilledInput":false,"./FormControl":false,"./FormControlLabel":false,"./FormGroup":false,"./FormHelperText":false,"./FormLabel":false,"./Grid":"c17UE","./Unstable_Grid2":false,"./Grow":false,"./Hidden":false,"./Icon":false,"./IconButton":"38BrD","./ImageList":false,"./ImageListItem":false,"./ImageListItemBar":false,"./Input":false,"./InputAdornment":false,"./InputBase":false,"./InputLabel":false,"./LinearProgress":false,"./Link":false,"./List":false,"./ListItem":false,"./ListItemAvatar":false,"./ListItemButton":false,"./ListItemIcon":false,"./ListItemSecondaryAction":false,"./ListItemText":false,"./ListSubheader":false,"./Menu":false,"./MenuItem":false,"./MenuList":false,"./MobileStepper":false,"./Modal":false,"./NativeSelect":false,"./NoSsr":false,"./OutlinedInput":false,"./Pagination":false,"./PaginationItem":false,"./Paper":false,"./Popover":false,"./Popper":false,"./Portal":false,"./Radio":false,"./RadioGroup":false,"./Rating":false,"./ScopedCssBaseline":false,"./Select":false,"./Skeleton":false,"./Slide":false,"./Slider":false,"./Snackbar":false,"./SnackbarContent":false,"./SpeedDial":false,"./SpeedDialAction":false,"./SpeedDialIcon":false,"./Stack":false,"./Step":false,"./StepButton":false,"./StepConnector":false,"./StepContent":false,"./StepIcon":false,"./StepLabel":false,"./Stepper":false,"./SvgIcon":false,"./SwipeableDrawer":false,"./Switch":false,"./Tab":false,"./Table":false,"./TableBody":false,"./TableCell":false,"./TableContainer":false,"./TableFooter":false,"./TableHead":false,"./TablePagination":false,"./TableRow":false,"./TableSortLabel":false,"./Tabs":false,"./TabScrollButton":false,"./TextField":false,"./TextareaAutosize":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Toolbar":false,"./Tooltip":false,"./Typography":"faxSz","./useMediaQuery":false,"./usePagination":false,"./useScrollTrigger":false,"./Zoom":false,"./useAutocomplete":false,"./GlobalStyles":false,"@mui/base/composeClasses":false,"./generateUtilityClass":false,"./generateUtilityClasses":false,"./Unstable_TrapFocus":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1lzai":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "THEME_ID", ()=>(0, _identifierDefault.default));
@@ -33547,7 +33549,7 @@ function experimental_sx() {
     throw new Error(`MUI: The \`experimental_sx\` has been moved to \`theme.unstable_sx\`.For more details, see https://github.com/mui/material-ui/pull/35150.`);
 }
 
-},{"@mui/utils/formatMuiErrorMessage":"7QIu9","@mui/styled-engine":"eTow5","./GlobalStyles":false,"./borders":false,"./breakpoints":false,"./compose":false,"./display":false,"./flexbox":false,"./cssGrid":false,"./palette":false,"./positions":false,"./shadows":false,"./sizing":false,"./spacing":false,"./style":false,"./typography":false,"./styleFunctionSx":false,"./getThemeValue":false,"./Box":false,"./createBox":"bc03s","./createStyled":false,"./styled":false,"./createTheme":false,"./createTheme/createBreakpoints":false,"./createTheme/createSpacing":false,"./createTheme/shape":false,"./useThemeProps":false,"./useTheme":"h9QTR","./useThemeWithoutDefault":false,"./useMediaQuery":false,"./colorManipulator":false,"./ThemeProvider":false,"./cssVars/createCssVarsProvider":false,"./cssVars/createGetCssVar":false,"./cssVars/cssVarsParser":false,"./cssVars/prepareCssVars":false,"./cssVars/createCssVarsTheme":false,"./responsivePropType":false,"./RtlProvider":false,"./Container/createContainer":false,"./Container":false,"./Unstable_Grid/Grid":false,"./Unstable_Grid":false,"./Stack/Stack":false,"./Stack":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eTow5":[function(require,module,exports) {
+},{"@mui/utils/formatMuiErrorMessage":"7QIu9","@mui/styled-engine":"eTow5","./GlobalStyles":false,"./borders":false,"./breakpoints":"jN5Vx","./compose":false,"./display":false,"./flexbox":false,"./cssGrid":false,"./palette":false,"./positions":false,"./shadows":false,"./sizing":false,"./spacing":false,"./style":false,"./typography":false,"./styleFunctionSx":false,"./getThemeValue":false,"./Box":false,"./createBox":"bc03s","./createStyled":false,"./styled":false,"./createTheme":false,"./createTheme/createBreakpoints":false,"./createTheme/createSpacing":false,"./createTheme/shape":false,"./useThemeProps":false,"./useTheme":"h9QTR","./useThemeWithoutDefault":false,"./useMediaQuery":false,"./colorManipulator":false,"./ThemeProvider":false,"./cssVars/createCssVarsProvider":false,"./cssVars/createGetCssVar":false,"./cssVars/cssVarsParser":false,"./cssVars/prepareCssVars":false,"./cssVars/createCssVarsTheme":false,"./responsivePropType":false,"./RtlProvider":false,"./Container/createContainer":false,"./Container":false,"./Unstable_Grid/Grid":false,"./Unstable_Grid":false,"./Stack/Stack":false,"./Stack":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eTow5":[function(require,module,exports) {
 /**
  * @mui/styled-engine v5.16.1
  *
@@ -41675,7 +41677,36 @@ const refType = (0, _propTypesDefault.default).oneOfType([
 ]);
 exports.default = refType;
 
-},{"prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dFja4":[function(require,module,exports) {
+},{"prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a9zQe":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _requirePropFactoryDefault.default));
+var _requirePropFactory = require("./requirePropFactory");
+var _requirePropFactoryDefault = parcelHelpers.interopDefault(_requirePropFactory);
+
+},{"./requirePropFactory":"ac6CU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ac6CU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>requirePropFactory);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+function requirePropFactory(componentNameInError, Component) {
+    // eslint-disable-next-line react/forbid-foreign-prop-types
+    const prevPropTypes = Component ? (0, _extendsDefault.default)({}, Component.propTypes) : null;
+    const requireProp = (requiredProp)=>(props, propName, componentName, location, propFullName, ...args)=>{
+            const propFullNameSafe = propFullName || propName;
+            const defaultTypeChecker = prevPropTypes == null ? void 0 : prevPropTypes[propFullNameSafe];
+            if (defaultTypeChecker) {
+                const typeCheckerResult = defaultTypeChecker(props, propName, componentName, location, propFullName, ...args);
+                if (typeCheckerResult) return typeCheckerResult;
+            }
+            if (typeof props[propName] !== "undefined" && !props[requiredProp]) return new Error(`The prop \`${propFullNameSafe}\` of ` + `\`${componentNameInError}\` can only be used together with the \`${requiredProp}\` prop.`);
+            return null;
+        };
+    return requireProp;
+}
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dFja4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _setRefDefault.default));
@@ -44142,6 +44173,681 @@ const cardMediaClasses = (0, _generateUtilityClassesDefault.default)("MuiCardMed
 ]);
 exports.default = cardMediaClasses;
 
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c17UE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _gridDefault.default));
+parcelHelpers.export(exports, "gridClasses", ()=>(0, _gridClassesDefault.default));
+var _grid = require("./Grid");
+var _gridDefault = parcelHelpers.interopDefault(_grid);
+var _gridClasses = require("./gridClasses");
+var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
+parcelHelpers.exportAll(_gridClasses, exports);
+"use client";
+
+},{"./Grid":"60L6y","./gridClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"60L6y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "generateGrid", ()=>generateGrid);
+parcelHelpers.export(exports, "generateDirection", ()=>generateDirection);
+parcelHelpers.export(exports, "generateRowGap", ()=>generateRowGap);
+parcelHelpers.export(exports, "generateColumnGap", ()=>generateColumnGap);
+parcelHelpers.export(exports, "resolveSpacingStyles", ()=>resolveSpacingStyles);
+parcelHelpers.export(exports, "resolveSpacingClasses", ()=>resolveSpacingClasses);
+// A grid component using the following libs as inspiration.
+//
+// For the implementation:
+// - https://getbootstrap.com/docs/4.3/layout/grid/
+// - https://github.com/kristoferjoseph/flexboxgrid/blob/master/src/css/flexboxgrid.css
+// - https://github.com/roylee0704/react-flexbox-grid
+// - https://material.angularjs.org/latest/layout/introduction
+//
+// Follow this flexbox Guide to better understand the underlying model:
+// - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _system = require("@mui/system");
+var _styleFunctionSx = require("@mui/system/styleFunctionSx");
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _requirePropFactory = require("../utils/requirePropFactory");
+var _requirePropFactoryDefault = parcelHelpers.interopDefault(_requirePropFactory);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _gridContext = require("./GridContext");
+var _gridContextDefault = parcelHelpers.interopDefault(_gridContext);
+var _gridClasses = require("./gridClasses");
+var _gridClassesDefault = parcelHelpers.interopDefault(_gridClasses);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "columns",
+    "columnSpacing",
+    "component",
+    "container",
+    "direction",
+    "item",
+    "rowSpacing",
+    "spacing",
+    "wrap",
+    "zeroMinWidth"
+];
+function getOffset(val) {
+    const parse = parseFloat(val);
+    return `${parse}${String(val).replace(String(parse), "") || "px"}`;
+}
+function generateGrid({ theme, ownerState }) {
+    let size;
+    return theme.breakpoints.keys.reduce((globalStyles, breakpoint)=>{
+        // Use side effect over immutability for better performance.
+        let styles = {};
+        if (ownerState[breakpoint]) size = ownerState[breakpoint];
+        if (!size) return globalStyles;
+        if (size === true) // For the auto layouting
+        styles = {
+            flexBasis: 0,
+            flexGrow: 1,
+            maxWidth: "100%"
+        };
+        else if (size === "auto") styles = {
+            flexBasis: "auto",
+            flexGrow: 0,
+            flexShrink: 0,
+            maxWidth: "none",
+            width: "auto"
+        };
+        else {
+            const columnsBreakpointValues = (0, _system.unstable_resolveBreakpointValues)({
+                values: ownerState.columns,
+                breakpoints: theme.breakpoints.values
+            });
+            const columnValue = typeof columnsBreakpointValues === "object" ? columnsBreakpointValues[breakpoint] : columnsBreakpointValues;
+            if (columnValue === undefined || columnValue === null) return globalStyles;
+            // Keep 7 significant numbers.
+            const width = `${Math.round(size / columnValue * 10e7) / 10e5}%`;
+            let more = {};
+            if (ownerState.container && ownerState.item && ownerState.columnSpacing !== 0) {
+                const themeSpacing = theme.spacing(ownerState.columnSpacing);
+                if (themeSpacing !== "0px") {
+                    const fullWidth = `calc(${width} + ${getOffset(themeSpacing)})`;
+                    more = {
+                        flexBasis: fullWidth,
+                        maxWidth: fullWidth
+                    };
+                }
+            }
+            // Close to the bootstrap implementation:
+            // https://github.com/twbs/bootstrap/blob/8fccaa2439e97ec72a4b7dc42ccc1f649790adb0/scss/mixins/_grid.scss#L41
+            styles = (0, _extendsDefault.default)({
+                flexBasis: width,
+                flexGrow: 0,
+                maxWidth: width
+            }, more);
+        }
+        // No need for a media query for the first size.
+        if (theme.breakpoints.values[breakpoint] === 0) Object.assign(globalStyles, styles);
+        else globalStyles[theme.breakpoints.up(breakpoint)] = styles;
+        return globalStyles;
+    }, {});
+}
+function generateDirection({ theme, ownerState }) {
+    const directionValues = (0, _system.unstable_resolveBreakpointValues)({
+        values: ownerState.direction,
+        breakpoints: theme.breakpoints.values
+    });
+    return (0, _system.handleBreakpoints)({
+        theme
+    }, directionValues, (propValue)=>{
+        const output = {
+            flexDirection: propValue
+        };
+        if (propValue.indexOf("column") === 0) output[`& > .${(0, _gridClassesDefault.default).item}`] = {
+            maxWidth: "none"
+        };
+        return output;
+    });
+}
+/**
+ * Extracts zero value breakpoint keys before a non-zero value breakpoint key.
+ * @example { xs: 0, sm: 0, md: 2, lg: 0, xl: 0 } or [0, 0, 2, 0, 0]
+ * @returns [xs, sm]
+ */ function extractZeroValueBreakpointKeys({ breakpoints, values }) {
+    let nonZeroKey = "";
+    Object.keys(values).forEach((key)=>{
+        if (nonZeroKey !== "") return;
+        if (values[key] !== 0) nonZeroKey = key;
+    });
+    const sortedBreakpointKeysByValue = Object.keys(breakpoints).sort((a, b)=>{
+        return breakpoints[a] - breakpoints[b];
+    });
+    return sortedBreakpointKeysByValue.slice(0, sortedBreakpointKeysByValue.indexOf(nonZeroKey));
+}
+function generateRowGap({ theme, ownerState }) {
+    const { container, rowSpacing } = ownerState;
+    let styles = {};
+    if (container && rowSpacing !== 0) {
+        const rowSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
+            values: rowSpacing,
+            breakpoints: theme.breakpoints.values
+        });
+        let zeroValueBreakpointKeys;
+        if (typeof rowSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
+            breakpoints: theme.breakpoints.values,
+            values: rowSpacingValues
+        });
+        styles = (0, _system.handleBreakpoints)({
+            theme
+        }, rowSpacingValues, (propValue, breakpoint)=>{
+            var _zeroValueBreakpointK;
+            const themeSpacing = theme.spacing(propValue);
+            if (themeSpacing !== "0px") return {
+                marginTop: `-${getOffset(themeSpacing)}`,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingTop: getOffset(themeSpacing)
+                }
+            };
+            if ((_zeroValueBreakpointK = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK.includes(breakpoint)) return {};
+            return {
+                marginTop: 0,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingTop: 0
+                }
+            };
+        });
+    }
+    return styles;
+}
+function generateColumnGap({ theme, ownerState }) {
+    const { container, columnSpacing } = ownerState;
+    let styles = {};
+    if (container && columnSpacing !== 0) {
+        const columnSpacingValues = (0, _system.unstable_resolveBreakpointValues)({
+            values: columnSpacing,
+            breakpoints: theme.breakpoints.values
+        });
+        let zeroValueBreakpointKeys;
+        if (typeof columnSpacingValues === "object") zeroValueBreakpointKeys = extractZeroValueBreakpointKeys({
+            breakpoints: theme.breakpoints.values,
+            values: columnSpacingValues
+        });
+        styles = (0, _system.handleBreakpoints)({
+            theme
+        }, columnSpacingValues, (propValue, breakpoint)=>{
+            var _zeroValueBreakpointK2;
+            const themeSpacing = theme.spacing(propValue);
+            if (themeSpacing !== "0px") return {
+                width: `calc(100% + ${getOffset(themeSpacing)})`,
+                marginLeft: `-${getOffset(themeSpacing)}`,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingLeft: getOffset(themeSpacing)
+                }
+            };
+            if ((_zeroValueBreakpointK2 = zeroValueBreakpointKeys) != null && _zeroValueBreakpointK2.includes(breakpoint)) return {};
+            return {
+                width: "100%",
+                marginLeft: 0,
+                [`& > .${(0, _gridClassesDefault.default).item}`]: {
+                    paddingLeft: 0
+                }
+            };
+        });
+    }
+    return styles;
+}
+function resolveSpacingStyles(spacing, breakpoints, styles = {}) {
+    // undefined/null or `spacing` <= 0
+    if (!spacing || spacing <= 0) return [];
+    // in case of string/number `spacing`
+    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
+        styles[`spacing-xs-${String(spacing)}`]
+    ];
+    // in case of object `spacing`
+    const spacingStyles = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = spacing[breakpoint];
+        if (Number(value) > 0) spacingStyles.push(styles[`spacing-${breakpoint}-${String(value)}`]);
+    });
+    return spacingStyles;
+}
+// Default CSS values
+// flex: '0 1 auto',
+// flexDirection: 'row',
+// alignItems: 'flex-start',
+// flexWrap: 'nowrap',
+// justifyContent: 'flex-start',
+const GridRoot = (0, _styledDefault.default)("div", {
+    name: "MuiGrid",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        const { container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
+        let spacingStyles = [];
+        // in case of grid item
+        if (container) spacingStyles = resolveSpacingStyles(spacing, breakpoints, styles);
+        const breakpointsStyles = [];
+        breakpoints.forEach((breakpoint)=>{
+            const value = ownerState[breakpoint];
+            if (value) breakpointsStyles.push(styles[`grid-${breakpoint}-${String(value)}`]);
+        });
+        return [
+            styles.root,
+            container && styles.container,
+            item && styles.item,
+            zeroMinWidth && styles.zeroMinWidth,
+            ...spacingStyles,
+            direction !== "row" && styles[`direction-xs-${String(direction)}`],
+            wrap !== "wrap" && styles[`wrap-xs-${String(wrap)}`],
+            ...breakpointsStyles
+        ];
+    }
+})(({ ownerState })=>(0, _extendsDefault.default)({
+        boxSizing: "border-box"
+    }, ownerState.container && {
+        display: "flex",
+        flexWrap: "wrap",
+        width: "100%"
+    }, ownerState.item && {
+        margin: 0 // For instance, it's useful when used with a `figure` element.
+    }, ownerState.zeroMinWidth && {
+        minWidth: 0
+    }, ownerState.wrap !== "wrap" && {
+        flexWrap: ownerState.wrap
+    }), generateDirection, generateRowGap, generateColumnGap, generateGrid);
+function resolveSpacingClasses(spacing, breakpoints) {
+    // undefined/null or `spacing` <= 0
+    if (!spacing || spacing <= 0) return [];
+    // in case of string/number `spacing`
+    if (typeof spacing === "string" && !Number.isNaN(Number(spacing)) || typeof spacing === "number") return [
+        `spacing-xs-${String(spacing)}`
+    ];
+    // in case of object `spacing`
+    const classes = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = spacing[breakpoint];
+        if (Number(value) > 0) {
+            const className = `spacing-${breakpoint}-${String(value)}`;
+            classes.push(className);
+        }
+    });
+    return classes;
+}
+const useUtilityClasses = (ownerState)=>{
+    const { classes, container, direction, item, spacing, wrap, zeroMinWidth, breakpoints } = ownerState;
+    let spacingClasses = [];
+    // in case of grid item
+    if (container) spacingClasses = resolveSpacingClasses(spacing, breakpoints);
+    const breakpointsClasses = [];
+    breakpoints.forEach((breakpoint)=>{
+        const value = ownerState[breakpoint];
+        if (value) breakpointsClasses.push(`grid-${breakpoint}-${String(value)}`);
+    });
+    const slots = {
+        root: [
+            "root",
+            container && "container",
+            item && "item",
+            zeroMinWidth && "zeroMinWidth",
+            ...spacingClasses,
+            direction !== "row" && `direction-xs-${String(direction)}`,
+            wrap !== "wrap" && `wrap-xs-${String(wrap)}`,
+            ...breakpointsClasses
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _gridClasses.getGridUtilityClass), classes);
+};
+const Grid = /*#__PURE__*/ _react.forwardRef(function Grid(inProps, ref) {
+    const themeProps = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiGrid"
+    });
+    const { breakpoints } = (0, _useThemeDefault.default)();
+    const props = (0, _styleFunctionSx.extendSxProp)(themeProps);
+    const { className, columns: columnsProp, columnSpacing: columnSpacingProp, component = "div", container = false, direction = "row", item = false, rowSpacing: rowSpacingProp, spacing = 0, wrap = "wrap", zeroMinWidth = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const rowSpacing = rowSpacingProp || spacing;
+    const columnSpacing = columnSpacingProp || spacing;
+    const columnsContext = _react.useContext((0, _gridContextDefault.default));
+    // columns set with default breakpoint unit of 12
+    const columns = container ? columnsProp || 12 : columnsContext;
+    const breakpointsValues = {};
+    const otherFiltered = (0, _extendsDefault.default)({}, other);
+    breakpoints.keys.forEach((breakpoint)=>{
+        if (other[breakpoint] != null) {
+            breakpointsValues[breakpoint] = other[breakpoint];
+            delete otherFiltered[breakpoint];
+        }
+    });
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        columns,
+        container,
+        direction,
+        item,
+        rowSpacing,
+        columnSpacing,
+        wrap,
+        zeroMinWidth,
+        spacing
+    }, breakpointsValues, {
+        breakpoints: breakpoints.keys
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _gridContextDefault.default).Provider, {
+        value: columns,
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(GridRoot, (0, _extendsDefault.default)({
+            ownerState: ownerState,
+            className: (0, _clsxDefault.default)(classes.root, className),
+            as: component,
+            ref: ref
+        }, otherFiltered))
+    });
+});
+Grid.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The number of columns.
+   * @default 12
+   */ columns: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).number),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Defines the horizontal space between the type `item` components.
+   * It overrides the value of the `spacing` prop.
+   */ columnSpacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */ component: (0, _propTypesDefault.default).elementType,
+    /**
+   * If `true`, the component will have the flex *container* behavior.
+   * You should be wrapping *items* with a *container*.
+   * @default false
+   */ container: (0, _propTypesDefault.default).bool,
+    /**
+   * Defines the `flex-direction` style property.
+   * It is applied for all screen sizes.
+   * @default 'row'
+   */ direction: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ]),
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOf([
+            "column-reverse",
+            "column",
+            "row-reverse",
+            "row"
+        ])),
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * If `true`, the component will have the flex *item* behavior.
+   * You should be wrapping *items* with a *container*.
+   * @default false
+   */ item: (0, _propTypesDefault.default).bool,
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `lg` breakpoint and wider screens if not overridden.
+   * @default false
+   */ lg: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `md` breakpoint and wider screens if not overridden.
+   * @default false
+   */ md: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * Defines the vertical space between the type `item` components.
+   * It overrides the value of the `spacing` prop.
+   */ rowSpacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `sm` breakpoint and wider screens if not overridden.
+   * @default false
+   */ sm: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * Defines the space between the type `item` components.
+   * It can only be used on a type `container` component.
+   * @default 0
+   */ spacing: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).number,
+            (0, _propTypesDefault.default).string
+        ])),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).object,
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Defines the `flex-wrap` style property.
+   * It's applied for all screen sizes.
+   * @default 'wrap'
+   */ wrap: (0, _propTypesDefault.default).oneOf([
+        "nowrap",
+        "wrap-reverse",
+        "wrap"
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for the `xl` breakpoint and wider screens if not overridden.
+   * @default false
+   */ xl: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for all the screen sizes with the lowest priority.
+   * @default false
+   */ xs: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "auto"
+        ]),
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).bool
+    ]),
+    /**
+   * If `true`, it sets `min-width: 0` on the item.
+   * Refer to the limitations section of the documentation to better understand the use case.
+   * @default false
+   */ zeroMinWidth: (0, _propTypesDefault.default).bool
+};
+{
+    const requireProp = (0, _requirePropFactoryDefault.default)("Grid", Grid);
+    // eslint-disable-next-line no-useless-concat
+    Grid["propTypes"] = (0, _extendsDefault.default)({}, Grid.propTypes, {
+        direction: requireProp("container"),
+        lg: requireProp("item"),
+        md: requireProp("item"),
+        sm: requireProp("item"),
+        spacing: requireProp("container"),
+        wrap: requireProp("container"),
+        xs: requireProp("item"),
+        zeroMinWidth: requireProp("item")
+    });
+}exports.default = Grid;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/system":"Q0Zql","@mui/system/styleFunctionSx":"bRwpN","@mui/utils/composeClasses":"4kKno","../utils/requirePropFactory":"gQOX7","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","../styles/useTheme":"5nWMX","./GridContext":"ghr8E","./gridClasses":"iRwNS","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gQOX7":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _requirePropFactory = require("@mui/utils/requirePropFactory");
+var _requirePropFactoryDefault = parcelHelpers.interopDefault(_requirePropFactory);
+exports.default = (0, _requirePropFactoryDefault.default);
+
+},{"@mui/utils/requirePropFactory":"a9zQe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ghr8E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+"use client";
+/**
+ * @ignore - internal component.
+ */ const GridContext = /*#__PURE__*/ _react.createContext();
+GridContext.displayName = "GridContext";
+exports.default = GridContext;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iRwNS":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getGridUtilityClass", ()=>getGridUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getGridUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiGrid", slot);
+}
+const SPACINGS = [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+];
+const DIRECTIONS = [
+    "column-reverse",
+    "column",
+    "row-reverse",
+    "row"
+];
+const WRAPS = [
+    "nowrap",
+    "wrap-reverse",
+    "wrap"
+];
+const GRID_SIZES = [
+    "auto",
+    true,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+];
+const gridClasses = (0, _generateUtilityClassesDefault.default)("MuiGrid", [
+    "root",
+    "container",
+    "item",
+    "zeroMinWidth",
+    // spacings
+    ...SPACINGS.map((spacing)=>`spacing-xs-${spacing}`),
+    // direction values
+    ...DIRECTIONS.map((direction)=>`direction-xs-${direction}`),
+    // wrap values
+    ...WRAPS.map((wrap)=>`wrap-xs-${wrap}`),
+    // grid sizes for all breakpoints
+    ...GRID_SIZES.map((size)=>`grid-xs-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-sm-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-md-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-lg-${size}`),
+    ...GRID_SIZES.map((size)=>`grid-xl-${size}`)
+]);
+exports.default = gridClasses;
+
 },{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"38BrD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -44898,7 +45604,7 @@ const data = [
 ];
 exports.default = data;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../static/images/treeoflife.jpg":"iyS7s","../static/images/bbq-food.jpg":"eS59g","../static/images/anza-earring-stall.jpg":"8zxNf","../static/images/dj-duo-entertainment.jpg":"2cfqD","../static/images/bakery-food.jpg":"gYice","../static/images/lantern-stall.jpg":"hR4Yf","../static/images/making_lantern_activity.jpg":"39Orq","../static/images/loadedpotato-food.jpg":"1u5Pb","../static/images/soap-stall.jpg":"aWAQi","../static/images/alisa-music-entertainment.jpg":"kAZeJ"}],"iyS7s":[function(require,module,exports) {
+},{"../static/images/treeoflife.jpg":"iyS7s","../static/images/bbq-food.jpg":"eS59g","../static/images/anza-earring-stall.jpg":"8zxNf","../static/images/dj-duo-entertainment.jpg":"2cfqD","../static/images/bakery-food.jpg":"gYice","../static/images/lantern-stall.jpg":"hR4Yf","../static/images/making_lantern_activity.jpg":"39Orq","../static/images/loadedpotato-food.jpg":"1u5Pb","../static/images/soap-stall.jpg":"aWAQi","../static/images/alisa-music-entertainment.jpg":"kAZeJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iyS7s":[function(require,module,exports) {
 module.exports = require("63beeac1eee45873").getBundleURL("bLxZJ") + "treeoflife.7725f5df.jpg" + "?" + Date.now();
 
 },{"63beeac1eee45873":"lgJ39"}],"eS59g":[function(require,module,exports) {
@@ -44988,7 +45694,7 @@ class AdminView {
 }
 exports.default = new AdminView();
 
-},{"../../Utils":"iRY6S","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","lit-html":"1cmQt","../../App":"2kQhy"}],"j0aCk":[function(require,module,exports) {
+},{"lit-html":"1cmQt","../../Utils":"iRY6S","../../App":"2kQhy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"j0aCk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("../../App");
@@ -45251,7 +45957,7 @@ class AppHeader extends (0, _lit.LitElement) {
 }
 customElements.define("sc-app-header", AppHeader);
 
-},{"lit":"4antt"}],"gpsI5":[function() {},{}],"eSeCb":[function(require,module,exports) {
+},{"lit":"4antt"}],"eSeCb":[function(require,module,exports) {
 var _lit = require("lit");
 class AppFooter extends (0, _lit.LitElement) {
     constructor(){
@@ -45326,6 +46032,6 @@ class AppFooter extends (0, _lit.LitElement) {
 }
 customElements.define("sc-app-footer", AppFooter);
 
-},{"lit":"4antt"}]},["farZc","1xC6H","8lqZg"], "8lqZg", "parcelRequiree1b3")
+},{"lit":"4antt"}],"gpsI5":[function() {},{}]},["farZc","1xC6H","8lqZg"], "8lqZg", "parcelRequiree1b3")
 
 //# sourceMappingURL=index.975ef6c8.js.map
