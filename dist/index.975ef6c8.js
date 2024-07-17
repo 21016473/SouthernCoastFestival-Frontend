@@ -32571,7 +32571,10 @@ var _eventdata = require("../../eventdata");
 var _eventdataDefault = parcelHelpers.interopDefault(_eventdata);
 const eventCard = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: (0, _eventdataDefault.default).map((event)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Card), {
+        children: (0, _eventdataDefault.default).map((event)=>{
+            const imageUrl = event.eventimage || (0, _chefBryanEntertainmentJpgDefault.default);
+            console.log("Image URL:", imageUrl);
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Card), {
                 className: "event-card",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.CardContent), {
                     className: "event-content",
@@ -32584,8 +32587,8 @@ const eventCard = ()=>{
                             className: "event-image"
                         }, void 0, false, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 14,
-                            columnNumber: 21
+                            lineNumber: 17,
+                            columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
                             className: "event-title-box",
@@ -32595,8 +32598,8 @@ const eventCard = ()=>{
                                     children: event.eventdisplayname
                                 }, void 0, false, {
                                     fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 21,
-                                    columnNumber: 25
+                                    lineNumber: 24,
+                                    columnNumber: 29
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.IconButton), {
                                     className: "event-button",
@@ -32605,27 +32608,27 @@ const eventCard = ()=>{
                                         children: "favorite_border"
                                     }, void 0, false, {
                                         fileName: "src/components/react/sc-event-card.js",
-                                        lineNumber: 25,
-                                        columnNumber: 29
+                                        lineNumber: 28,
+                                        columnNumber: 33
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 24,
-                                    columnNumber: 25
+                                    lineNumber: 27,
+                                    columnNumber: 29
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 20,
-                            columnNumber: 21
+                            lineNumber: 23,
+                            columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
                             className: "event-description",
                             children: event.eventdescription
                         }, void 0, false, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 30,
-                            columnNumber: 21
+                            lineNumber: 33,
+                            columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
                             className: "event-times",
@@ -32633,22 +32636,23 @@ const eventCard = ()=>{
                                 event.eventoperationdatetimestart,
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 34,
-                                    columnNumber: 60
+                                    lineNumber: 37,
+                                    columnNumber: 64
                                 }, undefined),
                                 event.eventoperationdatetimeend
                             ]
                         }, void 0, true, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 33,
-                            columnNumber: 21
+                            lineNumber: 36,
+                            columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
-                            children: event.eventstall
+                            className: "hidden",
+                            children: event.eventstallnumber
                         }, void 0, false, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 37,
-                            columnNumber: 21
+                            lineNumber: 40,
+                            columnNumber: 25
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
                             className: "hidden",
@@ -32656,27 +32660,28 @@ const eventCard = ()=>{
                                 event.eventcategory,
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                     fileName: "src/components/react/sc-event-card.js",
-                                    lineNumber: 41,
-                                    columnNumber: 46
+                                    lineNumber: 44,
+                                    columnNumber: 50
                                 }, undefined),
                                 event.eventtag
                             ]
                         }, void 0, true, {
                             fileName: "src/components/react/sc-event-card.js",
-                            lineNumber: 40,
-                            columnNumber: 21
+                            lineNumber: 43,
+                            columnNumber: 25
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/react/sc-event-card.js",
-                    lineNumber: 13,
-                    columnNumber: 17
+                    lineNumber: 16,
+                    columnNumber: 21
                 }, undefined)
             }, event._id, false, {
                 fileName: "src/components/react/sc-event-card.js",
-                lineNumber: 12,
-                columnNumber: 13
-            }, undefined))
+                lineNumber: 15,
+                columnNumber: 17
+            }, undefined);
+        })
     }, void 0, false);
 };
 exports.default = eventCard;
@@ -44740,6 +44745,26 @@ exports.getOrigin = getOrigin;
 },{}],"aLSRg":[function() {},{}],"5Y3fe":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+var _treeoflifeJpg = require("../static/images/treeoflife.jpg");
+var _treeoflifeJpgDefault = parcelHelpers.interopDefault(_treeoflifeJpg);
+var _bbqFoodJpg = require("../static/images/bbq-food.jpg");
+var _bbqFoodJpgDefault = parcelHelpers.interopDefault(_bbqFoodJpg);
+var _anzaEarringStallJpg = require("../static/images/anza-earring-stall.jpg");
+var _anzaEarringStallJpgDefault = parcelHelpers.interopDefault(_anzaEarringStallJpg);
+var _djDuoEntertainmentJpg = require("../static/images/dj-duo-entertainment.jpg");
+var _djDuoEntertainmentJpgDefault = parcelHelpers.interopDefault(_djDuoEntertainmentJpg);
+var _bakeryFoodJpg = require("../static/images/bakery-food.jpg");
+var _bakeryFoodJpgDefault = parcelHelpers.interopDefault(_bakeryFoodJpg);
+var _lanternStallJpg = require("../static/images/lantern-stall.jpg");
+var _lanternStallJpgDefault = parcelHelpers.interopDefault(_lanternStallJpg);
+var _makingLanternActivityJpg = require("../static/images/making_lantern_activity.jpg");
+var _makingLanternActivityJpgDefault = parcelHelpers.interopDefault(_makingLanternActivityJpg);
+var _loadedpotatoFoodJpg = require("../static/images/loadedpotato-food.jpg");
+var _loadedpotatoFoodJpgDefault = parcelHelpers.interopDefault(_loadedpotatoFoodJpg);
+var _soapStallJpg = require("../static/images/soap-stall.jpg");
+var _soapStallJpgDefault = parcelHelpers.interopDefault(_soapStallJpg);
+var _alisaMusicEntertainmentJpg = require("../static/images/alisa-music-entertainment.jpg");
+var _alisaMusicEntertainmentJpgDefault = parcelHelpers.interopDefault(_alisaMusicEntertainmentJpg);
 const data = [
     {
         _id: "1",
@@ -44748,7 +44773,7 @@ const data = [
         eventoperationdatetimestart: "18:00",
         eventoperationdatetimeend: "22:00",
         eventdescription: "Witness the mesmerizing light show projected onto the tree while relaxing with your drinks",
-        eventimage: "static/images/treeofline.jpg",
+        eventimage: (0, _treeoflifeJpgDefault.default),
         eventstallnumber: "1",
         eventtag: [
             "adult only"
@@ -44761,7 +44786,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "Inspired by Texas, Tex BBQ is cooking up a storm with briskets and pulled pork. Don`t forget the mac and cheese!",
-        eventimage: "",
+        eventimage: (0, _bbqFoodJpgDefault.default),
         eventstallnumber: "4",
         eventtag: [
             "food"
@@ -44774,7 +44799,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "Handmade selection of earrings, perfect for any occasion.",
-        eventimage: "",
+        eventimage: (0, _anzaEarringStallJpgDefault.default),
         eventstallnumber: "40",
         eventtag: [
             ""
@@ -44787,7 +44812,7 @@ const data = [
         eventoperationdatetimestart: "15:00",
         eventoperationdatetimeend: "22:00",
         eventdescription: "Geelong locals DJs Lucy and Cara keeping the vibe going between musical and talents acts.",
-        eventimage: "",
+        eventimage: (0, _djDuoEntertainmentJpgDefault.default),
         eventstallnumber: "10",
         eventtag: [
             "music"
@@ -44800,7 +44825,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "Swirl Bakery will be bringing over 20 kinds of baked goods to the showground.",
-        eventimage: "",
+        eventimage: (0, _bakeryFoodJpgDefault.default),
         eventstallnumber: "13",
         eventtag: [
             "gluten-free",
@@ -44814,7 +44839,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "lluminate your space with captivating collection of beautifully designed lanterns.",
-        eventimage: "",
+        eventimage: (0, _lanternStallJpgDefault.default),
         eventstallnumber: "45",
         eventtag: []
     },
@@ -44825,7 +44850,7 @@ const data = [
         eventoperationdatetimestart: "15:00",
         eventoperationdatetimeend: "22:00",
         eventdescription: "Light up your night even more with lantern making class. $10 per person.",
-        eventimage: "",
+        eventimage: (0, _makingLanternActivityJpgDefault.default),
         eventstallnumber: "11",
         eventtag: [
             "activity",
@@ -44839,7 +44864,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "Load your potatoes however you want! Vegan options available.",
-        eventimage: "",
+        eventimage: (0, _loadedpotatoFoodJpgDefault.default),
         eventstallnumber: "21",
         eventtag: [
             "vegan"
@@ -44852,7 +44877,7 @@ const data = [
         eventoperationdatetimestart: "",
         eventoperationdatetimeend: "",
         eventdescription: "Indulge in our luxurious, all-natural soaps that leave your skin feeling soft and refreshed.",
-        eventimage: "",
+        eventimage: (0, _soapStallJpgDefault.default),
         eventstallnumber: "47",
         eventtag: []
     },
@@ -44863,7 +44888,7 @@ const data = [
         eventoperationdatetimestart: "18:00",
         eventoperationdatetimeend: "18:45",
         eventdescription: "Alisa will showcase her soulful voice, blending contemporary pop with classic melodies.",
-        eventimage: "",
+        eventimage: (0, _alisaMusicEntertainmentJpgDefault.default),
         eventstallnumber: "10",
         eventtag: [
             "music",
@@ -44873,7 +44898,37 @@ const data = [
 ];
 exports.default = data;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"BO0AV":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../static/images/treeoflife.jpg":"iyS7s","../static/images/bbq-food.jpg":"eS59g","../static/images/anza-earring-stall.jpg":"8zxNf","../static/images/dj-duo-entertainment.jpg":"2cfqD","../static/images/bakery-food.jpg":"gYice","../static/images/lantern-stall.jpg":"hR4Yf","../static/images/making_lantern_activity.jpg":"39Orq","../static/images/loadedpotato-food.jpg":"1u5Pb","../static/images/soap-stall.jpg":"aWAQi","../static/images/alisa-music-entertainment.jpg":"kAZeJ"}],"iyS7s":[function(require,module,exports) {
+module.exports = require("63beeac1eee45873").getBundleURL("bLxZJ") + "treeoflife.7725f5df.jpg" + "?" + Date.now();
+
+},{"63beeac1eee45873":"lgJ39"}],"eS59g":[function(require,module,exports) {
+module.exports = require("402f874e31cbf5b3").getBundleURL("bLxZJ") + "bbq-food.32992898.jpg" + "?" + Date.now();
+
+},{"402f874e31cbf5b3":"lgJ39"}],"8zxNf":[function(require,module,exports) {
+module.exports = require("b60c10869431ec80").getBundleURL("bLxZJ") + "anza-earring-stall.f71af85b.jpg" + "?" + Date.now();
+
+},{"b60c10869431ec80":"lgJ39"}],"2cfqD":[function(require,module,exports) {
+module.exports = require("8e13a6fd3904db76").getBundleURL("bLxZJ") + "dj-duo-entertainment.7f4c1c93.jpg" + "?" + Date.now();
+
+},{"8e13a6fd3904db76":"lgJ39"}],"gYice":[function(require,module,exports) {
+module.exports = require("4e59102dbb322cb5").getBundleURL("bLxZJ") + "bakery-food.126468ba.jpg" + "?" + Date.now();
+
+},{"4e59102dbb322cb5":"lgJ39"}],"hR4Yf":[function(require,module,exports) {
+module.exports = require("82f82b9335e17ee0").getBundleURL("bLxZJ") + "lantern-stall.bcbf2d55.jpg" + "?" + Date.now();
+
+},{"82f82b9335e17ee0":"lgJ39"}],"39Orq":[function(require,module,exports) {
+module.exports = require("1bab4cc91de5280d").getBundleURL("bLxZJ") + "making_lantern_activity.01503c18.jpg" + "?" + Date.now();
+
+},{"1bab4cc91de5280d":"lgJ39"}],"1u5Pb":[function(require,module,exports) {
+module.exports = require("4988abb476c7feaf").getBundleURL("bLxZJ") + "loadedpotato-food.c251ae8c.jpg" + "?" + Date.now();
+
+},{"4988abb476c7feaf":"lgJ39"}],"aWAQi":[function(require,module,exports) {
+module.exports = require("ce80a0761df9a61").getBundleURL("bLxZJ") + "soap-stall.d160c0ee.jpg" + "?" + Date.now();
+
+},{"ce80a0761df9a61":"lgJ39"}],"kAZeJ":[function(require,module,exports) {
+module.exports = require("a9a563b4b5636df9").getBundleURL("bLxZJ") + "alisa-music-entertainment.5a5fde9e.jpg" + "?" + Date.now();
+
+},{"a9a563b4b5636df9":"lgJ39"}],"BO0AV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("../../App");

@@ -60,6 +60,10 @@
   cursor: pointer;
 }
 
+.event-card .hidden {
+  display: none;
+}
+
 @media (width <= 768px) {
   .event-card {
     max-width: 32%;
