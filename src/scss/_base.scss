@@ -33,9 +33,6 @@
     #app-header-menu {
         display: none;
     }
-    .menu-button {
-        background-color: none;
-    }
 }
 
 // HERO ---------------------------
@@ -44,7 +41,7 @@
 }
 .hero-banner {
     width: 100%;
-    height: 31em;
+    height: 35em;
     background-image: url('../../static/images/treeoflife.jpg');
     background-size: cover;
     background-position-y: bottom;
@@ -57,14 +54,14 @@
     #hero-content {
         max-width: 40%;
         min-width: 20em;
-        background-color: #00000060;
+        background-color: #000000c0;
         padding: 1em;
 
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        h1, p {
+        h1, h3, p {
             margin: 0;
             color: #FFFFFF;
             font-family: var(--base-font-family);
@@ -75,7 +72,7 @@
             padding-bottom: 0.25em;
         }
         p {
-            font-size: 0.75em;
+            font-size: 0.95em;
         }
         button {
             width: max-content;
@@ -176,9 +173,9 @@
         background-color: #2b2b2b;
         margin: 0.5em;
         border-radius: 0.2em;
-        padding: 0.5em;
+        padding: 1em;
 
-        h1, p {
+        h1, h3, p {
             font-family: var(--base-font-family);
             color: #FFFFFF;
             margin: 0;
@@ -186,8 +183,21 @@
         h1 {
             font-size: 1em;
         }
+        h3 {
+            font-size: 0.9em;
+        }
         p {
             font-size: 0.75em;
+            margin: 0.5em 0;
+        }
+        
+        .info {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-left: 0.5em;
+            }
         }
     }
     #location {
@@ -198,30 +208,36 @@
             display: flex;
             flex-direction: column;
         }
-    }
-    #loc-img {
-        width: 15em;
-        height: 10em;
-        background-color: #bdbdbd;
-        float: right;
-        background-image: url('../../static/images/placeholder.png');
-        background-size: cover;
-        background-position: center;
+        .google-map {
+            margin: 0.5em;
+            position: relative;
+            min-height: 200px;
+        }
+        .google-map iframe {
+            max-height: 100%;
+            max-width: 100%;
+            left: 0;
+            top: 0;
+            position: relative;
+        }
     }
     #map {
         display: flex;
 
         h1 {
             padding-left: 0.5em;
+            width: 100%;
         }
     }
     #map-img {
-        width: 15em;
-        height: 10em;
+        width: 100%;
+        height: 350px;
         background-color: #bdbdbd;
-        background-image: url('../../static/images/placeholder.png');
+        background-image: url('../../static/images/festival-map.png');
         background-size: cover;
         background-position: center;
+        border-radius: 0.2em;
+        margin: 0.5em;
     }
 }
 
@@ -235,53 +251,67 @@
     width: 90%;
     margin: auto;
     padding: 1em 0;
-}
-table {
-    width: 90%;
-    margin: auto;
 
-    td, tr {
-        padding: 0.5em;
-
-        text-align: center;
-        color: #FFFFFF;
+    h1, h2, p {
         font-family: var(--base-font-family);
-
-        h1, h2, p { text-align: left; }
-        h1 { font-size: 1.5em; }
-        h2 { font-size: 1em; }
-        p { font-size: 0.75em; }
+        color: #FFFFFF;
     }
-    td {
-        width: 50%;
+    h1 {
+        font-size: 1.5em;
     }
-    #about-img {
-        width: 15em;
-        height: 15em;
-        background-image: url('../../static/images/placeholder.png');
-        background-size: cover;
-        border-radius: 0.2em;
-        margin: auto;
+    h2 {
+        font-size: 0.9em;
     }
-    button {
-        width: 80%;
-        max-width: 20em;
+    p {
+        font-size: 0.75em;
     }
-}
-
-button {
-    border: 1px solid #FFC600;
-    background-color: #FFC600;
-    padding: 0.5em;
-    border-radius: 0.2em;
 }
 
 // RESPONSIVE - TABLET --------------------------------------------
-@media all and (min-width: 768px) {
-    
+@media all and (max-width: 768px) {
+    .hero-banner { 
+        height: 30em;
+    }
+
+    #location {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .google-map {
+            height: 300px;
+        }
+    }
+    #map {
+        display: flex;
+        flex-direction: column-reverse;
+
+        h1 {
+            padding-left: 0.5em;
+        }
+    }
+    #map-img {
+        width: 500px;
+        height: 300px !important;
+        margin: 0;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+        p {
+            margin: 0.5em 0 !important;
+        }
+    }
 }
 
 // RESPONSIVE - MOBILE --------------------------------------------
-@media all and (min-width: 400px) {
-
+@media all and (max-width: 400px) {
+    #location {
+        .google-map {
+            height: 250px;
+        }
+    }
+    #map-img {
+        height: 250px !important;
+    }
 }

@@ -97,6 +97,7 @@
 
     .event-image {
         display: flex;
+        height: 12em;
     }
 
     .event-title-box {
@@ -167,6 +168,45 @@
 .admin-text:first-of-type {
     font-size: 1.5em;
     font-weight: bold !important;
+}
+
+// ABOUT - CONTACT FORM -----------------------------------------
+.form-container {
+    width: 20em;
+    height: auto;
+    background-color: #2b2b2b;
+    padding: 1em;
+    font-family: var(--base-font-family);
+
+    .form-title {
+        font-size: 1em;
+        text-align: center;
+        font-weight: bold;
+    }
+    .form-section {
+        background-color: #505050;
+        padding: 0.5em;
+        margin: 0.5em 0;
+
+        .form-sub {
+            font-size: 0.9em;
+            margin-bottom: 0.5em;
+        }
+        .form-text {
+            margin: 0.5em 0;
+            background-color: #ffffff;
+            border-radius: 0.2em;
+            font-family: var(--base-font-family);
+
+            .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+                border: 1px solid #FFC600;
+            }
+
+            .MuiInputBase-root, label {
+                color: #000000;
+            }
+        }
+    }
 }
 
 // RESPONSIVE - TABLET ---------------------------------

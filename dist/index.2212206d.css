@@ -83,6 +83,7 @@
 }
 
 .card .event-image {
+  height: 12em;
   display: flex;
 }
 
@@ -155,6 +156,46 @@
   font-weight: bold !important;
 }
 
+.form-container {
+  font-family: var(--base-font-family);
+  background-color: #2b2b2b;
+  width: 20em;
+  height: auto;
+  padding: 1em;
+}
+
+.form-container .form-title {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.form-container .form-section {
+  background-color: #505050;
+  margin: .5em 0;
+  padding: .5em;
+}
+
+.form-container .form-section .form-sub {
+  margin-bottom: .5em;
+  font-size: .9em;
+}
+
+.form-container .form-section .form-text {
+  font-family: var(--base-font-family);
+  background-color: #fff;
+  border-radius: .2em;
+  margin: .5em 0;
+}
+
+.form-container .form-section .form-text .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border: 1px solid #ffc600;
+}
+
+.form-container .form-section .form-text .MuiInputBase-root, .form-container .form-section .form-text label {
+  color: #000;
+}
+
 @media (width <= 768px) {
   .event-card {
     max-width: 32%;
@@ -196,10 +237,6 @@
   display: none;
 }
 
-.app-header .menu-button {
-  background-color: none;
-}
-
 #home {
   border-bottom: .2em solid #ffc600;
 }
@@ -211,12 +248,12 @@
   flex-wrap: wrap;
   place-content: flex-end center;
   width: 100%;
-  height: 31em;
+  height: 35em;
   display: flex;
 }
 
 .hero-banner #hero-content {
-  background-color: #00000060;
+  background-color: #000000c0;
   flex-direction: column;
   align-items: center;
   min-width: 20em;
@@ -225,7 +262,7 @@
   display: flex;
 }
 
-.hero-banner #hero-content h1, .hero-banner #hero-content p {
+.hero-banner #hero-content h1, .hero-banner #hero-content h3, .hero-banner #hero-content p {
   color: #fff;
   font-family: var(--base-font-family);
   text-align: center;
@@ -238,7 +275,7 @@
 }
 
 .hero-banner #hero-content p {
-  font-size: .75em;
+  font-size: .95em;
 }
 
 .hero-banner #hero-content button {
@@ -337,10 +374,10 @@
   width: 70%;
   height: auto;
   margin: .5em;
-  padding: .5em;
+  padding: 1em;
 }
 
-.venue-container #location h1, .venue-container #location p, .venue-container #map h1, .venue-container #map p, .venue-container #accessibility h1, .venue-container #accessibility p, .venue-container #parking h1, .venue-container #parking p, .venue-container #transport h1, .venue-container #transport p {
+.venue-container #location h1, .venue-container #location h3, .venue-container #location p, .venue-container #map h1, .venue-container #map h3, .venue-container #map p, .venue-container #accessibility h1, .venue-container #accessibility h3, .venue-container #accessibility p, .venue-container #parking h1, .venue-container #parking h3, .venue-container #parking p, .venue-container #transport h1, .venue-container #transport h3, .venue-container #transport p {
   font-family: var(--base-font-family);
   color: #fff;
   margin: 0;
@@ -350,8 +387,22 @@
   font-size: 1em;
 }
 
+.venue-container #location h3, .venue-container #map h3, .venue-container #accessibility h3, .venue-container #parking h3, .venue-container #transport h3 {
+  font-size: .9em;
+}
+
 .venue-container #location p, .venue-container #map p, .venue-container #accessibility p, .venue-container #parking p, .venue-container #transport p {
+  margin: .5em 0;
   font-size: .75em;
+}
+
+.venue-container #location .info, .venue-container #map .info, .venue-container #accessibility .info, .venue-container #parking .info, .venue-container #transport .info {
+  align-items: center;
+  display: flex;
+}
+
+.venue-container #location .info p, .venue-container #map .info p, .venue-container #accessibility .info p, .venue-container #parking .info p, .venue-container #transport .info p {
+  margin-left: .5em;
 }
 
 .venue-container #location {
@@ -364,14 +415,18 @@
   display: flex;
 }
 
-.venue-container #loc-img {
-  float: right;
-  background-color: #bdbdbd;
-  background-image: url("placeholder.811acf7b.png");
-  background-position: center;
-  background-size: cover;
-  width: 15em;
-  height: 10em;
+.venue-container #location .google-map {
+  min-height: 200px;
+  margin: .5em;
+  position: relative;
+}
+
+.venue-container #location .google-map iframe {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 .venue-container #map {
@@ -379,16 +434,19 @@
 }
 
 .venue-container #map h1 {
+  width: 100%;
   padding-left: .5em;
 }
 
 .venue-container #map-img {
   background-color: #bdbdbd;
-  background-image: url("placeholder.811acf7b.png");
+  background-image: url("festival-map.242df979.png");
   background-position: center;
   background-size: cover;
-  width: 15em;
-  height: 10em;
+  border-radius: .2em;
+  width: 100%;
+  height: 350px;
+  margin: .5em;
 }
 
 #about {
@@ -403,57 +461,72 @@
   display: flex;
 }
 
-table {
-  width: 90%;
-  margin: auto;
-}
-
-table td, table tr {
-  text-align: center;
-  color: #fff;
+.about-container h1, .about-container h2, .about-container p {
   font-family: var(--base-font-family);
-  padding: .5em;
+  color: #fff;
 }
 
-table td h1, table td h2, table td p, table tr h1, table tr h2, table tr p {
-  text-align: left;
-}
-
-table td h1, table tr h1 {
+.about-container h1 {
   font-size: 1.5em;
 }
 
-table td h2, table tr h2 {
-  font-size: 1em;
+.about-container h2 {
+  font-size: .9em;
 }
 
-table td p, table tr p {
+.about-container p {
   font-size: .75em;
 }
 
-table td {
-  width: 50%;
+@media (width <= 768px) {
+  .hero-banner {
+    height: 30em;
+  }
+
+  #location {
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  #location .google-map {
+    height: 300px;
+  }
+
+  #map {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+
+  #map h1 {
+    padding-left: .5em;
+  }
+
+  #map-img {
+    width: 500px;
+    margin: 0;
+    height: 300px !important;
+  }
+
+  .info {
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start !important;
+  }
+
+  .info p {
+    margin: .5em 0 !important;
+  }
 }
 
-table #about-img {
-  background-image: url("placeholder.811acf7b.png");
-  background-size: cover;
-  border-radius: .2em;
-  width: 15em;
-  height: 15em;
-  margin: auto;
-}
+@media (width <= 400px) {
+  #location .google-map {
+    height: 250px;
+  }
 
-table button {
-  width: 80%;
-  max-width: 20em;
-}
-
-button {
-  background-color: #ffc600;
-  border: 1px solid #ffc600;
-  border-radius: .2em;
-  padding: .5em;
+  #map-img {
+    height: 250px !important;
+  }
 }
 
 @font-face {
