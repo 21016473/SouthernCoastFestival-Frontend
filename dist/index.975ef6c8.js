@@ -3055,12 +3055,6 @@ function anchorRoute(e) {
 }
 
 },{"./views/pages/home":"5Djc2","./views/pages/404":"BO0AV","./views/pages/admin":"aT5rw","./views/pages/events":"j0aCk","./views/pages/new-event":"j1mpb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5Djc2":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$7d32 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$7d32.prelude(module);
-
-try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("../../App");
@@ -3072,13 +3066,13 @@ var _event = require("../../Event");
 var _eventDefault = parcelHelpers.interopDefault(_event);
 var _toast = require("../../Toast");
 var _toastDefault = parcelHelpers.interopDefault(_toast);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactHelper = require("../../components/react/reactHelper");
 var _scEventsGridJs = require("../../components/sc-events-grid.js");
 var _scEventsGridJsDefault = parcelHelpers.interopDefault(_scEventsGridJs);
 var _scContactFormJs = require("../../components/react/sc-contact-form.js");
 var _scContactFormJsDefault = parcelHelpers.interopDefault(_scContactFormJs);
+var _scVenueCardsJs = require("../../components/react/sc-venue-cards.js");
+var _scVenueCardsJsDefault = parcelHelpers.interopDefault(_scVenueCardsJs);
 var _eventdataJs = require("../../eventdata.js");
 var _eventdataJsDefault = parcelHelpers.interopDefault(_eventdataJs);
 class HomeView {
@@ -3095,18 +3089,9 @@ class HomeView {
         const jumpTo = document.querySelectorAll(".jumpTo");
         jumpTo.forEach((button)=>button.addEventListener("click", this.scrollTo));
     }
-    async getEvents() {
-        try {
-            this.events = await (0, _eventDefault.default).getEvents();
-            console.log(this.events);
-            this.render();
-        } catch (err) {
-            (0, _toastDefault.default).show(err, "error");
-        }
-    }
     scrollTo() {
         const eventsSection = document.getElementById("events");
-        eventsSection.scrollIntoView({
+        if (eventsSection) eventsSection.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
@@ -3119,133 +3104,61 @@ class HomeView {
       <div class="page-content">        
         
         <!--HERO-->
-        <div id="home">
-          <div class="hero-banner">
-            <div id="hero-content">
-              <h1>Come experience Geelong's Festival of Light!</h1>
-              <p>We are back again! Enjoy family-friendly fireworks, laser shows, light installations with over 100,000 blubs and eat the night away.</p>
-              <h3 style="font-weight: bold; color: #FFC600;">From August 24th to 25th, 2024.</h3>
-              <button class="jumpTo">Find an event &#8595;</button>
+          <div id="home">
+            <div class="hero-banner">
+              <div id="hero-content">
+                <h1>Come experience Geelong's Festival of Light!</h1>
+                <p>We are back again! Enjoy family-friendly fireworks, laser shows, light installations with over 100,000 blubs and eat the night away.</p>
+                <h3 style="font-weight: bold; color: #FFC600;">From August 24th to 25th, 2024.</h3>
+                <button class="jumpTo">Find an event &#8595;</button>
+              </div>
             </div>
           </div>
-        </div>
 
         <!--EVENTS-->
         <!-- use react grid to create events layout -->
 
-        <div id="events">
-          <div id="filter-container"></div>
-        </div>
+          <div id="events">
+            <div id="filter-container"></div>
+          </div>
 
         <!--VENUE-->
-        <div id="venue">
-            <div class="venue-nav">
-              <ul>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#map">Festival Map</a></li>
-                <li><a href="#accessibility">Accessibility</a></li>
-                <li><a href="#parking">Parking</a></li>
-                <li><a href="#transport">Transport</a></li>
-              </ul>
-            </div>
-            <div class="venue-container">
-              <div id="location">
-                <div class="left">
-                  <h1>Location</h1>
-                  <p>Rippleside Park, Bell Parade Geelong, Victoria, Australia</p>
-                </div>
-                <div class="google-map">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.567231010363!2d144.35266371147935!3d-38.12700147178166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad416b703b7800b%3A0xf04567605324bc0!2sRippleside%20Park!5e0!3m2!1sen!2sau!4v1721380831126!5m2!1sen!2sau" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-              </div>
-              <div id="map">
-                <div id="map-img"></div>
-                <h1>Festival Map</h1>
-              </div>
-              <div id="accessibility">
-                <h1>Accessibility</h1>
-                <p>We are committed to providing an accommodating experience for all our guests. If you have any specific requirements, don't hesitate to contact us.</p>
-                <div class="info">
-                  <h3>Parking: </h3>
-                  <p>Designated accessible parking spots are located close to the entrance for guests with mobility needs. Display the appropriate permits.</p>
-                </div>
-                <div class="info">
-                  <h3>Pathways: </h3>
-                  <p>The event grounds feature smooth pathways to ensure easy navigation for wheelchairs and mobility aids.</p>
-                </div>
-                <div class="info">
-                  <h3>Restrooms: </h3>
-                  <p>Wheelchair-accessible restrooms are available throughout the event site.</p>
-                </div>
-                <div class="info">
-                  <h3>Viewing: </h3>
-                  <p>We offer designated viewing areas for guests using wheelchairs, ensuring an unobstructed view of the light displays and performances.</p>
-                </div>
-                <div class="info">
-                  <h3>Assistance: </h3>
-                  <p>Our friendly staff and volunteers are on hand to assist with any needs or questions you may have during your visit.</p>
-                </div>
-              </div>
-              <div id="parking">
-                <h1>Parking</h1>
-                <p>Lorem ipsum</p>
-                <div class="info">
-                  <h3>On-site: </h3>
-                  <p>Our main event site features ample parking spaces just a short walk from the entrance. Follow signs to designated parking areas upon arrival.</p>
-                </div>
-                <div class="info">
-                  <h3>Street: </h3>
-                  <p>Our main event site features ample parking spaces just a short walk from the entrance. Follow signs to designated parking areas upon arrival.</p>
-                </div>
-                <div class="info">
-                  <h3>Overflow: </h3>
-                  <p>During peak times, additional overflow parking is available nearby. Shuttle services will be provided to transport guests to and from the main event area.</p>
-                </div>
-              </div>
-              <div id="transport">
-                <h1>Transport</h1>
-                <p>For convenient access to the light festival, many parking spots are available nearby. Alternatively, access via public transport is easy with frequent bus services and a nearby train station.</p>
-                <p>Follow signs for designated parking areas or plan your journey using public transport options for a hassle-free visit to this event.</p>
-              </div>
-            </div>
-        </div>
+          <div id="venue"></div>
 
         <!--ABOUT-->
-        <div id="about">
-          <div class="about-container">
-            <div id="about-info">
-              <h1>About the Festival</h1>
-              <p>Transforming the city of Geelong into a luminous wonderland with art installations, dazzling displays, vibrant projections, and fireworks.</p>
-              <p>Celebrate creativity and community spirit as local artists, alongside talented performers, showcase their artistry.</p>
-              <p>Explore local shops offering unique wares, and savour delicious food from diverse local vendors, with moments that captivate all who attend.</p>
-              <h2>Festival Dates</h2>
-              <p>Saturday to Sunday, 24th to 25th of August, 2024</p>
-              <h2>Hours of Operation</h2>
-              <p>Saturday — 12:00PM to Midnight</p>
-              <p>Sunday — 11:00AM to 10:00PM</p>
+          <div id="about">
+            <div class="about-container">
+              <div id="about-info">
+                <h1>About the Festival</h1>
+                <p>Transforming the city of Geelong into a luminous wonderland with art installations, dazzling displays, vibrant projections, and fireworks.</p>
+                <p>Celebrate creativity and community spirit as local artists, alongside talented performers, showcase their artistry.</p>
+                <p>Explore local shops offering unique wares, and savour delicious food from diverse local vendors, with moments that captivate all who attend.</p>
+                <h2>Festival Dates</h2>
+                <p>Saturday to Sunday, 24th to 25th of August, 2024</p>
+                <h2>Hours of Operation</h2>
+                <p>Saturday — 12:00PM to Midnight</p>
+                <p>Sunday — 11:00AM to 10:00PM</p>
+              </div>
+              <div id="contact-form"></div>
             </div>
-            <div id="contact-form"></div>
           </div>
-        </div>
+
       </div>   
-      
+
       <sc-app-footer></sc-app-footer>
     `;
         (0, _litHtml.render)(template, (0, _appDefault.default).rootEl);
         const filterContainer = document.getElementById("filter-container");
         (0, _reactHelper.renderReactComponent)((0, _scEventsGridJsDefault.default), filterContainer);
+        const venueContainer = document.getElementById("venue");
+        (0, _reactHelper.renderReactComponent)((0, _scVenueCardsJsDefault.default), venueContainer);
         const contactFormContainer = document.getElementById("contact-form");
         (0, _reactHelper.renderReactComponent)((0, _scContactFormJsDefault.default), contactFormContainer);
     }
 }
 exports.default = new HomeView();
 
-  $parcel$ReactRefreshHelpers$7d32.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"../../App":"2kQhy","lit-html":"1cmQt","../../Utils":"iRY6S","../../Event":"cqvk6","../../Toast":"4N7Ir","react":"21dqq","../../components/react/reactHelper":"3QXBS","../../components/sc-events-grid.js":"32p0x","../../eventdata.js":"5Y3fe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../components/react/sc-contact-form.js":"jkIgf"}],"1cmQt":[function(require,module,exports) {
+},{"../../App":"2kQhy","lit-html":"1cmQt","../../Utils":"iRY6S","../../Event":"cqvk6","../../Toast":"4N7Ir","../../components/react/reactHelper":"3QXBS","../../components/sc-events-grid.js":"32p0x","../../eventdata.js":"5Y3fe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../components/react/sc-contact-form.js":"jkIgf","../../components/react/sc-venue-cards.js":"jTXWQ"}],"1cmQt":[function(require,module,exports) {
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -8065,7 +7978,888 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "isServer", ()=>o);
 const o = !1;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"21dqq":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3QXBS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$08ff = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$08ff.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "renderReactComponent", ()=>renderReactComponent);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _client = require("react-dom/client");
+const roots = new Map();
+const renderReactComponent = (Component, container)=>{
+    if (!roots.has(container)) {
+        const root = (0, _client.createRoot)(container);
+        roots.set(container, root);
+    }
+    const root = roots.get(container);
+    if (typeof Component === "function") root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Component, {}, void 0, false, {
+        fileName: "src/components/react/reactHelper.js",
+        lineNumber: 14,
+        columnNumber: 21
+    }, undefined));
+    else console.error("Invalid component type:", typeof Component);
+};
+
+  $parcel$ReactRefreshHelpers$08ff.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
+"use strict";
+module.exports = require("ee51401569654d91");
+
+},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports) {
+/**
+ * @license React
+ * react-jsx-dev-runtime.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */ "use strict";
+(function() {
+    "use strict";
+    var React = require("58362d9d82be395f");
+    // ATTENTION
+    // When adding new symbols to this file,
+    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+    // The Symbol used to tag the ReactElement-like types.
+    var REACT_ELEMENT_TYPE = Symbol.for("react.element");
+    var REACT_PORTAL_TYPE = Symbol.for("react.portal");
+    var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
+    var REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode");
+    var REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+    var REACT_PROVIDER_TYPE = Symbol.for("react.provider");
+    var REACT_CONTEXT_TYPE = Symbol.for("react.context");
+    var REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
+    var REACT_SUSPENSE_TYPE = Symbol.for("react.suspense");
+    var REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list");
+    var REACT_MEMO_TYPE = Symbol.for("react.memo");
+    var REACT_LAZY_TYPE = Symbol.for("react.lazy");
+    var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
+    var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+    var FAUX_ITERATOR_SYMBOL = "@@iterator";
+    function getIteratorFn(maybeIterable) {
+        if (maybeIterable === null || typeof maybeIterable !== "object") return null;
+        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+        if (typeof maybeIterator === "function") return maybeIterator;
+        return null;
+    }
+    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    function error(format) {
+        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
+        printWarning("error", format, args);
+    }
+    function printWarning(level, format, args) {
+        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+        var stack = ReactDebugCurrentFrame.getStackAddendum();
+        if (stack !== "") {
+            format += "%s";
+            args = args.concat([
+                stack
+            ]);
+        } // eslint-disable-next-line react-internal/safe-string-coercion
+        var argsWithFormat = args.map(function(item) {
+            return String(item);
+        }); // Careful: RN currently depends on this prefix
+        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
+        // breaks IE9: https://github.com/facebook/react/issues/13610
+        // eslint-disable-next-line react-internal/no-production-logging
+        Function.prototype.apply.call(console[level], console, argsWithFormat);
+    }
+    // -----------------------------------------------------------------------------
+    var enableScopeAPI = false; // Experimental Create Event Handle API.
+    var enableCacheElement = false;
+    var enableTransitionTracing = false; // No known bugs, but needs performance testing
+    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+    // stuff. Intended to enable React core members to more easily debug scheduling
+    // issues in DEV builds.
+    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
+    var REACT_MODULE_REFERENCE;
+    REACT_MODULE_REFERENCE = Symbol.for("react.module.reference");
+    function isValidElementType(type) {
+        if (typeof type === "string" || typeof type === "function") return true;
+         // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+        if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
+        if (typeof type === "object" && type !== null) {
+            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
+            // types supported by any Flight configuration anywhere since
+            // we don't know which Flight build this will end up being used
+            // with.
+            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
+        }
+        return false;
+    }
+    function getWrappedName(outerType, innerType, wrapperName) {
+        var displayName = outerType.displayName;
+        if (displayName) return displayName;
+        var functionName = innerType.displayName || innerType.name || "";
+        return functionName !== "" ? wrapperName + "(" + functionName + ")" : wrapperName;
+    } // Keep in sync with react-reconciler/getComponentNameFromFiber
+    function getContextName(type) {
+        return type.displayName || "Context";
+    } // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
+    function getComponentNameFromType(type) {
+        if (type == null) // Host root, text node or just invalid type.
+        return null;
+        if (typeof type.tag === "number") error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue.");
+        if (typeof type === "function") return type.displayName || type.name || null;
+        if (typeof type === "string") return type;
+        switch(type){
+            case REACT_FRAGMENT_TYPE:
+                return "Fragment";
+            case REACT_PORTAL_TYPE:
+                return "Portal";
+            case REACT_PROFILER_TYPE:
+                return "Profiler";
+            case REACT_STRICT_MODE_TYPE:
+                return "StrictMode";
+            case REACT_SUSPENSE_TYPE:
+                return "Suspense";
+            case REACT_SUSPENSE_LIST_TYPE:
+                return "SuspenseList";
+        }
+        if (typeof type === "object") switch(type.$$typeof){
+            case REACT_CONTEXT_TYPE:
+                var context = type;
+                return getContextName(context) + ".Consumer";
+            case REACT_PROVIDER_TYPE:
+                var provider = type;
+                return getContextName(provider._context) + ".Provider";
+            case REACT_FORWARD_REF_TYPE:
+                return getWrappedName(type, type.render, "ForwardRef");
+            case REACT_MEMO_TYPE:
+                var outerName = type.displayName || null;
+                if (outerName !== null) return outerName;
+                return getComponentNameFromType(type.type) || "Memo";
+            case REACT_LAZY_TYPE:
+                var lazyComponent = type;
+                var payload = lazyComponent._payload;
+                var init = lazyComponent._init;
+                try {
+                    return getComponentNameFromType(init(payload));
+                } catch (x) {
+                    return null;
+                }
+        }
+        return null;
+    }
+    var assign = Object.assign;
+    // Helpers to patch console.logs to avoid logging during side-effect free
+    // replaying on render function. This currently only patches the object
+    // lazily which won't cover if the log function was extracted eagerly.
+    // We could also eagerly patch the method.
+    var disabledDepth = 0;
+    var prevLog;
+    var prevInfo;
+    var prevWarn;
+    var prevError;
+    var prevGroup;
+    var prevGroupCollapsed;
+    var prevGroupEnd;
+    function disabledLog() {}
+    disabledLog.__reactDisabledLog = true;
+    function disableLogs() {
+        if (disabledDepth === 0) {
+            /* eslint-disable react-internal/no-production-logging */ prevLog = console.log;
+            prevInfo = console.info;
+            prevWarn = console.warn;
+            prevError = console.error;
+            prevGroup = console.group;
+            prevGroupCollapsed = console.groupCollapsed;
+            prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+            var props = {
+                configurable: true,
+                enumerable: true,
+                value: disabledLog,
+                writable: true
+            }; // $FlowFixMe Flow thinks console is immutable.
+            Object.defineProperties(console, {
+                info: props,
+                log: props,
+                warn: props,
+                error: props,
+                group: props,
+                groupCollapsed: props,
+                groupEnd: props
+            });
+        /* eslint-enable react-internal/no-production-logging */ }
+        disabledDepth++;
+    }
+    function reenableLogs() {
+        disabledDepth--;
+        if (disabledDepth === 0) {
+            /* eslint-disable react-internal/no-production-logging */ var props = {
+                configurable: true,
+                enumerable: true,
+                writable: true
+            }; // $FlowFixMe Flow thinks console is immutable.
+            Object.defineProperties(console, {
+                log: assign({}, props, {
+                    value: prevLog
+                }),
+                info: assign({}, props, {
+                    value: prevInfo
+                }),
+                warn: assign({}, props, {
+                    value: prevWarn
+                }),
+                error: assign({}, props, {
+                    value: prevError
+                }),
+                group: assign({}, props, {
+                    value: prevGroup
+                }),
+                groupCollapsed: assign({}, props, {
+                    value: prevGroupCollapsed
+                }),
+                groupEnd: assign({}, props, {
+                    value: prevGroupEnd
+                })
+            });
+        /* eslint-enable react-internal/no-production-logging */ }
+        if (disabledDepth < 0) error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+    }
+    var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
+    var prefix;
+    function describeBuiltInComponentFrame(name, source, ownerFn) {
+        if (prefix === undefined) // Extract the VM specific prefix used by each line.
+        try {
+            throw Error();
+        } catch (x) {
+            var match = x.stack.trim().match(/\n( *(at )?)/);
+            prefix = match && match[1] || "";
+        }
+         // We use the prefix to ensure our stacks line up with native stack frames.
+        return "\n" + prefix + name;
+    }
+    var reentry = false;
+    var componentFrameCache;
+    var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
+    componentFrameCache = new PossiblyWeakMap();
+    function describeNativeComponentFrame(fn, construct) {
+        // If something asked for a stack inside a fake render, it should get ignored.
+        if (!fn || reentry) return "";
+        var frame = componentFrameCache.get(fn);
+        if (frame !== undefined) return frame;
+        var control;
+        reentry = true;
+        var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+        Error.prepareStackTrace = undefined;
+        var previousDispatcher;
+        previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
+        // for warnings.
+        ReactCurrentDispatcher.current = null;
+        disableLogs();
+        try {
+            // This should throw.
+            if (construct) {
+                // Something should be setting the props in the constructor.
+                var Fake = function() {
+                    throw Error();
+                }; // $FlowFixMe
+                Object.defineProperty(Fake.prototype, "props", {
+                    set: function() {
+                        // We use a throwing setter instead of frozen or non-writable props
+                        // because that won't throw in a non-strict mode function.
+                        throw Error();
+                    }
+                });
+                if (typeof Reflect === "object" && Reflect.construct) {
+                    // We construct a different control for this case to include any extra
+                    // frames added by the construct call.
+                    try {
+                        Reflect.construct(Fake, []);
+                    } catch (x) {
+                        control = x;
+                    }
+                    Reflect.construct(fn, [], Fake);
+                } else {
+                    try {
+                        Fake.call();
+                    } catch (x) {
+                        control = x;
+                    }
+                    fn.call(Fake.prototype);
+                }
+            } else {
+                try {
+                    throw Error();
+                } catch (x) {
+                    control = x;
+                }
+                fn();
+            }
+        } catch (sample) {
+            // This is inlined manually because closure doesn't do it for us.
+            if (sample && control && typeof sample.stack === "string") {
+                // This extracts the first frame from the sample that isn't also in the control.
+                // Skipping one frame that we assume is the frame that calls the two.
+                var sampleLines = sample.stack.split("\n");
+                var controlLines = control.stack.split("\n");
+                var s = sampleLines.length - 1;
+                var c = controlLines.length - 1;
+                while(s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c])// We expect at least one stack frame to be shared.
+                // Typically this will be the root most one. However, stack frames may be
+                // cut off due to maximum stack limits. In this case, one maybe cut off
+                // earlier than the other. We assume that the sample is longer or the same
+                // and there for cut off earlier. So we should find the root most frame in
+                // the sample somewhere in the control.
+                c--;
+                for(; s >= 1 && c >= 0; s--, c--)// Next we find the first one that isn't the same which should be the
+                // frame that called our sample function and the control.
+                if (sampleLines[s] !== controlLines[c]) {
+                    // In V8, the first line is describing the message but other VMs don't.
+                    // If we're about to return the first line, and the control is also on the same
+                    // line, that's a pretty good indicator that our sample threw at same line as
+                    // the control. I.e. before we entered the sample frame. So we ignore this result.
+                    // This can happen if you passed a class to function component, or non-function.
+                    if (s !== 1 || c !== 1) do {
+                        s--;
+                        c--; // We may still have similar intermediate frames from the construct call.
+                        // The next one that isn't the same should be our match though.
+                        if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                            // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                            var _frame = "\n" + sampleLines[s].replace(" at new ", " at "); // If our component frame is labeled "<anonymous>"
+                            // but we have a user-provided "displayName"
+                            // splice it in to make the stack more readable.
+                            if (fn.displayName && _frame.includes("<anonymous>")) _frame = _frame.replace("<anonymous>", fn.displayName);
+                            if (typeof fn === "function") componentFrameCache.set(fn, _frame);
+                            return _frame;
+                        }
+                    }while (s >= 1 && c >= 0);
+                    break;
+                }
+            }
+        } finally{
+            reentry = false;
+            ReactCurrentDispatcher.current = previousDispatcher;
+            reenableLogs();
+            Error.prepareStackTrace = previousPrepareStackTrace;
+        } // Fallback to just using the name if we couldn't make it throw.
+        var name = fn ? fn.displayName || fn.name : "";
+        var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
+        if (typeof fn === "function") componentFrameCache.set(fn, syntheticFrame);
+        return syntheticFrame;
+    }
+    function describeFunctionComponentFrame(fn, source, ownerFn) {
+        return describeNativeComponentFrame(fn, false);
+    }
+    function shouldConstruct(Component) {
+        var prototype = Component.prototype;
+        return !!(prototype && prototype.isReactComponent);
+    }
+    function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+        if (type == null) return "";
+        if (typeof type === "function") return describeNativeComponentFrame(type, shouldConstruct(type));
+        if (typeof type === "string") return describeBuiltInComponentFrame(type);
+        switch(type){
+            case REACT_SUSPENSE_TYPE:
+                return describeBuiltInComponentFrame("Suspense");
+            case REACT_SUSPENSE_LIST_TYPE:
+                return describeBuiltInComponentFrame("SuspenseList");
+        }
+        if (typeof type === "object") switch(type.$$typeof){
+            case REACT_FORWARD_REF_TYPE:
+                return describeFunctionComponentFrame(type.render);
+            case REACT_MEMO_TYPE:
+                // Memo may contain any component type so we recursively resolve it.
+                return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+            case REACT_LAZY_TYPE:
+                var lazyComponent = type;
+                var payload = lazyComponent._payload;
+                var init = lazyComponent._init;
+                try {
+                    // Lazy may contain any component type so we recursively resolve it.
+                    return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+                } catch (x) {}
+        }
+        return "";
+    }
+    var hasOwnProperty = Object.prototype.hasOwnProperty;
+    var loggedTypeFailures = {};
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    function setCurrentlyValidatingElement(element) {
+        if (element) {
+            var owner = element._owner;
+            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+            ReactDebugCurrentFrame.setExtraStackFrame(stack);
+        } else ReactDebugCurrentFrame.setExtraStackFrame(null);
+    }
+    function checkPropTypes(typeSpecs, values, location, componentName, element) {
+        // $FlowFixMe This is okay but Flow doesn't know it.
+        var has = Function.call.bind(hasOwnProperty);
+        for(var typeSpecName in typeSpecs)if (has(typeSpecs, typeSpecName)) {
+            var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+            // fail the render phase where it didn't fail before. So we log it.
+            // After these have been cleaned up, we'll let them throw.
+            try {
+                // This is intentionally an invariant that gets caught. It's the same
+                // behavior as without this statement except with a better message.
+                if (typeof typeSpecs[typeSpecName] !== "function") {
+                    // eslint-disable-next-line react-internal/prod-error-codes
+                    var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; " + "it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`." + "This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                    err.name = "Invariant Violation";
+                    throw err;
+                }
+                error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
+            } catch (ex) {
+                error$1 = ex;
+            }
+            if (error$1 && !(error$1 instanceof Error)) {
+                setCurrentlyValidatingElement(element);
+                error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
+                setCurrentlyValidatingElement(null);
+            }
+            if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+                // Only monitor this failure once because there tends to be a lot of the
+                // same error.
+                loggedTypeFailures[error$1.message] = true;
+                setCurrentlyValidatingElement(element);
+                error("Failed %s type: %s", location, error$1.message);
+                setCurrentlyValidatingElement(null);
+            }
+        }
+    }
+    var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
+    function isArray(a) {
+        return isArrayImpl(a);
+    }
+    /*
+ * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
+ * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
+ *
+ * The functions in this module will throw an easier-to-understand,
+ * easier-to-debug exception with a clear errors message message explaining the
+ * problem. (Instead of a confusing exception thrown inside the implementation
+ * of the `value` object).
+ */ // $FlowFixMe only called in DEV, so void return is not possible.
+    function typeName(value) {
+        // toStringTag is needed for namespaced types like Temporal.Instant
+        var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
+        var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
+        return type;
+    } // $FlowFixMe only called in DEV, so void return is not possible.
+    function willCoercionThrow(value) {
+        try {
+            testStringCoercion(value);
+            return false;
+        } catch (e) {
+            return true;
+        }
+    }
+    function testStringCoercion(value) {
+        // If you ended up here by following an exception call stack, here's what's
+        // happened: you supplied an object or symbol value to React (as a prop, key,
+        // DOM attribute, CSS property, string ref, etc.) and when React tried to
+        // coerce it to a string using `'' + value`, an exception was thrown.
+        //
+        // The most common types that will cause this exception are `Symbol` instances
+        // and Temporal objects like `Temporal.Instant`. But any object that has a
+        // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
+        // exception. (Library authors do this to prevent users from using built-in
+        // numeric operators like `+` or comparison operators like `>=` because custom
+        // methods are needed to perform accurate arithmetic or comparison.)
+        //
+        // To fix the problem, coerce this object or symbol value to a string before
+        // passing it to React. The most reliable way is usually `String(value)`.
+        //
+        // To find which value is throwing, check the browser or debugger console.
+        // Before this exception was thrown, there should be `console.error` output
+        // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
+        // problem and how that type was used: key, atrribute, input value prop, etc.
+        // In most cases, this console output also shows the component and its
+        // ancestor components where the exception happened.
+        //
+        // eslint-disable-next-line react-internal/safe-string-coercion
+        return "" + value;
+    }
+    function checkKeyStringCoercion(value) {
+        if (willCoercionThrow(value)) {
+            error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
+            return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
+        }
+    }
+    var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
+    var RESERVED_PROPS = {
+        key: true,
+        ref: true,
+        __self: true,
+        __source: true
+    };
+    var specialPropKeyWarningShown;
+    var specialPropRefWarningShown;
+    var didWarnAboutStringRefs;
+    didWarnAboutStringRefs = {};
+    function hasValidRef(config) {
+        if (hasOwnProperty.call(config, "ref")) {
+            var getter = Object.getOwnPropertyDescriptor(config, "ref").get;
+            if (getter && getter.isReactWarning) return false;
+        }
+        return config.ref !== undefined;
+    }
+    function hasValidKey(config) {
+        if (hasOwnProperty.call(config, "key")) {
+            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
+            if (getter && getter.isReactWarning) return false;
+        }
+        return config.key !== undefined;
+    }
+    function warnIfStringRefCannotBeAutoConverted(config, self) {
+        if (typeof config.ref === "string" && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
+            var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
+            if (!didWarnAboutStringRefs[componentName]) {
+                error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
+                didWarnAboutStringRefs[componentName] = true;
+            }
+        }
+    }
+    function defineKeyPropWarningGetter(props, displayName) {
+        var warnAboutAccessingKey = function() {
+            if (!specialPropKeyWarningShown) {
+                specialPropKeyWarningShown = true;
+                error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
+            }
+        };
+        warnAboutAccessingKey.isReactWarning = true;
+        Object.defineProperty(props, "key", {
+            get: warnAboutAccessingKey,
+            configurable: true
+        });
+    }
+    function defineRefPropWarningGetter(props, displayName) {
+        var warnAboutAccessingRef = function() {
+            if (!specialPropRefWarningShown) {
+                specialPropRefWarningShown = true;
+                error("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
+            }
+        };
+        warnAboutAccessingRef.isReactWarning = true;
+        Object.defineProperty(props, "ref", {
+            get: warnAboutAccessingRef,
+            configurable: true
+        });
+    }
+    /**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */ var ReactElement = function(type, key, ref, self, source, owner, props) {
+        var element = {
+            // This tag allows us to uniquely identify this as a React Element
+            $$typeof: REACT_ELEMENT_TYPE,
+            // Built-in properties that belong on the element
+            type: type,
+            key: key,
+            ref: ref,
+            props: props,
+            // Record the component responsible for creating this element.
+            _owner: owner
+        };
+        // The validation flag is currently mutative. We put it on
+        // an external backing store so that we can freeze the whole object.
+        // This can be replaced with a WeakMap once they are implemented in
+        // commonly used development environments.
+        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+        // the validation flag non-enumerable (where possible, which should
+        // include every environment we run tests in), so the test framework
+        // ignores it.
+        Object.defineProperty(element._store, "validated", {
+            configurable: false,
+            enumerable: false,
+            writable: true,
+            value: false
+        }); // self and source are DEV only properties.
+        Object.defineProperty(element, "_self", {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: self
+        }); // Two elements created in two different places should be considered
+        // equal for testing purposes and therefore we hide it from enumeration.
+        Object.defineProperty(element, "_source", {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: source
+        });
+        if (Object.freeze) {
+            Object.freeze(element.props);
+            Object.freeze(element);
+        }
+        return element;
+    };
+    /**
+ * https://github.com/reactjs/rfcs/pull/107
+ * @param {*} type
+ * @param {object} props
+ * @param {string} key
+ */ function jsxDEV(type, config, maybeKey, source, self) {
+        var propName; // Reserved names are extracted
+        var props = {};
+        var key = null;
+        var ref = null; // Currently, key can be spread in as a prop. This causes a potential
+        // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
+        // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
+        // but as an intermediary step, we will use jsxDEV for everything except
+        // <div {...props} key="Hi" />, because we aren't currently able to tell if
+        // key is explicitly declared to be undefined or not.
+        if (maybeKey !== undefined) {
+            checkKeyStringCoercion(maybeKey);
+            key = "" + maybeKey;
+        }
+        if (hasValidKey(config)) {
+            checkKeyStringCoercion(config.key);
+            key = "" + config.key;
+        }
+        if (hasValidRef(config)) {
+            ref = config.ref;
+            warnIfStringRefCannotBeAutoConverted(config, self);
+        } // Remaining properties are added to a new props object
+        for(propName in config)if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) props[propName] = config[propName];
+         // Resolve default props
+        if (type && type.defaultProps) {
+            var defaultProps = type.defaultProps;
+            for(propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
+        }
+        if (key || ref) {
+            var displayName = typeof type === "function" ? type.displayName || type.name || "Unknown" : type;
+            if (key) defineKeyPropWarningGetter(props, displayName);
+            if (ref) defineRefPropWarningGetter(props, displayName);
+        }
+        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+    }
+    var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
+    var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+    function setCurrentlyValidatingElement$1(element) {
+        if (element) {
+            var owner = element._owner;
+            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+            ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+        } else ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+    var propTypesMisspellWarningShown;
+    propTypesMisspellWarningShown = false;
+    /**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */ function isValidElement(object) {
+        return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+    }
+    function getDeclarationErrorAddendum() {
+        if (ReactCurrentOwner$1.current) {
+            var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
+            if (name) return "\n\nCheck the render method of `" + name + "`.";
+        }
+        return "";
+    }
+    function getSourceInfoErrorAddendum(source) {
+        if (source !== undefined) {
+            var fileName = source.fileName.replace(/^.*[\\\/]/, "");
+            var lineNumber = source.lineNumber;
+            return "\n\nCheck your code at " + fileName + ":" + lineNumber + ".";
+        }
+        return "";
+    }
+    /**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */ var ownerHasKeyUseWarning = {};
+    function getCurrentComponentErrorInfo(parentType) {
+        var info = getDeclarationErrorAddendum();
+        if (!info) {
+            var parentName = typeof parentType === "string" ? parentType : parentType.displayName || parentType.name;
+            if (parentName) info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+        }
+        return info;
+    }
+    /**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */ function validateExplicitKey(element, parentType) {
+        if (!element._store || element._store.validated || element.key != null) return;
+        element._store.validated = true;
+        var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+        if (ownerHasKeyUseWarning[currentComponentErrorInfo]) return;
+        ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+        // property, it may be the creator of the child that's responsible for
+        // assigning it a key.
+        var childOwner = "";
+        if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) // Give the component that originally created this child.
+        childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
+        setCurrentlyValidatingElement$1(element);
+        error('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+        setCurrentlyValidatingElement$1(null);
+    }
+    /**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */ function validateChildKeys(node, parentType) {
+        if (typeof node !== "object") return;
+        if (isArray(node)) for(var i = 0; i < node.length; i++){
+            var child = node[i];
+            if (isValidElement(child)) validateExplicitKey(child, parentType);
+        }
+        else if (isValidElement(node)) // This element was passed in a valid location.
+        {
+            if (node._store) node._store.validated = true;
+        } else if (node) {
+            var iteratorFn = getIteratorFn(node);
+            if (typeof iteratorFn === "function") // Entry iterators used to provide implicit keys,
+            // but now we print a separate warning for them later.
+            {
+                if (iteratorFn !== node.entries) {
+                    var iterator = iteratorFn.call(node);
+                    var step;
+                    while(!(step = iterator.next()).done)if (isValidElement(step.value)) validateExplicitKey(step.value, parentType);
+                }
+            }
+        }
+    }
+    /**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */ function validatePropTypes(element) {
+        var type = element.type;
+        if (type === null || type === undefined || typeof type === "string") return;
+        var propTypes;
+        if (typeof type === "function") propTypes = type.propTypes;
+        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+        // Inner props are checked in the reconciler.
+        type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
+        else return;
+        if (propTypes) {
+            // Intentionally inside to avoid triggering lazy initializers:
+            var name = getComponentNameFromType(type);
+            checkPropTypes(propTypes, element.props, "prop", name, element);
+        } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+            propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+            var _name = getComponentNameFromType(type);
+            error("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", _name || "Unknown");
+        }
+        if (typeof type.getDefaultProps === "function" && !type.getDefaultProps.isReactClassApproved) error("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+    }
+    /**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */ function validateFragmentProps(fragment) {
+        var keys = Object.keys(fragment.props);
+        for(var i = 0; i < keys.length; i++){
+            var key = keys[i];
+            if (key !== "children" && key !== "key") {
+                setCurrentlyValidatingElement$1(fragment);
+                error("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", key);
+                setCurrentlyValidatingElement$1(null);
+                break;
+            }
+        }
+        if (fragment.ref !== null) {
+            setCurrentlyValidatingElement$1(fragment);
+            error("Invalid attribute `ref` supplied to `React.Fragment`.");
+            setCurrentlyValidatingElement$1(null);
+        }
+    }
+    var didWarnAboutKeySpread = {};
+    function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
+        var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+        // succeed and there will likely be errors in render.
+        if (!validType) {
+            var info = "";
+            if (type === undefined || typeof type === "object" && type !== null && Object.keys(type).length === 0) info += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
+            var sourceInfo = getSourceInfoErrorAddendum(source);
+            if (sourceInfo) info += sourceInfo;
+            else info += getDeclarationErrorAddendum();
+            var typeString;
+            if (type === null) typeString = "null";
+            else if (isArray(type)) typeString = "array";
+            else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+                typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />";
+                info = " Did you accidentally export a JSX literal instead of a component?";
+            } else typeString = typeof type;
+            error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
+        }
+        var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
+        // TODO: Drop this when these are no longer allowed as the type argument.
+        if (element == null) return element;
+         // Skip key warning if the type isn't valid since our key validation logic
+        // doesn't expect a non-string/function type and can throw confusing errors.
+        // We don't want exception behavior to differ between dev and prod.
+        // (Rendering will throw with a helpful message and as soon as the type is
+        // fixed, the key warnings will appear.)
+        if (validType) {
+            var children = props.children;
+            if (children !== undefined) {
+                if (isStaticChildren) {
+                    if (isArray(children)) {
+                        for(var i = 0; i < children.length; i++)validateChildKeys(children[i], type);
+                        if (Object.freeze) Object.freeze(children);
+                    } else error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                } else validateChildKeys(children, type);
+            }
+        }
+        if (hasOwnProperty.call(props, "key")) {
+            var componentName = getComponentNameFromType(type);
+            var keys = Object.keys(props).filter(function(k) {
+                return k !== "key";
+            });
+            var beforeExample = keys.length > 0 ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
+            if (!didWarnAboutKeySpread[componentName + beforeExample]) {
+                var afterExample = keys.length > 0 ? "{" + keys.join(": ..., ") + ": ...}" : "{}";
+                error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', beforeExample, componentName, afterExample, componentName);
+                didWarnAboutKeySpread[componentName + beforeExample] = true;
+            }
+        }
+        if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
+        else validatePropTypes(element);
+        return element;
+    } // These two functions exist to still get child warnings in dev
+    var jsxDEV$1 = jsxWithValidation;
+    exports.Fragment = REACT_FRAGMENT_TYPE;
+    exports.jsxDEV = jsxDEV$1;
+})();
+
+},{"58362d9d82be395f":"21dqq"}],"21dqq":[function(require,module,exports) {
 "use strict";
 module.exports = require("a569817e6ea559f6");
 
@@ -9936,888 +10730,7 @@ module.exports = require("a569817e6ea559f6");
     /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */ if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop === "function") __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
 })();
 
-},{}],"3QXBS":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$08ff = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$08ff.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "renderReactComponent", ()=>renderReactComponent);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _client = require("react-dom/client");
-const roots = new Map();
-const renderReactComponent = (Component, container)=>{
-    if (!roots.has(container)) {
-        const root = (0, _client.createRoot)(container);
-        roots.set(container, root);
-    }
-    const root = roots.get(container);
-    if (typeof Component === "function") root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Component, {}, void 0, false, {
-        fileName: "src/components/react/reactHelper.js",
-        lineNumber: 14,
-        columnNumber: 21
-    }, undefined));
-    else console.error("Invalid component type:", typeof Component);
-};
-
-  $parcel$ReactRefreshHelpers$08ff.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-dom/client":"lOjBx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iTorj":[function(require,module,exports) {
-"use strict";
-module.exports = require("ee51401569654d91");
-
-},{"ee51401569654d91":"48uCM"}],"48uCM":[function(require,module,exports) {
-/**
- * @license React
- * react-jsx-dev-runtime.development.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */ "use strict";
-(function() {
-    "use strict";
-    var React = require("58362d9d82be395f");
-    // ATTENTION
-    // When adding new symbols to this file,
-    // Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-    // The Symbol used to tag the ReactElement-like types.
-    var REACT_ELEMENT_TYPE = Symbol.for("react.element");
-    var REACT_PORTAL_TYPE = Symbol.for("react.portal");
-    var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
-    var REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode");
-    var REACT_PROFILER_TYPE = Symbol.for("react.profiler");
-    var REACT_PROVIDER_TYPE = Symbol.for("react.provider");
-    var REACT_CONTEXT_TYPE = Symbol.for("react.context");
-    var REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref");
-    var REACT_SUSPENSE_TYPE = Symbol.for("react.suspense");
-    var REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list");
-    var REACT_MEMO_TYPE = Symbol.for("react.memo");
-    var REACT_LAZY_TYPE = Symbol.for("react.lazy");
-    var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
-    var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
-    var FAUX_ITERATOR_SYMBOL = "@@iterator";
-    function getIteratorFn(maybeIterable) {
-        if (maybeIterable === null || typeof maybeIterable !== "object") return null;
-        var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
-        if (typeof maybeIterator === "function") return maybeIterator;
-        return null;
-    }
-    var ReactSharedInternals = React.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function error(format) {
-        for(var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)args[_key2 - 1] = arguments[_key2];
-        printWarning("error", format, args);
-    }
-    function printWarning(level, format, args) {
-        var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-        var stack = ReactDebugCurrentFrame.getStackAddendum();
-        if (stack !== "") {
-            format += "%s";
-            args = args.concat([
-                stack
-            ]);
-        } // eslint-disable-next-line react-internal/safe-string-coercion
-        var argsWithFormat = args.map(function(item) {
-            return String(item);
-        }); // Careful: RN currently depends on this prefix
-        argsWithFormat.unshift("Warning: " + format); // We intentionally don't use spread (or .apply) directly because it
-        // breaks IE9: https://github.com/facebook/react/issues/13610
-        // eslint-disable-next-line react-internal/no-production-logging
-        Function.prototype.apply.call(console[level], console, argsWithFormat);
-    }
-    // -----------------------------------------------------------------------------
-    var enableScopeAPI = false; // Experimental Create Event Handle API.
-    var enableCacheElement = false;
-    var enableTransitionTracing = false; // No known bugs, but needs performance testing
-    var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-    // stuff. Intended to enable React core members to more easily debug scheduling
-    // issues in DEV builds.
-    var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
-    var REACT_MODULE_REFERENCE;
-    REACT_MODULE_REFERENCE = Symbol.for("react.module.reference");
-    function isValidElementType(type) {
-        if (typeof type === "string" || typeof type === "function") return true;
-         // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
-        if (type === REACT_FRAGMENT_TYPE || type === REACT_PROFILER_TYPE || enableDebugTracing || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || enableLegacyHidden || type === REACT_OFFSCREEN_TYPE || enableScopeAPI || enableCacheElement || enableTransitionTracing) return true;
-        if (typeof type === "object" && type !== null) {
-            if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || // This needs to include all possible module reference object
-            // types supported by any Flight configuration anywhere since
-            // we don't know which Flight build this will end up being used
-            // with.
-            type.$$typeof === REACT_MODULE_REFERENCE || type.getModuleId !== undefined) return true;
-        }
-        return false;
-    }
-    function getWrappedName(outerType, innerType, wrapperName) {
-        var displayName = outerType.displayName;
-        if (displayName) return displayName;
-        var functionName = innerType.displayName || innerType.name || "";
-        return functionName !== "" ? wrapperName + "(" + functionName + ")" : wrapperName;
-    } // Keep in sync with react-reconciler/getComponentNameFromFiber
-    function getContextName(type) {
-        return type.displayName || "Context";
-    } // Note that the reconciler package should generally prefer to use getComponentNameFromFiber() instead.
-    function getComponentNameFromType(type) {
-        if (type == null) // Host root, text node or just invalid type.
-        return null;
-        if (typeof type.tag === "number") error("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue.");
-        if (typeof type === "function") return type.displayName || type.name || null;
-        if (typeof type === "string") return type;
-        switch(type){
-            case REACT_FRAGMENT_TYPE:
-                return "Fragment";
-            case REACT_PORTAL_TYPE:
-                return "Portal";
-            case REACT_PROFILER_TYPE:
-                return "Profiler";
-            case REACT_STRICT_MODE_TYPE:
-                return "StrictMode";
-            case REACT_SUSPENSE_TYPE:
-                return "Suspense";
-            case REACT_SUSPENSE_LIST_TYPE:
-                return "SuspenseList";
-        }
-        if (typeof type === "object") switch(type.$$typeof){
-            case REACT_CONTEXT_TYPE:
-                var context = type;
-                return getContextName(context) + ".Consumer";
-            case REACT_PROVIDER_TYPE:
-                var provider = type;
-                return getContextName(provider._context) + ".Provider";
-            case REACT_FORWARD_REF_TYPE:
-                return getWrappedName(type, type.render, "ForwardRef");
-            case REACT_MEMO_TYPE:
-                var outerName = type.displayName || null;
-                if (outerName !== null) return outerName;
-                return getComponentNameFromType(type.type) || "Memo";
-            case REACT_LAZY_TYPE:
-                var lazyComponent = type;
-                var payload = lazyComponent._payload;
-                var init = lazyComponent._init;
-                try {
-                    return getComponentNameFromType(init(payload));
-                } catch (x) {
-                    return null;
-                }
-        }
-        return null;
-    }
-    var assign = Object.assign;
-    // Helpers to patch console.logs to avoid logging during side-effect free
-    // replaying on render function. This currently only patches the object
-    // lazily which won't cover if the log function was extracted eagerly.
-    // We could also eagerly patch the method.
-    var disabledDepth = 0;
-    var prevLog;
-    var prevInfo;
-    var prevWarn;
-    var prevError;
-    var prevGroup;
-    var prevGroupCollapsed;
-    var prevGroupEnd;
-    function disabledLog() {}
-    disabledLog.__reactDisabledLog = true;
-    function disableLogs() {
-        if (disabledDepth === 0) {
-            /* eslint-disable react-internal/no-production-logging */ prevLog = console.log;
-            prevInfo = console.info;
-            prevWarn = console.warn;
-            prevError = console.error;
-            prevGroup = console.group;
-            prevGroupCollapsed = console.groupCollapsed;
-            prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
-            var props = {
-                configurable: true,
-                enumerable: true,
-                value: disabledLog,
-                writable: true
-            }; // $FlowFixMe Flow thinks console is immutable.
-            Object.defineProperties(console, {
-                info: props,
-                log: props,
-                warn: props,
-                error: props,
-                group: props,
-                groupCollapsed: props,
-                groupEnd: props
-            });
-        /* eslint-enable react-internal/no-production-logging */ }
-        disabledDepth++;
-    }
-    function reenableLogs() {
-        disabledDepth--;
-        if (disabledDepth === 0) {
-            /* eslint-disable react-internal/no-production-logging */ var props = {
-                configurable: true,
-                enumerable: true,
-                writable: true
-            }; // $FlowFixMe Flow thinks console is immutable.
-            Object.defineProperties(console, {
-                log: assign({}, props, {
-                    value: prevLog
-                }),
-                info: assign({}, props, {
-                    value: prevInfo
-                }),
-                warn: assign({}, props, {
-                    value: prevWarn
-                }),
-                error: assign({}, props, {
-                    value: prevError
-                }),
-                group: assign({}, props, {
-                    value: prevGroup
-                }),
-                groupCollapsed: assign({}, props, {
-                    value: prevGroupCollapsed
-                }),
-                groupEnd: assign({}, props, {
-                    value: prevGroupEnd
-                })
-            });
-        /* eslint-enable react-internal/no-production-logging */ }
-        if (disabledDepth < 0) error("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
-    }
-    var ReactCurrentDispatcher = ReactSharedInternals.ReactCurrentDispatcher;
-    var prefix;
-    function describeBuiltInComponentFrame(name, source, ownerFn) {
-        if (prefix === undefined) // Extract the VM specific prefix used by each line.
-        try {
-            throw Error();
-        } catch (x) {
-            var match = x.stack.trim().match(/\n( *(at )?)/);
-            prefix = match && match[1] || "";
-        }
-         // We use the prefix to ensure our stacks line up with native stack frames.
-        return "\n" + prefix + name;
-    }
-    var reentry = false;
-    var componentFrameCache;
-    var PossiblyWeakMap = typeof WeakMap === "function" ? WeakMap : Map;
-    componentFrameCache = new PossiblyWeakMap();
-    function describeNativeComponentFrame(fn, construct) {
-        // If something asked for a stack inside a fake render, it should get ignored.
-        if (!fn || reentry) return "";
-        var frame = componentFrameCache.get(fn);
-        if (frame !== undefined) return frame;
-        var control;
-        reentry = true;
-        var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
-        Error.prepareStackTrace = undefined;
-        var previousDispatcher;
-        previousDispatcher = ReactCurrentDispatcher.current; // Set the dispatcher in DEV because this might be call in the render function
-        // for warnings.
-        ReactCurrentDispatcher.current = null;
-        disableLogs();
-        try {
-            // This should throw.
-            if (construct) {
-                // Something should be setting the props in the constructor.
-                var Fake = function() {
-                    throw Error();
-                }; // $FlowFixMe
-                Object.defineProperty(Fake.prototype, "props", {
-                    set: function() {
-                        // We use a throwing setter instead of frozen or non-writable props
-                        // because that won't throw in a non-strict mode function.
-                        throw Error();
-                    }
-                });
-                if (typeof Reflect === "object" && Reflect.construct) {
-                    // We construct a different control for this case to include any extra
-                    // frames added by the construct call.
-                    try {
-                        Reflect.construct(Fake, []);
-                    } catch (x) {
-                        control = x;
-                    }
-                    Reflect.construct(fn, [], Fake);
-                } else {
-                    try {
-                        Fake.call();
-                    } catch (x) {
-                        control = x;
-                    }
-                    fn.call(Fake.prototype);
-                }
-            } else {
-                try {
-                    throw Error();
-                } catch (x) {
-                    control = x;
-                }
-                fn();
-            }
-        } catch (sample) {
-            // This is inlined manually because closure doesn't do it for us.
-            if (sample && control && typeof sample.stack === "string") {
-                // This extracts the first frame from the sample that isn't also in the control.
-                // Skipping one frame that we assume is the frame that calls the two.
-                var sampleLines = sample.stack.split("\n");
-                var controlLines = control.stack.split("\n");
-                var s = sampleLines.length - 1;
-                var c = controlLines.length - 1;
-                while(s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c])// We expect at least one stack frame to be shared.
-                // Typically this will be the root most one. However, stack frames may be
-                // cut off due to maximum stack limits. In this case, one maybe cut off
-                // earlier than the other. We assume that the sample is longer or the same
-                // and there for cut off earlier. So we should find the root most frame in
-                // the sample somewhere in the control.
-                c--;
-                for(; s >= 1 && c >= 0; s--, c--)// Next we find the first one that isn't the same which should be the
-                // frame that called our sample function and the control.
-                if (sampleLines[s] !== controlLines[c]) {
-                    // In V8, the first line is describing the message but other VMs don't.
-                    // If we're about to return the first line, and the control is also on the same
-                    // line, that's a pretty good indicator that our sample threw at same line as
-                    // the control. I.e. before we entered the sample frame. So we ignore this result.
-                    // This can happen if you passed a class to function component, or non-function.
-                    if (s !== 1 || c !== 1) do {
-                        s--;
-                        c--; // We may still have similar intermediate frames from the construct call.
-                        // The next one that isn't the same should be our match though.
-                        if (c < 0 || sampleLines[s] !== controlLines[c]) {
-                            // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
-                            var _frame = "\n" + sampleLines[s].replace(" at new ", " at "); // If our component frame is labeled "<anonymous>"
-                            // but we have a user-provided "displayName"
-                            // splice it in to make the stack more readable.
-                            if (fn.displayName && _frame.includes("<anonymous>")) _frame = _frame.replace("<anonymous>", fn.displayName);
-                            if (typeof fn === "function") componentFrameCache.set(fn, _frame);
-                            return _frame;
-                        }
-                    }while (s >= 1 && c >= 0);
-                    break;
-                }
-            }
-        } finally{
-            reentry = false;
-            ReactCurrentDispatcher.current = previousDispatcher;
-            reenableLogs();
-            Error.prepareStackTrace = previousPrepareStackTrace;
-        } // Fallback to just using the name if we couldn't make it throw.
-        var name = fn ? fn.displayName || fn.name : "";
-        var syntheticFrame = name ? describeBuiltInComponentFrame(name) : "";
-        if (typeof fn === "function") componentFrameCache.set(fn, syntheticFrame);
-        return syntheticFrame;
-    }
-    function describeFunctionComponentFrame(fn, source, ownerFn) {
-        return describeNativeComponentFrame(fn, false);
-    }
-    function shouldConstruct(Component) {
-        var prototype = Component.prototype;
-        return !!(prototype && prototype.isReactComponent);
-    }
-    function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
-        if (type == null) return "";
-        if (typeof type === "function") return describeNativeComponentFrame(type, shouldConstruct(type));
-        if (typeof type === "string") return describeBuiltInComponentFrame(type);
-        switch(type){
-            case REACT_SUSPENSE_TYPE:
-                return describeBuiltInComponentFrame("Suspense");
-            case REACT_SUSPENSE_LIST_TYPE:
-                return describeBuiltInComponentFrame("SuspenseList");
-        }
-        if (typeof type === "object") switch(type.$$typeof){
-            case REACT_FORWARD_REF_TYPE:
-                return describeFunctionComponentFrame(type.render);
-            case REACT_MEMO_TYPE:
-                // Memo may contain any component type so we recursively resolve it.
-                return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
-            case REACT_LAZY_TYPE:
-                var lazyComponent = type;
-                var payload = lazyComponent._payload;
-                var init = lazyComponent._init;
-                try {
-                    // Lazy may contain any component type so we recursively resolve it.
-                    return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
-                } catch (x) {}
-        }
-        return "";
-    }
-    var hasOwnProperty = Object.prototype.hasOwnProperty;
-    var loggedTypeFailures = {};
-    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
-    function setCurrentlyValidatingElement(element) {
-        if (element) {
-            var owner = element._owner;
-            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-            ReactDebugCurrentFrame.setExtraStackFrame(stack);
-        } else ReactDebugCurrentFrame.setExtraStackFrame(null);
-    }
-    function checkPropTypes(typeSpecs, values, location, componentName, element) {
-        // $FlowFixMe This is okay but Flow doesn't know it.
-        var has = Function.call.bind(hasOwnProperty);
-        for(var typeSpecName in typeSpecs)if (has(typeSpecs, typeSpecName)) {
-            var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
-            // fail the render phase where it didn't fail before. So we log it.
-            // After these have been cleaned up, we'll let them throw.
-            try {
-                // This is intentionally an invariant that gets caught. It's the same
-                // behavior as without this statement except with a better message.
-                if (typeof typeSpecs[typeSpecName] !== "function") {
-                    // eslint-disable-next-line react-internal/prod-error-codes
-                    var err = Error((componentName || "React class") + ": " + location + " type `" + typeSpecName + "` is invalid; " + "it must be a function, usually from the `prop-types` package, but received `" + typeof typeSpecs[typeSpecName] + "`." + "This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
-                    err.name = "Invariant Violation";
-                    throw err;
-                }
-                error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
-            } catch (ex) {
-                error$1 = ex;
-            }
-            if (error$1 && !(error$1 instanceof Error)) {
-                setCurrentlyValidatingElement(element);
-                error("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", componentName || "React class", location, typeSpecName, typeof error$1);
-                setCurrentlyValidatingElement(null);
-            }
-            if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
-                // Only monitor this failure once because there tends to be a lot of the
-                // same error.
-                loggedTypeFailures[error$1.message] = true;
-                setCurrentlyValidatingElement(element);
-                error("Failed %s type: %s", location, error$1.message);
-                setCurrentlyValidatingElement(null);
-            }
-        }
-    }
-    var isArrayImpl = Array.isArray; // eslint-disable-next-line no-redeclare
-    function isArray(a) {
-        return isArrayImpl(a);
-    }
-    /*
- * The `'' + value` pattern (used in in perf-sensitive code) throws for Symbol
- * and Temporal.* types. See https://github.com/facebook/react/pull/22064.
- *
- * The functions in this module will throw an easier-to-understand,
- * easier-to-debug exception with a clear errors message message explaining the
- * problem. (Instead of a confusing exception thrown inside the implementation
- * of the `value` object).
- */ // $FlowFixMe only called in DEV, so void return is not possible.
-    function typeName(value) {
-        // toStringTag is needed for namespaced types like Temporal.Instant
-        var hasToStringTag = typeof Symbol === "function" && Symbol.toStringTag;
-        var type = hasToStringTag && value[Symbol.toStringTag] || value.constructor.name || "Object";
-        return type;
-    } // $FlowFixMe only called in DEV, so void return is not possible.
-    function willCoercionThrow(value) {
-        try {
-            testStringCoercion(value);
-            return false;
-        } catch (e) {
-            return true;
-        }
-    }
-    function testStringCoercion(value) {
-        // If you ended up here by following an exception call stack, here's what's
-        // happened: you supplied an object or symbol value to React (as a prop, key,
-        // DOM attribute, CSS property, string ref, etc.) and when React tried to
-        // coerce it to a string using `'' + value`, an exception was thrown.
-        //
-        // The most common types that will cause this exception are `Symbol` instances
-        // and Temporal objects like `Temporal.Instant`. But any object that has a
-        // `valueOf` or `[Symbol.toPrimitive]` method that throws will also cause this
-        // exception. (Library authors do this to prevent users from using built-in
-        // numeric operators like `+` or comparison operators like `>=` because custom
-        // methods are needed to perform accurate arithmetic or comparison.)
-        //
-        // To fix the problem, coerce this object or symbol value to a string before
-        // passing it to React. The most reliable way is usually `String(value)`.
-        //
-        // To find which value is throwing, check the browser or debugger console.
-        // Before this exception was thrown, there should be `console.error` output
-        // that shows the type (Symbol, Temporal.PlainDate, etc.) that caused the
-        // problem and how that type was used: key, atrribute, input value prop, etc.
-        // In most cases, this console output also shows the component and its
-        // ancestor components where the exception happened.
-        //
-        // eslint-disable-next-line react-internal/safe-string-coercion
-        return "" + value;
-    }
-    function checkKeyStringCoercion(value) {
-        if (willCoercionThrow(value)) {
-            error("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", typeName(value));
-            return testStringCoercion(value); // throw (to help callers find troubleshooting comments)
-        }
-    }
-    var ReactCurrentOwner = ReactSharedInternals.ReactCurrentOwner;
-    var RESERVED_PROPS = {
-        key: true,
-        ref: true,
-        __self: true,
-        __source: true
-    };
-    var specialPropKeyWarningShown;
-    var specialPropRefWarningShown;
-    var didWarnAboutStringRefs;
-    didWarnAboutStringRefs = {};
-    function hasValidRef(config) {
-        if (hasOwnProperty.call(config, "ref")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "ref").get;
-            if (getter && getter.isReactWarning) return false;
-        }
-        return config.ref !== undefined;
-    }
-    function hasValidKey(config) {
-        if (hasOwnProperty.call(config, "key")) {
-            var getter = Object.getOwnPropertyDescriptor(config, "key").get;
-            if (getter && getter.isReactWarning) return false;
-        }
-        return config.key !== undefined;
-    }
-    function warnIfStringRefCannotBeAutoConverted(config, self) {
-        if (typeof config.ref === "string" && ReactCurrentOwner.current && self && ReactCurrentOwner.current.stateNode !== self) {
-            var componentName = getComponentNameFromType(ReactCurrentOwner.current.type);
-            if (!didWarnAboutStringRefs[componentName]) {
-                error('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', getComponentNameFromType(ReactCurrentOwner.current.type), config.ref);
-                didWarnAboutStringRefs[componentName] = true;
-            }
-        }
-    }
-    function defineKeyPropWarningGetter(props, displayName) {
-        var warnAboutAccessingKey = function() {
-            if (!specialPropKeyWarningShown) {
-                specialPropKeyWarningShown = true;
-                error("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
-            }
-        };
-        warnAboutAccessingKey.isReactWarning = true;
-        Object.defineProperty(props, "key", {
-            get: warnAboutAccessingKey,
-            configurable: true
-        });
-    }
-    function defineRefPropWarningGetter(props, displayName) {
-        var warnAboutAccessingRef = function() {
-            if (!specialPropRefWarningShown) {
-                specialPropRefWarningShown = true;
-                error("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", displayName);
-            }
-        };
-        warnAboutAccessingRef.isReactWarning = true;
-        Object.defineProperty(props, "ref", {
-            get: warnAboutAccessingRef,
-            configurable: true
-        });
-    }
-    /**
- * Factory method to create a new React element. This no longer adheres to
- * the class pattern, so do not use new to call it. Also, instanceof check
- * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
- * if something is a React Element.
- *
- * @param {*} type
- * @param {*} props
- * @param {*} key
- * @param {string|object} ref
- * @param {*} owner
- * @param {*} self A *temporary* helper to detect places where `this` is
- * different from the `owner` when React.createElement is called, so that we
- * can warn. We want to get rid of owner and replace string `ref`s with arrow
- * functions, and as long as `this` and owner are the same, there will be no
- * change in behavior.
- * @param {*} source An annotation object (added by a transpiler or otherwise)
- * indicating filename, line number, and/or other information.
- * @internal
- */ var ReactElement = function(type, key, ref, self, source, owner, props) {
-        var element = {
-            // This tag allows us to uniquely identify this as a React Element
-            $$typeof: REACT_ELEMENT_TYPE,
-            // Built-in properties that belong on the element
-            type: type,
-            key: key,
-            ref: ref,
-            props: props,
-            // Record the component responsible for creating this element.
-            _owner: owner
-        };
-        // The validation flag is currently mutative. We put it on
-        // an external backing store so that we can freeze the whole object.
-        // This can be replaced with a WeakMap once they are implemented in
-        // commonly used development environments.
-        element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
-        // the validation flag non-enumerable (where possible, which should
-        // include every environment we run tests in), so the test framework
-        // ignores it.
-        Object.defineProperty(element._store, "validated", {
-            configurable: false,
-            enumerable: false,
-            writable: true,
-            value: false
-        }); // self and source are DEV only properties.
-        Object.defineProperty(element, "_self", {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: self
-        }); // Two elements created in two different places should be considered
-        // equal for testing purposes and therefore we hide it from enumeration.
-        Object.defineProperty(element, "_source", {
-            configurable: false,
-            enumerable: false,
-            writable: false,
-            value: source
-        });
-        if (Object.freeze) {
-            Object.freeze(element.props);
-            Object.freeze(element);
-        }
-        return element;
-    };
-    /**
- * https://github.com/reactjs/rfcs/pull/107
- * @param {*} type
- * @param {object} props
- * @param {string} key
- */ function jsxDEV(type, config, maybeKey, source, self) {
-        var propName; // Reserved names are extracted
-        var props = {};
-        var key = null;
-        var ref = null; // Currently, key can be spread in as a prop. This causes a potential
-        // issue if key is also explicitly declared (ie. <div {...props} key="Hi" />
-        // or <div key="Hi" {...props} /> ). We want to deprecate key spread,
-        // but as an intermediary step, we will use jsxDEV for everything except
-        // <div {...props} key="Hi" />, because we aren't currently able to tell if
-        // key is explicitly declared to be undefined or not.
-        if (maybeKey !== undefined) {
-            checkKeyStringCoercion(maybeKey);
-            key = "" + maybeKey;
-        }
-        if (hasValidKey(config)) {
-            checkKeyStringCoercion(config.key);
-            key = "" + config.key;
-        }
-        if (hasValidRef(config)) {
-            ref = config.ref;
-            warnIfStringRefCannotBeAutoConverted(config, self);
-        } // Remaining properties are added to a new props object
-        for(propName in config)if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) props[propName] = config[propName];
-         // Resolve default props
-        if (type && type.defaultProps) {
-            var defaultProps = type.defaultProps;
-            for(propName in defaultProps)if (props[propName] === undefined) props[propName] = defaultProps[propName];
-        }
-        if (key || ref) {
-            var displayName = typeof type === "function" ? type.displayName || type.name || "Unknown" : type;
-            if (key) defineKeyPropWarningGetter(props, displayName);
-            if (ref) defineRefPropWarningGetter(props, displayName);
-        }
-        return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
-    }
-    var ReactCurrentOwner$1 = ReactSharedInternals.ReactCurrentOwner;
-    var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
-    function setCurrentlyValidatingElement$1(element) {
-        if (element) {
-            var owner = element._owner;
-            var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
-            ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
-        } else ReactDebugCurrentFrame$1.setExtraStackFrame(null);
-    }
-    var propTypesMisspellWarningShown;
-    propTypesMisspellWarningShown = false;
-    /**
- * Verifies the object is a ReactElement.
- * See https://reactjs.org/docs/react-api.html#isvalidelement
- * @param {?object} object
- * @return {boolean} True if `object` is a ReactElement.
- * @final
- */ function isValidElement(object) {
-        return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
-    }
-    function getDeclarationErrorAddendum() {
-        if (ReactCurrentOwner$1.current) {
-            var name = getComponentNameFromType(ReactCurrentOwner$1.current.type);
-            if (name) return "\n\nCheck the render method of `" + name + "`.";
-        }
-        return "";
-    }
-    function getSourceInfoErrorAddendum(source) {
-        if (source !== undefined) {
-            var fileName = source.fileName.replace(/^.*[\\\/]/, "");
-            var lineNumber = source.lineNumber;
-            return "\n\nCheck your code at " + fileName + ":" + lineNumber + ".";
-        }
-        return "";
-    }
-    /**
- * Warn if there's no key explicitly set on dynamic arrays of children or
- * object keys are not valid. This allows us to keep track of children between
- * updates.
- */ var ownerHasKeyUseWarning = {};
-    function getCurrentComponentErrorInfo(parentType) {
-        var info = getDeclarationErrorAddendum();
-        if (!info) {
-            var parentName = typeof parentType === "string" ? parentType : parentType.displayName || parentType.name;
-            if (parentName) info = "\n\nCheck the top-level render call using <" + parentName + ">.";
-        }
-        return info;
-    }
-    /**
- * Warn if the element doesn't have an explicit key assigned to it.
- * This element is in an array. The array could grow and shrink or be
- * reordered. All children that haven't already been validated are required to
- * have a "key" property assigned to it. Error statuses are cached so a warning
- * will only be shown once.
- *
- * @internal
- * @param {ReactElement} element Element that requires a key.
- * @param {*} parentType element's parent's type.
- */ function validateExplicitKey(element, parentType) {
-        if (!element._store || element._store.validated || element.key != null) return;
-        element._store.validated = true;
-        var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
-        if (ownerHasKeyUseWarning[currentComponentErrorInfo]) return;
-        ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
-        // property, it may be the creator of the child that's responsible for
-        // assigning it a key.
-        var childOwner = "";
-        if (element && element._owner && element._owner !== ReactCurrentOwner$1.current) // Give the component that originally created this child.
-        childOwner = " It was passed a child from " + getComponentNameFromType(element._owner.type) + ".";
-        setCurrentlyValidatingElement$1(element);
-        error('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
-        setCurrentlyValidatingElement$1(null);
-    }
-    /**
- * Ensure that every element either is passed in a static location, in an
- * array with an explicit keys property defined, or in an object literal
- * with valid key property.
- *
- * @internal
- * @param {ReactNode} node Statically passed child of any type.
- * @param {*} parentType node's parent's type.
- */ function validateChildKeys(node, parentType) {
-        if (typeof node !== "object") return;
-        if (isArray(node)) for(var i = 0; i < node.length; i++){
-            var child = node[i];
-            if (isValidElement(child)) validateExplicitKey(child, parentType);
-        }
-        else if (isValidElement(node)) // This element was passed in a valid location.
-        {
-            if (node._store) node._store.validated = true;
-        } else if (node) {
-            var iteratorFn = getIteratorFn(node);
-            if (typeof iteratorFn === "function") // Entry iterators used to provide implicit keys,
-            // but now we print a separate warning for them later.
-            {
-                if (iteratorFn !== node.entries) {
-                    var iterator = iteratorFn.call(node);
-                    var step;
-                    while(!(step = iterator.next()).done)if (isValidElement(step.value)) validateExplicitKey(step.value, parentType);
-                }
-            }
-        }
-    }
-    /**
- * Given an element, validate that its props follow the propTypes definition,
- * provided by the type.
- *
- * @param {ReactElement} element
- */ function validatePropTypes(element) {
-        var type = element.type;
-        if (type === null || type === undefined || typeof type === "string") return;
-        var propTypes;
-        if (typeof type === "function") propTypes = type.propTypes;
-        else if (typeof type === "object" && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
-        // Inner props are checked in the reconciler.
-        type.$$typeof === REACT_MEMO_TYPE)) propTypes = type.propTypes;
-        else return;
-        if (propTypes) {
-            // Intentionally inside to avoid triggering lazy initializers:
-            var name = getComponentNameFromType(type);
-            checkPropTypes(propTypes, element.props, "prop", name, element);
-        } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
-            propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
-            var _name = getComponentNameFromType(type);
-            error("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", _name || "Unknown");
-        }
-        if (typeof type.getDefaultProps === "function" && !type.getDefaultProps.isReactClassApproved) error("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
-    }
-    /**
- * Given a fragment, validate that it can only be provided with fragment props
- * @param {ReactElement} fragment
- */ function validateFragmentProps(fragment) {
-        var keys = Object.keys(fragment.props);
-        for(var i = 0; i < keys.length; i++){
-            var key = keys[i];
-            if (key !== "children" && key !== "key") {
-                setCurrentlyValidatingElement$1(fragment);
-                error("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", key);
-                setCurrentlyValidatingElement$1(null);
-                break;
-            }
-        }
-        if (fragment.ref !== null) {
-            setCurrentlyValidatingElement$1(fragment);
-            error("Invalid attribute `ref` supplied to `React.Fragment`.");
-            setCurrentlyValidatingElement$1(null);
-        }
-    }
-    var didWarnAboutKeySpread = {};
-    function jsxWithValidation(type, props, key, isStaticChildren, source, self) {
-        var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
-        // succeed and there will likely be errors in render.
-        if (!validType) {
-            var info = "";
-            if (type === undefined || typeof type === "object" && type !== null && Object.keys(type).length === 0) info += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.";
-            var sourceInfo = getSourceInfoErrorAddendum(source);
-            if (sourceInfo) info += sourceInfo;
-            else info += getDeclarationErrorAddendum();
-            var typeString;
-            if (type === null) typeString = "null";
-            else if (isArray(type)) typeString = "array";
-            else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
-                typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />";
-                info = " Did you accidentally export a JSX literal instead of a component?";
-            } else typeString = typeof type;
-            error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
-        }
-        var element = jsxDEV(type, props, key, source, self); // The result can be nullish if a mock or a custom function is used.
-        // TODO: Drop this when these are no longer allowed as the type argument.
-        if (element == null) return element;
-         // Skip key warning if the type isn't valid since our key validation logic
-        // doesn't expect a non-string/function type and can throw confusing errors.
-        // We don't want exception behavior to differ between dev and prod.
-        // (Rendering will throw with a helpful message and as soon as the type is
-        // fixed, the key warnings will appear.)
-        if (validType) {
-            var children = props.children;
-            if (children !== undefined) {
-                if (isStaticChildren) {
-                    if (isArray(children)) {
-                        for(var i = 0; i < children.length; i++)validateChildKeys(children[i], type);
-                        if (Object.freeze) Object.freeze(children);
-                    } else error("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
-                } else validateChildKeys(children, type);
-            }
-        }
-        if (hasOwnProperty.call(props, "key")) {
-            var componentName = getComponentNameFromType(type);
-            var keys = Object.keys(props).filter(function(k) {
-                return k !== "key";
-            });
-            var beforeExample = keys.length > 0 ? "{key: someKey, " + keys.join(": ..., ") + ": ...}" : "{key: someKey}";
-            if (!didWarnAboutKeySpread[componentName + beforeExample]) {
-                var afterExample = keys.length > 0 ? "{" + keys.join(": ..., ") + ": ...}" : "{}";
-                error('A props object containing a "key" prop is being spread into JSX:\n  let props = %s;\n  <%s {...props} />\nReact keys must be passed directly to JSX without using spread:\n  let props = %s;\n  <%s key={someKey} {...props} />', beforeExample, componentName, afterExample, componentName);
-                didWarnAboutKeySpread[componentName + beforeExample] = true;
-            }
-        }
-        if (type === REACT_FRAGMENT_TYPE) validateFragmentProps(element);
-        else validatePropTypes(element);
-        return element;
-    } // These two functions exist to still get child warnings in dev
-    var jsxDEV$1 = jsxWithValidation;
-    exports.Fragment = REACT_FRAGMENT_TYPE;
-    exports.jsxDEV = jsxDEV$1;
-})();
-
-},{"58362d9d82be395f":"21dqq"}],"lOjBx":[function(require,module,exports) {
+},{}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -33487,7 +33400,7 @@ var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtili
 var _unstableTrapFocus = require("./Unstable_TrapFocus");
 var _unstableTrapFocusDefault = parcelHelpers.interopDefault(_unstableTrapFocus);
 
-},{"./colors":false,"./styles":false,"./utils":false,"./Accordion":false,"./AccordionActions":false,"./AccordionDetails":false,"./AccordionSummary":false,"./Alert":false,"./AlertTitle":false,"./AppBar":false,"./Autocomplete":false,"./Avatar":false,"./AvatarGroup":false,"./Backdrop":false,"./Badge":false,"./BottomNavigation":false,"./BottomNavigationAction":false,"./Box":"eQD0H","./Breadcrumbs":false,"./Button":"73csw","./ButtonBase":false,"./ButtonGroup":false,"./Card":"hWYZ3","./CardActionArea":false,"./CardActions":false,"./CardContent":"lVecn","./CardHeader":false,"./CardMedia":"kaOTJ","./Checkbox":"duHVh","./Chip":false,"./CircularProgress":false,"./ClickAwayListener":false,"./Collapse":false,"./Container":false,"./CssBaseline":false,"./darkScrollbar":false,"./Dialog":false,"./DialogActions":false,"./DialogContent":false,"./DialogContentText":false,"./DialogTitle":false,"./Divider":false,"./Drawer":"hMEec","./Fab":false,"./Fade":false,"./FilledInput":false,"./FormControl":false,"./FormControlLabel":"gbxlC","./FormGroup":"f1wae","./FormHelperText":false,"./FormLabel":false,"./Grid":"c17UE","./Unstable_Grid2":false,"./Grow":false,"./Hidden":false,"./Icon":false,"./IconButton":"38BrD","./ImageList":false,"./ImageListItem":false,"./ImageListItemBar":false,"./Input":false,"./InputAdornment":false,"./InputBase":false,"./InputLabel":false,"./LinearProgress":false,"./Link":false,"./List":"PwNf5","./ListItem":"kkzrF","./ListItemAvatar":false,"./ListItemButton":false,"./ListItemIcon":false,"./ListItemSecondaryAction":false,"./ListItemText":"g3ISx","./ListSubheader":false,"./Menu":"dOURT","./MenuItem":"6tZ4p","./MenuList":false,"./MobileStepper":false,"./Modal":false,"./NativeSelect":false,"./NoSsr":false,"./OutlinedInput":false,"./Pagination":false,"./PaginationItem":false,"./Paper":false,"./Popover":false,"./Popper":false,"./Portal":false,"./Radio":false,"./RadioGroup":false,"./Rating":false,"./ScopedCssBaseline":false,"./Select":false,"./Skeleton":"4F50o","./Slide":false,"./Slider":false,"./Snackbar":false,"./SnackbarContent":false,"./SpeedDial":false,"./SpeedDialAction":false,"./SpeedDialIcon":false,"./Stack":"cuThX","./Step":false,"./StepButton":false,"./StepConnector":false,"./StepContent":false,"./StepIcon":false,"./StepLabel":false,"./Stepper":false,"./SvgIcon":false,"./SwipeableDrawer":false,"./Switch":false,"./Tab":false,"./Table":false,"./TableBody":false,"./TableCell":false,"./TableContainer":false,"./TableFooter":false,"./TableHead":false,"./TablePagination":false,"./TableRow":false,"./TableSortLabel":false,"./Tabs":false,"./TabScrollButton":false,"./TextField":"hlqrK","./TextareaAutosize":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Toolbar":false,"./Tooltip":false,"./Typography":"faxSz","./useMediaQuery":false,"./usePagination":false,"./useScrollTrigger":false,"./Zoom":false,"./useAutocomplete":false,"./GlobalStyles":false,"@mui/base/composeClasses":false,"./generateUtilityClass":false,"./generateUtilityClasses":false,"./Unstable_TrapFocus":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1lzai":[function(require,module,exports) {
+},{"./colors":false,"./styles":false,"./utils":false,"./Accordion":false,"./AccordionActions":false,"./AccordionDetails":false,"./AccordionSummary":false,"./Alert":false,"./AlertTitle":false,"./AppBar":false,"./Autocomplete":false,"./Avatar":false,"./AvatarGroup":false,"./Backdrop":false,"./Badge":false,"./BottomNavigation":false,"./BottomNavigationAction":false,"./Box":"eQD0H","./Breadcrumbs":false,"./Button":"73csw","./ButtonBase":false,"./ButtonGroup":false,"./Card":"hWYZ3","./CardActionArea":false,"./CardActions":false,"./CardContent":"lVecn","./CardHeader":false,"./CardMedia":"kaOTJ","./Checkbox":"duHVh","./Chip":false,"./CircularProgress":false,"./ClickAwayListener":false,"./Collapse":false,"./Container":false,"./CssBaseline":false,"./darkScrollbar":false,"./Dialog":"ftK48","./DialogActions":false,"./DialogContent":"gZO7I","./DialogContentText":"iLsKC","./DialogTitle":"642rE","./Divider":false,"./Drawer":"hMEec","./Fab":false,"./Fade":false,"./FilledInput":false,"./FormControl":false,"./FormControlLabel":"gbxlC","./FormGroup":"f1wae","./FormHelperText":false,"./FormLabel":false,"./Grid":"c17UE","./Unstable_Grid2":false,"./Grow":false,"./Hidden":false,"./Icon":false,"./IconButton":"38BrD","./ImageList":false,"./ImageListItem":false,"./ImageListItemBar":false,"./Input":false,"./InputAdornment":false,"./InputBase":false,"./InputLabel":false,"./LinearProgress":false,"./Link":false,"./List":"PwNf5","./ListItem":"kkzrF","./ListItemAvatar":false,"./ListItemButton":false,"./ListItemIcon":false,"./ListItemSecondaryAction":false,"./ListItemText":"g3ISx","./ListSubheader":false,"./Menu":"dOURT","./MenuItem":"6tZ4p","./MenuList":false,"./MobileStepper":false,"./Modal":false,"./NativeSelect":false,"./NoSsr":false,"./OutlinedInput":false,"./Pagination":false,"./PaginationItem":false,"./Paper":false,"./Popover":false,"./Popper":false,"./Portal":false,"./Radio":false,"./RadioGroup":false,"./Rating":false,"./ScopedCssBaseline":false,"./Select":"lFmVj","./Skeleton":"4F50o","./Slide":false,"./Slider":false,"./Snackbar":false,"./SnackbarContent":false,"./SpeedDial":false,"./SpeedDialAction":false,"./SpeedDialIcon":false,"./Stack":"cuThX","./Step":false,"./StepButton":false,"./StepConnector":false,"./StepContent":false,"./StepIcon":false,"./StepLabel":false,"./Stepper":false,"./SvgIcon":false,"./SwipeableDrawer":false,"./Switch":false,"./Tab":false,"./Table":false,"./TableBody":false,"./TableCell":false,"./TableContainer":false,"./TableFooter":false,"./TableHead":false,"./TablePagination":false,"./TableRow":false,"./TableSortLabel":false,"./Tabs":false,"./TabScrollButton":false,"./TextField":"hlqrK","./TextareaAutosize":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Toolbar":false,"./Tooltip":false,"./Typography":"faxSz","./useMediaQuery":"eeOzk","./usePagination":false,"./useScrollTrigger":false,"./Zoom":false,"./useAutocomplete":false,"./GlobalStyles":false,"@mui/base/composeClasses":false,"./generateUtilityClass":false,"./generateUtilityClasses":false,"./Unstable_TrapFocus":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1lzai":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "THEME_ID", ()=>(0, _identifierDefault.default));
@@ -33585,7 +33498,7 @@ function experimental_sx() {
     throw new Error(`MUI: The \`experimental_sx\` has been moved to \`theme.unstable_sx\`.For more details, see https://github.com/mui/material-ui/pull/35150.`);
 }
 
-},{"@mui/utils/formatMuiErrorMessage":"7QIu9","./identifier":false,"./adaptV4Theme":false,"@mui/system":"Q0Zql","./createTheme":"8OdgZ","./createMuiStrictModeTheme":false,"./createStyles":false,"./cssUtils":"lWtOa","./responsiveFontSizes":false,"./createTransitions":false,"./useTheme":false,"./useThemeProps":false,"./styled":false,"./ThemeProvider":false,"./makeStyles":false,"./withStyles":false,"./withTheme":false,"./CssVarsProvider":false,"./experimental_extendTheme":false,"./getOverlayAlpha":false,"./shouldSkipGeneratingVar":false,"./createTypography":false,"./createMixins":false,"./excludeVariablesFromRoot":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7QIu9":[function(require,module,exports) {
+},{"@mui/utils/formatMuiErrorMessage":"7QIu9","./identifier":false,"./adaptV4Theme":false,"@mui/system":"Q0Zql","./createTheme":"8OdgZ","./createMuiStrictModeTheme":false,"./createStyles":false,"./cssUtils":"lWtOa","./responsiveFontSizes":false,"./createTransitions":false,"./useTheme":"5nWMX","./useThemeProps":false,"./styled":false,"./ThemeProvider":false,"./makeStyles":false,"./withStyles":false,"./withTheme":false,"./CssVarsProvider":false,"./experimental_extendTheme":false,"./getOverlayAlpha":false,"./shouldSkipGeneratingVar":false,"./createTypography":false,"./createMixins":false,"./excludeVariablesFromRoot":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7QIu9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _formatMuiErrorMessageDefault.default));
@@ -40375,7 +40288,7 @@ var _getThemeProps = require("./getThemeProps");
 var _getThemePropsDefault = parcelHelpers.interopDefault(_getThemeProps);
 "use client";
 
-},{"./useThemeProps":"kDJYN","./getThemeProps":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kDJYN":[function(require,module,exports) {
+},{"./useThemeProps":"kDJYN","./getThemeProps":"4T4Gi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kDJYN":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>useThemeProps);
@@ -40443,7 +40356,158 @@ function resolveProps(defaultProps, props) {
     return output;
 }
 
-},{"@babel/runtime/helpers/esm/extends":"fTBFS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cIbr0":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wuR6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
+var _useMediaQuery = require("./useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+parcelHelpers.exportAll(_useMediaQuery, exports);
+
+},{"./useMediaQuery":"hFMec","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hFMec":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>useMediaQuery);
+var _react = require("react");
+var _useEnhancedEffect = require("@mui/utils/useEnhancedEffect");
+var _useEnhancedEffectDefault = parcelHelpers.interopDefault(_useEnhancedEffect);
+var _useThemeProps = require("../useThemeProps");
+var _useThemeWithoutDefault = require("../useThemeWithoutDefault");
+var _useThemeWithoutDefaultDefault = parcelHelpers.interopDefault(_useThemeWithoutDefault);
+"use client";
+/**
+ * @deprecated Not used internally. Use `MediaQueryListEvent` from lib.dom.d.ts instead.
+ */ /**
+ * @deprecated Not used internally. Use `MediaQueryList` from lib.dom.d.ts instead.
+ */ /**
+ * @deprecated Not used internally. Use `(event: MediaQueryListEvent) => void` instead.
+ */ function useMediaQueryOld(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
+    const [match, setMatch] = _react.useState(()=>{
+        if (noSsr && matchMedia) return matchMedia(query).matches;
+        if (ssrMatchMedia) return ssrMatchMedia(query).matches;
+        // Once the component is mounted, we rely on the
+        // event listeners to return the correct matches value.
+        return defaultMatches;
+    });
+    (0, _useEnhancedEffectDefault.default)(()=>{
+        let active = true;
+        if (!matchMedia) return undefined;
+        const queryList = matchMedia(query);
+        const updateMatch = ()=>{
+            // Workaround Safari wrong implementation of matchMedia
+            // TODO can we remove it?
+            // https://github.com/mui/material-ui/pull/17315#issuecomment-528286677
+            if (active) setMatch(queryList.matches);
+        };
+        updateMatch();
+        // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+        queryList.addListener(updateMatch);
+        return ()=>{
+            active = false;
+            queryList.removeListener(updateMatch);
+        };
+    }, [
+        query,
+        matchMedia
+    ]);
+    return match;
+}
+// eslint-disable-next-line no-useless-concat -- Workaround for https://github.com/webpack/webpack/issues/14814
+const maybeReactUseSyncExternalStore = _react["useSyncExternalStore"];
+function useMediaQueryNew(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr) {
+    const getDefaultSnapshot = _react.useCallback(()=>defaultMatches, [
+        defaultMatches
+    ]);
+    const getServerSnapshot = _react.useMemo(()=>{
+        if (noSsr && matchMedia) return ()=>matchMedia(query).matches;
+        if (ssrMatchMedia !== null) {
+            const { matches } = ssrMatchMedia(query);
+            return ()=>matches;
+        }
+        return getDefaultSnapshot;
+    }, [
+        getDefaultSnapshot,
+        query,
+        ssrMatchMedia,
+        noSsr,
+        matchMedia
+    ]);
+    const [getSnapshot, subscribe] = _react.useMemo(()=>{
+        if (matchMedia === null) return [
+            getDefaultSnapshot,
+            ()=>()=>{}
+        ];
+        const mediaQueryList = matchMedia(query);
+        return [
+            ()=>mediaQueryList.matches,
+            (notify)=>{
+                // TODO: Use `addEventListener` once support for Safari < 14 is dropped
+                mediaQueryList.addListener(notify);
+                return ()=>{
+                    mediaQueryList.removeListener(notify);
+                };
+            }
+        ];
+    }, [
+        getDefaultSnapshot,
+        matchMedia,
+        query
+    ]);
+    const match = maybeReactUseSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+    return match;
+}
+function useMediaQuery(queryInput, options = {}) {
+    const theme = (0, _useThemeWithoutDefaultDefault.default)();
+    // Wait for jsdom to support the match media feature.
+    // All the browsers MUI support have this built-in.
+    // This defensive check is here for simplicity.
+    // Most of the time, the match media logic isn't central to people tests.
+    const supportMatchMedia = typeof window !== "undefined" && typeof window.matchMedia !== "undefined";
+    const { defaultMatches = false, matchMedia = supportMatchMedia ? window.matchMedia : null, ssrMatchMedia = null, noSsr = false } = (0, _useThemeProps.getThemeProps)({
+        name: "MuiUseMediaQuery",
+        props: options,
+        theme
+    });
+    if (typeof queryInput === "function" && theme === null) console.error([
+        "MUI: The `query` argument provided is invalid.",
+        "You are providing a function without a theme in the context.",
+        "One of the parent elements needs to use a ThemeProvider."
+    ].join("\n"));
+    let query = typeof queryInput === "function" ? queryInput(theme) : queryInput;
+    query = query.replace(/^@media( ?)/m, "");
+    // TODO: Drop `useMediaQueryOld` and use  `use-sync-external-store` shim in `useMediaQueryNew` once the package is stable
+    const useMediaQueryImplementation = maybeReactUseSyncExternalStore !== undefined ? useMediaQueryNew : useMediaQueryOld;
+    const match = useMediaQueryImplementation(query, defaultMatches, matchMedia, ssrMatchMedia, noSsr);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    _react.useDebugValue({
+        query,
+        match
+    });
+    return match;
+}
+
+},{"react":"21dqq","@mui/utils/useEnhancedEffect":"b7XQB","../useThemeProps":"eZlKz","../useThemeWithoutDefault":"9Xcu1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b7XQB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _useEnhancedEffectDefault.default));
+var _useEnhancedEffect = require("./useEnhancedEffect");
+var _useEnhancedEffectDefault = parcelHelpers.interopDefault(_useEnhancedEffect);
+
+},{"./useEnhancedEffect":"6VJGJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6VJGJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+"use client";
+/**
+ * A version of `React.useLayoutEffect` that does not show a warning when server-side rendering.
+ * This is useful for effects that are only needed for client-side rendering but not for SSR.
+ *
+ * Before you use this hook, make sure to read https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+ * and confirm it doesn't apply to your use-case.
+ */ const useEnhancedEffect = typeof window !== "undefined" ? _react.useLayoutEffect : _react.useEffect;
+exports.default = useEnhancedEffect;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cIbr0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /**
@@ -43194,28 +43258,7 @@ function setRef(ref, value) {
     else if (ref) ref.current = value;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b7XQB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _useEnhancedEffectDefault.default));
-var _useEnhancedEffect = require("./useEnhancedEffect");
-var _useEnhancedEffectDefault = parcelHelpers.interopDefault(_useEnhancedEffect);
-
-},{"./useEnhancedEffect":"6VJGJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6VJGJ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-"use client";
-/**
- * A version of `React.useLayoutEffect` that does not show a warning when server-side rendering.
- * This is useful for effects that are only needed for client-side rendering but not for SSR.
- *
- * Before you use this hook, make sure to read https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
- * and confirm it doesn't apply to your use-case.
- */ const useEnhancedEffect = typeof window !== "undefined" ? _react.useLayoutEffect : _react.useEffect;
-exports.default = useEnhancedEffect;
-
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fXm4I":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fXm4I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _useIdDefault.default));
@@ -48924,64 +48967,21 @@ const checkboxClasses = (0, _generateUtilityClassesDefault.default)("MuiCheckbox
 ]);
 exports.default = checkboxClasses;
 
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lHE5Y":[function(require,module,exports) {
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ftK48":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _dividerDefault.default));
-parcelHelpers.export(exports, "dividerClasses", ()=>(0, _dividerClassesDefault.default));
-var _divider = require("./Divider");
-var _dividerDefault = parcelHelpers.interopDefault(_divider);
-var _dividerClasses = require("./dividerClasses");
-var _dividerClassesDefault = parcelHelpers.interopDefault(_dividerClasses);
-parcelHelpers.exportAll(_dividerClasses, exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogDefault.default));
+parcelHelpers.export(exports, "dialogClasses", ()=>(0, _dialogClassesDefault.default));
+var _dialog = require("./Dialog");
+var _dialogDefault = parcelHelpers.interopDefault(_dialog);
+var _dialogClasses = require("./dialogClasses");
+var _dialogClassesDefault = parcelHelpers.interopDefault(_dialogClasses);
+parcelHelpers.exportAll(_dialogClasses, exports);
 "use client";
 
-},{"./Divider":false,"./dividerClasses":"54IFg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"54IFg":[function(require,module,exports) {
+},{"./Dialog":"20Psa","./dialogClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"20Psa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getDividerUtilityClass", ()=>getDividerUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getDividerUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiDivider", slot);
-}
-const dividerClasses = (0, _generateUtilityClassesDefault.default)("MuiDivider", [
-    "root",
-    "absolute",
-    "fullWidth",
-    "inset",
-    "middle",
-    "flexItem",
-    "light",
-    "vertical",
-    "withChildren",
-    "withChildrenVertical",
-    "textAlignRight",
-    "textAlignLeft",
-    "wrapper",
-    "wrapperVertical"
-]);
-exports.default = dividerClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hMEec":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _drawerDefault.default));
-parcelHelpers.export(exports, "drawerClasses", ()=>(0, _drawerClassesDefault.default));
-var _drawer = require("./Drawer");
-var _drawerDefault = parcelHelpers.interopDefault(_drawer);
-var _drawerClasses = require("./drawerClasses");
-var _drawerClassesDefault = parcelHelpers.interopDefault(_drawerClasses);
-parcelHelpers.exportAll(_drawerClasses, exports);
-"use client";
-
-},{"./Drawer":"cLVEp","./drawerClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLVEp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "isHorizontal", ()=>isHorizontal);
-parcelHelpers.export(exports, "getAnchor", ()=>getAnchor);
 var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
 var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
 var _extends = require("@babel/runtime/helpers/esm/extends");
@@ -48991,255 +48991,304 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _clsx = require("clsx");
 var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _integerPropType = require("@mui/utils/integerPropType");
-var _integerPropTypeDefault = parcelHelpers.interopDefault(_integerPropType);
 var _composeClasses = require("@mui/utils/composeClasses");
 var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _rtlProvider = require("@mui/system/RtlProvider");
-var _modal = require("../Modal");
-var _modalDefault = parcelHelpers.interopDefault(_modal);
-var _slide = require("../Slide");
-var _slideDefault = parcelHelpers.interopDefault(_slide);
-var _paper = require("../Paper");
-var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _useId = require("@mui/utils/useId");
+var _useIdDefault = parcelHelpers.interopDefault(_useId);
 var _capitalize = require("../utils/capitalize");
 var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _useTheme = require("../styles/useTheme");
-var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _modal = require("../Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+var _fade = require("../Fade");
+var _fadeDefault = parcelHelpers.interopDefault(_fade);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
 var _defaultPropsProvider = require("../DefaultPropsProvider");
 var _styled = require("../styles/styled");
 var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _drawerClasses = require("./drawerClasses");
+var _dialogClasses = require("./dialogClasses");
+var _dialogClassesDefault = parcelHelpers.interopDefault(_dialogClasses);
+var _dialogContext = require("./DialogContext");
+var _dialogContextDefault = parcelHelpers.interopDefault(_dialogContext);
+var _backdrop = require("../Backdrop");
+var _backdropDefault = parcelHelpers.interopDefault(_backdrop);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
 var _jsxRuntime = require("react/jsx-runtime");
 "use client";
 const _excluded = [
-    "BackdropProps"
-], _excluded2 = [
-    "anchor",
+    "aria-describedby",
+    "aria-labelledby",
+    "BackdropComponent",
     "BackdropProps",
     "children",
     "className",
-    "elevation",
-    "hideBackdrop",
-    "ModalProps",
+    "disableEscapeKeyDown",
+    "fullScreen",
+    "fullWidth",
+    "maxWidth",
+    "onBackdropClick",
+    "onClick",
     "onClose",
     "open",
+    "PaperComponent",
     "PaperProps",
-    "SlideProps",
+    "scroll",
     "TransitionComponent",
     "transitionDuration",
-    "variant"
+    "TransitionProps"
 ];
-const overridesResolver = (props, styles)=>{
-    const { ownerState } = props;
-    return [
-        styles.root,
-        (ownerState.variant === "permanent" || ownerState.variant === "persistent") && styles.docked,
-        styles.modal
-    ];
-};
+const DialogBackdrop = (0, _styledDefault.default)((0, _backdropDefault.default), {
+    name: "MuiDialog",
+    slot: "Backdrop",
+    overrides: (props, styles)=>styles.backdrop
+})({
+    // Improve scrollable dialog support.
+    zIndex: -1
+});
 const useUtilityClasses = (ownerState)=>{
-    const { classes, anchor, variant } = ownerState;
+    const { classes, scroll, maxWidth, fullWidth, fullScreen } = ownerState;
     const slots = {
         root: [
             "root"
         ],
-        docked: [
-            (variant === "permanent" || variant === "persistent") && "docked"
-        ],
-        modal: [
-            "modal"
+        container: [
+            "container",
+            `scroll${(0, _capitalizeDefault.default)(scroll)}`
         ],
         paper: [
             "paper",
-            `paperAnchor${(0, _capitalizeDefault.default)(anchor)}`,
-            variant !== "temporary" && `paperAnchorDocked${(0, _capitalizeDefault.default)(anchor)}`
+            `paperScroll${(0, _capitalizeDefault.default)(scroll)}`,
+            `paperWidth${(0, _capitalizeDefault.default)(String(maxWidth))}`,
+            fullWidth && "paperFullWidth",
+            fullScreen && "paperFullScreen"
         ]
     };
-    return (0, _composeClassesDefault.default)(slots, (0, _drawerClasses.getDrawerUtilityClass), classes);
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogClasses.getDialogUtilityClass), classes);
 };
-const DrawerRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
-    name: "MuiDrawer",
+const DialogRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
+    name: "MuiDialog",
     slot: "Root",
-    overridesResolver
-})(({ theme })=>({
-        zIndex: (theme.vars || theme).zIndex.drawer
-    }));
-const DrawerDockedRoot = (0, _styledDefault.default)("div", {
-    shouldForwardProp: (0, _styled.rootShouldForwardProp),
-    name: "MuiDrawer",
-    slot: "Docked",
-    skipVariantsResolver: false,
-    overridesResolver
+    overridesResolver: (props, styles)=>styles.root
 })({
-    flex: "0 0 auto"
+    "@media print": {
+        // Use !important to override the Modal inline-style.
+        position: "absolute !important"
+    }
 });
-const DrawerPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
-    name: "MuiDrawer",
+const DialogContainer = (0, _styledDefault.default)("div", {
+    name: "MuiDialog",
+    slot: "Container",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.container,
+            styles[`scroll${(0, _capitalizeDefault.default)(ownerState.scroll)}`]
+        ];
+    }
+})(({ ownerState })=>(0, _extendsDefault.default)({
+        height: "100%",
+        "@media print": {
+            height: "auto"
+        },
+        // We disable the focus ring for mouse, touch and keyboard users.
+        outline: 0
+    }, ownerState.scroll === "paper" && {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+    }, ownerState.scroll === "body" && {
+        overflowY: "auto",
+        overflowX: "hidden",
+        textAlign: "center",
+        "&::after": {
+            content: '""',
+            display: "inline-block",
+            verticalAlign: "middle",
+            height: "100%",
+            width: "0"
+        }
+    }));
+const DialogPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiDialog",
     slot: "Paper",
     overridesResolver: (props, styles)=>{
         const { ownerState } = props;
         return [
             styles.paper,
-            styles[`paperAnchor${(0, _capitalizeDefault.default)(ownerState.anchor)}`],
-            ownerState.variant !== "temporary" && styles[`paperAnchorDocked${(0, _capitalizeDefault.default)(ownerState.anchor)}`]
+            styles[`scrollPaper${(0, _capitalizeDefault.default)(ownerState.scroll)}`],
+            styles[`paperWidth${(0, _capitalizeDefault.default)(String(ownerState.maxWidth))}`],
+            ownerState.fullWidth && styles.paperFullWidth,
+            ownerState.fullScreen && styles.paperFullScreen
         ];
     }
 })(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        margin: 32,
+        position: "relative",
         overflowY: "auto",
+        // Fix IE11 issue, to remove at some point.
+        "@media print": {
+            overflowY: "visible",
+            boxShadow: "none"
+        }
+    }, ownerState.scroll === "paper" && {
         display: "flex",
         flexDirection: "column",
+        maxHeight: "calc(100% - 64px)"
+    }, ownerState.scroll === "body" && {
+        display: "inline-block",
+        verticalAlign: "middle",
+        textAlign: "left" // 'initial' doesn't work on IE11
+    }, !ownerState.maxWidth && {
+        maxWidth: "calc(100% - 64px)"
+    }, ownerState.maxWidth === "xs" && {
+        maxWidth: theme.breakpoints.unit === "px" ? Math.max(theme.breakpoints.values.xs, 444) : `max(${theme.breakpoints.values.xs}${theme.breakpoints.unit}, 444px)`,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            [theme.breakpoints.down(Math.max(theme.breakpoints.values.xs, 444) + 64)]: {
+                maxWidth: "calc(100% - 64px)"
+            }
+        }
+    }, ownerState.maxWidth && ownerState.maxWidth !== "xs" && {
+        maxWidth: `${theme.breakpoints.values[ownerState.maxWidth]}${theme.breakpoints.unit}`,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            [theme.breakpoints.down(theme.breakpoints.values[ownerState.maxWidth] + 64)]: {
+                maxWidth: "calc(100% - 64px)"
+            }
+        }
+    }, ownerState.fullWidth && {
+        width: "calc(100% - 64px)"
+    }, ownerState.fullScreen && {
+        margin: 0,
+        width: "100%",
+        maxWidth: "100%",
         height: "100%",
-        flex: "1 0 auto",
-        zIndex: (theme.vars || theme).zIndex.drawer,
-        // Add iOS momentum scrolling for iOS < 13.0
-        WebkitOverflowScrolling: "touch",
-        // temporary style
-        position: "fixed",
-        top: 0,
-        // We disable the focus ring for mouse, touch and keyboard users.
-        // At some point, it would be better to keep it for keyboard users.
-        // :focus-ring CSS pseudo-class will help.
-        outline: 0
-    }, ownerState.anchor === "left" && {
-        left: 0
-    }, ownerState.anchor === "top" && {
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "auto",
-        maxHeight: "100%"
-    }, ownerState.anchor === "right" && {
-        right: 0
-    }, ownerState.anchor === "bottom" && {
-        top: "auto",
-        left: 0,
-        bottom: 0,
-        right: 0,
-        height: "auto",
-        maxHeight: "100%"
-    }, ownerState.anchor === "left" && ownerState.variant !== "temporary" && {
-        borderRight: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "top" && ownerState.variant !== "temporary" && {
-        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "right" && ownerState.variant !== "temporary" && {
-        borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`
-    }, ownerState.anchor === "bottom" && ownerState.variant !== "temporary" && {
-        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`
+        maxHeight: "none",
+        borderRadius: 0,
+        [`&.${(0, _dialogClassesDefault.default).paperScrollBody}`]: {
+            margin: 0,
+            maxWidth: "100%"
+        }
     }));
-const oppositeDirection = {
-    left: "right",
-    right: "left",
-    top: "down",
-    bottom: "up"
-};
-function isHorizontal(anchor) {
-    return [
-        "left",
-        "right"
-    ].indexOf(anchor) !== -1;
-}
-function getAnchor({ direction }, anchor) {
-    return direction === "rtl" && isHorizontal(anchor) ? oppositeDirection[anchor] : anchor;
-}
 /**
- * The props of the [Modal](/material-ui/api/modal/) component are available
- * when `variant="temporary"` is set.
- */ const Drawer = /*#__PURE__*/ _react.forwardRef(function Drawer(inProps, ref) {
+ * Dialogs are overlaid modal paper based components with a backdrop.
+ */ const Dialog = /*#__PURE__*/ _react.forwardRef(function Dialog(inProps, ref) {
     const props = (0, _defaultPropsProvider.useDefaultProps)({
         props: inProps,
-        name: "MuiDrawer"
+        name: "MuiDialog"
     });
     const theme = (0, _useThemeDefault.default)();
-    const isRtl = (0, _rtlProvider.useRtl)();
     const defaultTransitionDuration = {
         enter: theme.transitions.duration.enteringScreen,
         exit: theme.transitions.duration.leavingScreen
     };
-    const { anchor: anchorProp = "left", BackdropProps, children, className, elevation = 16, hideBackdrop = false, ModalProps: { BackdropProps: BackdropPropsProp } = {}, onClose, open = false, PaperProps = {}, SlideProps, // eslint-disable-next-line react/prop-types
-    TransitionComponent = (0, _slideDefault.default), transitionDuration = defaultTransitionDuration, variant = "temporary" } = props, ModalProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.ModalProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
-    // Let's assume that the Drawer will always be rendered on user space.
-    // We use this state is order to skip the appear transition during the
-    // initial mount of the component.
-    const mounted = _react.useRef(false);
-    _react.useEffect(()=>{
-        mounted.current = true;
-    }, []);
-    const anchorInvariant = getAnchor({
-        direction: isRtl ? "rtl" : "ltr"
-    }, anchorProp);
-    const anchor = anchorProp;
+    const { "aria-describedby": ariaDescribedby, "aria-labelledby": ariaLabelledbyProp, BackdropComponent, BackdropProps, children, className, disableEscapeKeyDown = false, fullScreen = false, fullWidth = false, maxWidth = "sm", onBackdropClick, onClick, onClose, open, PaperComponent = (0, _paperDefault.default), PaperProps = {}, scroll = "paper", TransitionComponent = (0, _fadeDefault.default), transitionDuration = defaultTransitionDuration, TransitionProps } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
     const ownerState = (0, _extendsDefault.default)({}, props, {
-        anchor,
-        elevation,
-        open,
-        variant
-    }, other);
+        disableEscapeKeyDown,
+        fullScreen,
+        fullWidth,
+        maxWidth,
+        scroll
+    });
     const classes = useUtilityClasses(ownerState);
-    const drawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerPaper, (0, _extendsDefault.default)({
-        elevation: variant === "temporary" ? elevation : 0,
-        square: true
-    }, PaperProps, {
-        className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
-        ownerState: ownerState,
-        children: children
-    }));
-    if (variant === "permanent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
-        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: drawer
-    }));
-    const slidingDrawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
-        in: open,
-        direction: oppositeDirection[anchorInvariant],
-        timeout: transitionDuration,
-        appear: mounted.current
-    }, SlideProps, {
-        children: drawer
-    }));
-    if (variant === "persistent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
-        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
-        ownerState: ownerState,
-        ref: ref
-    }, other, {
-        children: slidingDrawer
-    }));
-    // variant === temporary
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerRoot, (0, _extendsDefault.default)({
-        BackdropProps: (0, _extendsDefault.default)({}, BackdropProps, BackdropPropsProp, {
-            transitionDuration
-        }),
-        className: (0, _clsxDefault.default)(classes.root, classes.modal, className),
-        open: open,
-        ownerState: ownerState,
+    const backdropClick = _react.useRef();
+    const handleMouseDown = (event)=>{
+        // We don't want to close the dialog when clicking the dialog content.
+        // Make sure the event starts and ends on the same DOM element.
+        backdropClick.current = event.target === event.currentTarget;
+    };
+    const handleBackdropClick = (event)=>{
+        if (onClick) onClick(event);
+        // Ignore the events not coming from the "backdrop".
+        if (!backdropClick.current) return;
+        backdropClick.current = null;
+        if (onBackdropClick) onBackdropClick(event);
+        if (onClose) onClose(event, "backdropClick");
+    };
+    const ariaLabelledby = (0, _useIdDefault.default)(ariaLabelledbyProp);
+    const dialogContextValue = _react.useMemo(()=>{
+        return {
+            titleId: ariaLabelledby
+        };
+    }, [
+        ariaLabelledby
+    ]);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        closeAfterTransition: true,
+        components: {
+            Backdrop: DialogBackdrop
+        },
+        componentsProps: {
+            backdrop: (0, _extendsDefault.default)({
+                transitionDuration,
+                as: BackdropComponent
+            }, BackdropProps)
+        },
+        disableEscapeKeyDown: disableEscapeKeyDown,
         onClose: onClose,
-        hideBackdrop: hideBackdrop,
-        ref: ref
-    }, other, ModalProps, {
-        children: slidingDrawer
+        open: open,
+        ref: ref,
+        onClick: handleBackdropClick,
+        ownerState: ownerState
+    }, other, {
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+            appear: true,
+            in: open,
+            timeout: transitionDuration,
+            role: "presentation"
+        }, TransitionProps, {
+            children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContainer, {
+                className: (0, _clsxDefault.default)(classes.container),
+                onMouseDown: handleMouseDown,
+                ownerState: ownerState,
+                children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogPaper, (0, _extendsDefault.default)({
+                    as: PaperComponent,
+                    elevation: 24,
+                    role: "dialog",
+                    "aria-describedby": ariaDescribedby,
+                    "aria-labelledby": ariaLabelledby
+                }, PaperProps, {
+                    className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
+                    ownerState: ownerState,
+                    children: /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _dialogContextDefault.default).Provider, {
+                        value: dialogContextValue,
+                        children: children
+                    })
+                }))
+            })
+        }))
     }));
 });
-Drawer.propTypes /* remove-proptypes */  = {
+Dialog.propTypes /* remove-proptypes */  = {
     // ┌────────────────────────────── Warning ──────────────────────────────┐
     // │ These PropTypes are generated from the TypeScript type definitions. │
     // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
     // └─────────────────────────────────────────────────────────────────────┘
     /**
-   * Side from which the drawer will appear.
-   * @default 'left'
-   */ anchor: (0, _propTypesDefault.default).oneOf([
-        "bottom",
-        "left",
-        "right",
-        "top"
-    ]),
+   * The id(s) of the element(s) that describe the dialog.
+   */ "aria-describedby": (0, _propTypesDefault.default).string,
+    /**
+   * The id(s) of the element(s) that label the dialog.
+   */ "aria-labelledby": (0, _propTypesDefault.default).string,
+    /**
+   * A backdrop component. This prop enables custom backdrop rendering.
+   * @deprecated Use `slots.backdrop` instead. While this prop currently works, it will be removed in the next major version.
+   * Use the `slots.backdrop` prop to make your application ready for the next version of Material UI.
+   * @default styled(Backdrop, {
+   *   name: 'MuiModal',
+   *   slot: 'Backdrop',
+   *   overridesResolver: (props, styles) => {
+   *     return styles.backdrop;
+   *   },
+   * })({
+   *   zIndex: -1,
+   * })
+   */ BackdropComponent: (0, _propTypesDefault.default).elementType,
     /**
    * @ignore
    */ BackdropProps: (0, _propTypesDefault.default).object,
     /**
-   * The content of the component.
+   * Dialog children, usually the included sub-components.
    */ children: (0, _propTypesDefault.default).node,
     /**
    * Override or extend the styles applied to the component.
@@ -49248,35 +49297,66 @@ Drawer.propTypes /* remove-proptypes */  = {
    * @ignore
    */ className: (0, _propTypesDefault.default).string,
     /**
-   * The elevation of the drawer.
-   * @default 16
-   */ elevation: (0, _integerPropTypeDefault.default),
-    /**
-   * If `true`, the backdrop is not rendered.
+   * If `true`, hitting escape will not fire the `onClose` callback.
    * @default false
-   */ hideBackdrop: (0, _propTypesDefault.default).bool,
+   */ disableEscapeKeyDown: (0, _propTypesDefault.default).bool,
     /**
-   * Props applied to the [`Modal`](/material-ui/api/modal/) element.
-   * @default {}
-   */ ModalProps: (0, _propTypesDefault.default).object,
+   * If `true`, the dialog is full-screen.
+   * @default false
+   */ fullScreen: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the dialog stretches to `maxWidth`.
+   *
+   * Notice that the dialog width grow is limited by the default margin.
+   * @default false
+   */ fullWidth: (0, _propTypesDefault.default).bool,
+    /**
+   * Determine the max-width of the dialog.
+   * The dialog width grows with the size of the screen.
+   * Set to `false` to disable `maxWidth`.
+   * @default 'sm'
+   */ maxWidth: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+            false
+        ]),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * Callback fired when the backdrop is clicked.
+   * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
+   */ onBackdropClick: (0, _propTypesDefault.default).func,
+    /**
+   * @ignore
+   */ onClick: (0, _propTypesDefault.default).func,
     /**
    * Callback fired when the component requests to be closed.
-   * The `reason` parameter can optionally be used to control the response to `onClose`.
    *
    * @param {object} event The event source of the callback.
    * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
    */ onClose: (0, _propTypesDefault.default).func,
     /**
    * If `true`, the component is shown.
-   * @default false
-   */ open: (0, _propTypesDefault.default).bool,
+   */ open: (0, _propTypesDefault.default).bool.isRequired,
+    /**
+   * The component used to render the body of the dialog.
+   * @default Paper
+   */ PaperComponent: (0, _propTypesDefault.default).elementType,
     /**
    * Props applied to the [`Paper`](/material-ui/api/paper/) element.
    * @default {}
    */ PaperProps: (0, _propTypesDefault.default).object,
     /**
-   * Props applied to the [`Slide`](/material-ui/api/slide/) element.
-   */ SlideProps: (0, _propTypesDefault.default).object,
+   * Determine the container for scrolling the dialog.
+   * @default 'paper'
+   */ scroll: (0, _propTypesDefault.default).oneOf([
+        "body",
+        "paper"
+    ]),
     /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */ sx: (0, _propTypesDefault.default).oneOfType([
@@ -49288,6 +49368,11 @@ Drawer.propTypes /* remove-proptypes */  = {
         (0, _propTypesDefault.default).func,
         (0, _propTypesDefault.default).object
     ]),
+    /**
+   * The component used for the transition.
+   * [Follow this guide](/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+   * @default Fade
+   */ TransitionComponent: (0, _propTypesDefault.default).elementType,
     /**
    * The duration for the transition, in milliseconds.
    * You may specify a single timeout for all transitions, or individually with an object.
@@ -49304,17 +49389,13 @@ Drawer.propTypes /* remove-proptypes */  = {
         })
     ]),
     /**
-   * The variant to use.
-   * @default 'temporary'
-   */ variant: (0, _propTypesDefault.default).oneOf([
-        "permanent",
-        "persistent",
-        "temporary"
-    ])
+   * Props applied to the transition element.
+   * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+   */ TransitionProps: (0, _propTypesDefault.default).object
 };
-exports.default = Drawer;
+exports.default = Dialog;
 
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/integerPropType":"T93rM","@mui/utils/composeClasses":"4kKno","@mui/system/RtlProvider":"4iqca","../Modal":"lSUh1","../Slide":"fZVcF","../Paper":"6IiTP","../utils/capitalize":"lwNtZ","../styles/useTheme":"5nWMX","../DefaultPropsProvider":"gbkfk","../styles/styled":"32xTg","./drawerClasses":"aFQC1","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lSUh1":[function(require,module,exports) {
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/composeClasses":"4kKno","@mui/utils/useId":"fXm4I","../utils/capitalize":"lwNtZ","../Modal":"lSUh1","../Fade":"eB1a4","../Paper":"6IiTP","../DefaultPropsProvider":"gbkfk","../styles/styled":"32xTg","./dialogClasses":"fJvp4","./DialogContext":"9xRZm","../Backdrop":"23PLD","../styles/useTheme":"5nWMX","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lSUh1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ModalManager", ()=>(0, _unstableUseModal.ModalManager));
@@ -50723,7 +50804,1090 @@ const modalClasses = (0, _generateUtilityClassesDefault.default)("MuiModal", [
 ]);
 exports.default = modalClasses;
 
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZVcF":[function(require,module,exports) {
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fJvp4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogUtilityClass", ()=>getDialogUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialog", slot);
+}
+const dialogClasses = (0, _generateUtilityClassesDefault.default)("MuiDialog", [
+    "root",
+    "scrollPaper",
+    "scrollBody",
+    "container",
+    "paper",
+    "paperScrollPaper",
+    "paperScrollBody",
+    "paperWidthFalse",
+    "paperWidthXs",
+    "paperWidthSm",
+    "paperWidthMd",
+    "paperWidthLg",
+    "paperWidthXl",
+    "paperFullWidth",
+    "paperFullScreen"
+]);
+exports.default = dialogClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9xRZm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+const DialogContext = /*#__PURE__*/ _react.createContext({});
+DialogContext.displayName = "DialogContext";
+exports.default = DialogContext;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gZO7I":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogContentDefault.default));
+parcelHelpers.export(exports, "dialogContentClasses", ()=>(0, _dialogContentClassesDefault.default));
+var _dialogContent = require("./DialogContent");
+var _dialogContentDefault = parcelHelpers.interopDefault(_dialogContent);
+var _dialogContentClasses = require("./dialogContentClasses");
+var _dialogContentClassesDefault = parcelHelpers.interopDefault(_dialogContentClasses);
+parcelHelpers.exportAll(_dialogContentClasses, exports);
+"use client";
+
+},{"./DialogContent":"gZreI","./dialogContentClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gZreI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _dialogContentClasses = require("./dialogContentClasses");
+var _dialogTitleClasses = require("../DialogTitle/dialogTitleClasses");
+var _dialogTitleClassesDefault = parcelHelpers.interopDefault(_dialogTitleClasses);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "dividers"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes, dividers } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            dividers && "dividers"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogContentClasses.getDialogContentUtilityClass), classes);
+};
+const DialogContentRoot = (0, _styledDefault.default)("div", {
+    name: "MuiDialogContent",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            ownerState.dividers && styles.dividers
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        flex: "1 1 auto",
+        // Add iOS momentum scrolling for iOS < 13.0
+        WebkitOverflowScrolling: "touch",
+        overflowY: "auto",
+        padding: "20px 24px"
+    }, ownerState.dividers ? {
+        padding: "16px 24px",
+        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`,
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
+    } : {
+        [`.${(0, _dialogTitleClassesDefault.default).root} + &`]: {
+            paddingTop: 0
+        }
+    }));
+const DialogContent = /*#__PURE__*/ _react.forwardRef(function DialogContent(inProps, ref) {
+    const props = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiDialogContent"
+    });
+    const { className, dividers = false } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        dividers
+    });
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContentRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other));
+});
+DialogContent.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * Display the top and bottom dividers.
+   * @default false
+   */ dividers: (0, _propTypesDefault.default).bool,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogContent;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","./dialogContentClasses":"oJjRp","../DialogTitle/dialogTitleClasses":"6HAYZ","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"oJjRp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogContentUtilityClass", ()=>getDialogContentUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogContentUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogContent", slot);
+}
+const dialogContentClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogContent", [
+    "root",
+    "dividers"
+]);
+exports.default = dialogContentClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6HAYZ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogTitleUtilityClass", ()=>getDialogTitleUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogTitleUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogTitle", slot);
+}
+const dialogTitleClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogTitle", [
+    "root"
+]);
+exports.default = dialogTitleClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iLsKC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogContentTextDefault.default));
+parcelHelpers.export(exports, "dialogContentTextClasses", ()=>(0, _dialogContentTextClassesDefault.default));
+var _dialogContentText = require("./DialogContentText");
+var _dialogContentTextDefault = parcelHelpers.interopDefault(_dialogContentText);
+var _dialogContentTextClasses = require("./dialogContentTextClasses");
+var _dialogContentTextClassesDefault = parcelHelpers.interopDefault(_dialogContentTextClasses);
+parcelHelpers.exportAll(_dialogContentTextClasses, exports);
+"use client";
+
+},{"./DialogContentText":"5y8bD","./dialogContentTextClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5y8bD":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _typography = require("../Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _dialogContentTextClasses = require("./dialogContentTextClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "children",
+    "className"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    const composedClasses = (0, _composeClassesDefault.default)(slots, (0, _dialogContentTextClasses.getDialogContentTextUtilityClass), classes);
+    return (0, _extendsDefault.default)({}, classes, composedClasses);
+};
+const DialogContentTextRoot = (0, _styledDefault.default)((0, _typographyDefault.default), {
+    shouldForwardProp: (prop)=>(0, _styled.rootShouldForwardProp)(prop) || prop === "classes",
+    name: "MuiDialogContentText",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({});
+const DialogContentText = /*#__PURE__*/ _react.forwardRef(function DialogContentText(inProps, ref) {
+    const props = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiDialogContentText"
+    });
+    const { className } = props, ownerState = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogContentTextRoot, (0, _extendsDefault.default)({
+        component: "p",
+        variant: "body1",
+        color: "text.secondary",
+        ref: ref,
+        ownerState: ownerState,
+        className: (0, _clsxDefault.default)(classes.root, className)
+    }, props, {
+        classes: classes
+    }));
+});
+DialogContentText.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogContentText;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","../Typography":"faxSz","./dialogContentTextClasses":"jB1AN","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"faxSz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _typographyDefault.default));
+parcelHelpers.export(exports, "typographyClasses", ()=>(0, _typographyClassesDefault.default));
+var _typography = require("./Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _typographyClasses = require("./typographyClasses");
+var _typographyClassesDefault = parcelHelpers.interopDefault(_typographyClasses);
+parcelHelpers.exportAll(_typographyClasses, exports);
+"use client";
+
+},{"./Typography":"chcJ4","./typographyClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"chcJ4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "TypographyRoot", ()=>TypographyRoot);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _styleFunctionSx = require("@mui/system/styleFunctionSx");
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _typographyClasses = require("./typographyClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "align",
+    "className",
+    "component",
+    "gutterBottom",
+    "noWrap",
+    "paragraph",
+    "variant",
+    "variantMapping"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { align, gutterBottom, noWrap, paragraph, variant, classes } = ownerState;
+    const slots = {
+        root: [
+            "root",
+            variant,
+            ownerState.align !== "inherit" && `align${(0, _capitalizeDefault.default)(align)}`,
+            gutterBottom && "gutterBottom",
+            noWrap && "noWrap",
+            paragraph && "paragraph"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _typographyClasses.getTypographyUtilityClass), classes);
+};
+const TypographyRoot = (0, _styledDefault.default)("span", {
+    name: "MuiTypography",
+    slot: "Root",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.root,
+            ownerState.variant && styles[ownerState.variant],
+            ownerState.align !== "inherit" && styles[`align${(0, _capitalizeDefault.default)(ownerState.align)}`],
+            ownerState.noWrap && styles.noWrap,
+            ownerState.gutterBottom && styles.gutterBottom,
+            ownerState.paragraph && styles.paragraph
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        margin: 0
+    }, ownerState.variant === "inherit" && {
+        // Some elements, like <button> on Chrome have default font that doesn't inherit, reset this.
+        font: "inherit"
+    }, ownerState.variant !== "inherit" && theme.typography[ownerState.variant], ownerState.align !== "inherit" && {
+        textAlign: ownerState.align
+    }, ownerState.noWrap && {
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+    }, ownerState.gutterBottom && {
+        marginBottom: "0.35em"
+    }, ownerState.paragraph && {
+        marginBottom: 16
+    }));
+const defaultVariantMapping = {
+    h1: "h1",
+    h2: "h2",
+    h3: "h3",
+    h4: "h4",
+    h5: "h5",
+    h6: "h6",
+    subtitle1: "h6",
+    subtitle2: "h6",
+    body1: "p",
+    body2: "p",
+    inherit: "p"
+};
+// TODO v6: deprecate these color values in v5.x and remove the transformation in v6
+const colorTransformations = {
+    primary: "primary.main",
+    textPrimary: "text.primary",
+    secondary: "secondary.main",
+    textSecondary: "text.secondary",
+    error: "error.main"
+};
+const transformDeprecatedColors = (color)=>{
+    return colorTransformations[color] || color;
+};
+const Typography = /*#__PURE__*/ _react.forwardRef(function Typography(inProps, ref) {
+    const themeProps = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiTypography"
+    });
+    const color = transformDeprecatedColors(themeProps.color);
+    const props = (0, _styleFunctionSx.extendSxProp)((0, _extendsDefault.default)({}, themeProps, {
+        color
+    }));
+    const { align = "inherit", className, component, gutterBottom = false, noWrap = false, paragraph = false, variant = "body1", variantMapping = defaultVariantMapping } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        align,
+        color,
+        className,
+        component,
+        gutterBottom,
+        noWrap,
+        paragraph,
+        variant,
+        variantMapping
+    });
+    const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
+    const classes = useUtilityClasses(ownerState);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(TypographyRoot, (0, _extendsDefault.default)({
+        as: Component,
+        ref: ref,
+        ownerState: ownerState,
+        className: (0, _clsxDefault.default)(classes.root, className)
+    }, other));
+});
+Typography.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * Set the text-align on the component.
+   * @default 'inherit'
+   */ align: (0, _propTypesDefault.default).oneOf([
+        "center",
+        "inherit",
+        "justify",
+        "left",
+        "right"
+    ]),
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The component used for the root node.
+   * Either a string to use a HTML element or a component.
+   */ component: (0, _propTypesDefault.default).elementType,
+    /**
+   * If `true`, the text will have a bottom margin.
+   * @default false
+   */ gutterBottom: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the text will not wrap, but instead will truncate with a text overflow ellipsis.
+   *
+   * Note that text overflow can only happen with block or inline-block level elements
+   * (the element needs to have a width in order to overflow).
+   * @default false
+   */ noWrap: (0, _propTypesDefault.default).bool,
+    /**
+   * If `true`, the element will be a paragraph element.
+   * @default false
+   */ paragraph: (0, _propTypesDefault.default).bool,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * Applies the theme typography styles.
+   * @default 'body1'
+   */ variant: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
+        (0, _propTypesDefault.default).oneOf([
+            "body1",
+            "body2",
+            "button",
+            "caption",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "inherit",
+            "overline",
+            "subtitle1",
+            "subtitle2"
+        ]),
+        (0, _propTypesDefault.default).string
+    ]),
+    /**
+   * The component maps the variant prop to a range of different HTML element types.
+   * For instance, subtitle1 to `<h6>`.
+   * If you wish to change that mapping, you can provide your own.
+   * Alternatively, you can use the `component` prop.
+   * @default {
+   *   h1: 'h1',
+   *   h2: 'h2',
+   *   h3: 'h3',
+   *   h4: 'h4',
+   *   h5: 'h5',
+   *   h6: 'h6',
+   *   subtitle1: 'h6',
+   *   subtitle2: 'h6',
+   *   body1: 'p',
+   *   body2: 'p',
+   *   inherit: 'p',
+   * }
+   */ variantMapping: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).object
+};
+exports.default = Typography;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/system/styleFunctionSx":"bRwpN","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","../utils/capitalize":"lwNtZ","./typographyClasses":"aW8pq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aW8pq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getTypographyUtilityClass", ()=>getTypographyUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getTypographyUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiTypography", slot);
+}
+const typographyClasses = (0, _generateUtilityClassesDefault.default)("MuiTypography", [
+    "root",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "subtitle1",
+    "subtitle2",
+    "body1",
+    "body2",
+    "inherit",
+    "button",
+    "caption",
+    "overline",
+    "alignLeft",
+    "alignRight",
+    "alignCenter",
+    "alignJustify",
+    "noWrap",
+    "gutterBottom",
+    "paragraph"
+]);
+exports.default = typographyClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jB1AN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDialogContentTextUtilityClass", ()=>getDialogContentTextUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDialogContentTextUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDialogContentText", slot);
+}
+const dialogContentTextClasses = (0, _generateUtilityClassesDefault.default)("MuiDialogContentText", [
+    "root"
+]);
+exports.default = dialogContentTextClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"642rE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dialogTitleDefault.default));
+parcelHelpers.export(exports, "dialogTitleClasses", ()=>(0, _dialogTitleClassesDefault.default));
+var _dialogTitle = require("./DialogTitle");
+var _dialogTitleDefault = parcelHelpers.interopDefault(_dialogTitle);
+var _dialogTitleClasses = require("./dialogTitleClasses");
+var _dialogTitleClassesDefault = parcelHelpers.interopDefault(_dialogTitleClasses);
+parcelHelpers.exportAll(_dialogTitleClasses, exports);
+"use client";
+
+},{"./DialogTitle":"dIj98","./dialogTitleClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dIj98":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _typography = require("../Typography");
+var _typographyDefault = parcelHelpers.interopDefault(_typography);
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _dialogTitleClasses = require("./dialogTitleClasses");
+var _dialogContext = require("../Dialog/DialogContext");
+var _dialogContextDefault = parcelHelpers.interopDefault(_dialogContext);
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "className",
+    "id"
+];
+const useUtilityClasses = (ownerState)=>{
+    const { classes } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _dialogTitleClasses.getDialogTitleUtilityClass), classes);
+};
+const DialogTitleRoot = (0, _styledDefault.default)((0, _typographyDefault.default), {
+    name: "MuiDialogTitle",
+    slot: "Root",
+    overridesResolver: (props, styles)=>styles.root
+})({
+    padding: "16px 24px",
+    flex: "0 0 auto"
+});
+const DialogTitle = /*#__PURE__*/ _react.forwardRef(function DialogTitle(inProps, ref) {
+    const props = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiDialogTitle"
+    });
+    const { className, id: idProp } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
+    const ownerState = props;
+    const classes = useUtilityClasses(ownerState);
+    const { titleId = idProp } = _react.useContext((0, _dialogContextDefault.default));
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DialogTitleRoot, (0, _extendsDefault.default)({
+        component: "h2",
+        className: (0, _clsxDefault.default)(classes.root, className),
+        ownerState: ownerState,
+        ref: ref,
+        variant: "h6",
+        id: idProp != null ? idProp : titleId
+    }, other));
+});
+DialogTitle.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * @ignore
+   */ id: (0, _propTypesDefault.default).string,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ])
+};
+exports.default = DialogTitle;
+
+},{"@babel/runtime/helpers/esm/extends":"fTBFS","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/composeClasses":"4kKno","../Typography":"faxSz","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","./dialogTitleClasses":"6HAYZ","../Dialog/DialogContext":"9xRZm","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lHE5Y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _dividerDefault.default));
+parcelHelpers.export(exports, "dividerClasses", ()=>(0, _dividerClassesDefault.default));
+var _divider = require("./Divider");
+var _dividerDefault = parcelHelpers.interopDefault(_divider);
+var _dividerClasses = require("./dividerClasses");
+var _dividerClassesDefault = parcelHelpers.interopDefault(_dividerClasses);
+parcelHelpers.exportAll(_dividerClasses, exports);
+"use client";
+
+},{"./Divider":false,"./dividerClasses":"54IFg","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"54IFg":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getDividerUtilityClass", ()=>getDividerUtilityClass);
+var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
+var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
+var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
+var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
+function getDividerUtilityClass(slot) {
+    return (0, _generateUtilityClassDefault.default)("MuiDivider", slot);
+}
+const dividerClasses = (0, _generateUtilityClassesDefault.default)("MuiDivider", [
+    "root",
+    "absolute",
+    "fullWidth",
+    "inset",
+    "middle",
+    "flexItem",
+    "light",
+    "vertical",
+    "withChildren",
+    "withChildrenVertical",
+    "textAlignRight",
+    "textAlignLeft",
+    "wrapper",
+    "wrapperVertical"
+]);
+exports.default = dividerClasses;
+
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hMEec":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _drawerDefault.default));
+parcelHelpers.export(exports, "drawerClasses", ()=>(0, _drawerClassesDefault.default));
+var _drawer = require("./Drawer");
+var _drawerDefault = parcelHelpers.interopDefault(_drawer);
+var _drawerClasses = require("./drawerClasses");
+var _drawerClassesDefault = parcelHelpers.interopDefault(_drawerClasses);
+parcelHelpers.exportAll(_drawerClasses, exports);
+"use client";
+
+},{"./Drawer":"cLVEp","./drawerClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cLVEp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "isHorizontal", ()=>isHorizontal);
+parcelHelpers.export(exports, "getAnchor", ()=>getAnchor);
+var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
+var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
+var _extends = require("@babel/runtime/helpers/esm/extends");
+var _extendsDefault = parcelHelpers.interopDefault(_extends);
+var _react = require("react");
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _clsx = require("clsx");
+var _clsxDefault = parcelHelpers.interopDefault(_clsx);
+var _integerPropType = require("@mui/utils/integerPropType");
+var _integerPropTypeDefault = parcelHelpers.interopDefault(_integerPropType);
+var _composeClasses = require("@mui/utils/composeClasses");
+var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
+var _rtlProvider = require("@mui/system/RtlProvider");
+var _modal = require("../Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+var _slide = require("../Slide");
+var _slideDefault = parcelHelpers.interopDefault(_slide);
+var _paper = require("../Paper");
+var _paperDefault = parcelHelpers.interopDefault(_paper);
+var _capitalize = require("../utils/capitalize");
+var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
+var _useTheme = require("../styles/useTheme");
+var _useThemeDefault = parcelHelpers.interopDefault(_useTheme);
+var _defaultPropsProvider = require("../DefaultPropsProvider");
+var _styled = require("../styles/styled");
+var _styledDefault = parcelHelpers.interopDefault(_styled);
+var _drawerClasses = require("./drawerClasses");
+var _jsxRuntime = require("react/jsx-runtime");
+"use client";
+const _excluded = [
+    "BackdropProps"
+], _excluded2 = [
+    "anchor",
+    "BackdropProps",
+    "children",
+    "className",
+    "elevation",
+    "hideBackdrop",
+    "ModalProps",
+    "onClose",
+    "open",
+    "PaperProps",
+    "SlideProps",
+    "TransitionComponent",
+    "transitionDuration",
+    "variant"
+];
+const overridesResolver = (props, styles)=>{
+    const { ownerState } = props;
+    return [
+        styles.root,
+        (ownerState.variant === "permanent" || ownerState.variant === "persistent") && styles.docked,
+        styles.modal
+    ];
+};
+const useUtilityClasses = (ownerState)=>{
+    const { classes, anchor, variant } = ownerState;
+    const slots = {
+        root: [
+            "root"
+        ],
+        docked: [
+            (variant === "permanent" || variant === "persistent") && "docked"
+        ],
+        modal: [
+            "modal"
+        ],
+        paper: [
+            "paper",
+            `paperAnchor${(0, _capitalizeDefault.default)(anchor)}`,
+            variant !== "temporary" && `paperAnchorDocked${(0, _capitalizeDefault.default)(anchor)}`
+        ]
+    };
+    return (0, _composeClassesDefault.default)(slots, (0, _drawerClasses.getDrawerUtilityClass), classes);
+};
+const DrawerRoot = (0, _styledDefault.default)((0, _modalDefault.default), {
+    name: "MuiDrawer",
+    slot: "Root",
+    overridesResolver
+})(({ theme })=>({
+        zIndex: (theme.vars || theme).zIndex.drawer
+    }));
+const DrawerDockedRoot = (0, _styledDefault.default)("div", {
+    shouldForwardProp: (0, _styled.rootShouldForwardProp),
+    name: "MuiDrawer",
+    slot: "Docked",
+    skipVariantsResolver: false,
+    overridesResolver
+})({
+    flex: "0 0 auto"
+});
+const DrawerPaper = (0, _styledDefault.default)((0, _paperDefault.default), {
+    name: "MuiDrawer",
+    slot: "Paper",
+    overridesResolver: (props, styles)=>{
+        const { ownerState } = props;
+        return [
+            styles.paper,
+            styles[`paperAnchor${(0, _capitalizeDefault.default)(ownerState.anchor)}`],
+            ownerState.variant !== "temporary" && styles[`paperAnchorDocked${(0, _capitalizeDefault.default)(ownerState.anchor)}`]
+        ];
+    }
+})(({ theme, ownerState })=>(0, _extendsDefault.default)({
+        overflowY: "auto",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        flex: "1 0 auto",
+        zIndex: (theme.vars || theme).zIndex.drawer,
+        // Add iOS momentum scrolling for iOS < 13.0
+        WebkitOverflowScrolling: "touch",
+        // temporary style
+        position: "fixed",
+        top: 0,
+        // We disable the focus ring for mouse, touch and keyboard users.
+        // At some point, it would be better to keep it for keyboard users.
+        // :focus-ring CSS pseudo-class will help.
+        outline: 0
+    }, ownerState.anchor === "left" && {
+        left: 0
+    }, ownerState.anchor === "top" && {
+        top: 0,
+        left: 0,
+        right: 0,
+        height: "auto",
+        maxHeight: "100%"
+    }, ownerState.anchor === "right" && {
+        right: 0
+    }, ownerState.anchor === "bottom" && {
+        top: "auto",
+        left: 0,
+        bottom: 0,
+        right: 0,
+        height: "auto",
+        maxHeight: "100%"
+    }, ownerState.anchor === "left" && ownerState.variant !== "temporary" && {
+        borderRight: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "top" && ownerState.variant !== "temporary" && {
+        borderBottom: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "right" && ownerState.variant !== "temporary" && {
+        borderLeft: `1px solid ${(theme.vars || theme).palette.divider}`
+    }, ownerState.anchor === "bottom" && ownerState.variant !== "temporary" && {
+        borderTop: `1px solid ${(theme.vars || theme).palette.divider}`
+    }));
+const oppositeDirection = {
+    left: "right",
+    right: "left",
+    top: "down",
+    bottom: "up"
+};
+function isHorizontal(anchor) {
+    return [
+        "left",
+        "right"
+    ].indexOf(anchor) !== -1;
+}
+function getAnchor({ direction }, anchor) {
+    return direction === "rtl" && isHorizontal(anchor) ? oppositeDirection[anchor] : anchor;
+}
+/**
+ * The props of the [Modal](/material-ui/api/modal/) component are available
+ * when `variant="temporary"` is set.
+ */ const Drawer = /*#__PURE__*/ _react.forwardRef(function Drawer(inProps, ref) {
+    const props = (0, _defaultPropsProvider.useDefaultProps)({
+        props: inProps,
+        name: "MuiDrawer"
+    });
+    const theme = (0, _useThemeDefault.default)();
+    const isRtl = (0, _rtlProvider.useRtl)();
+    const defaultTransitionDuration = {
+        enter: theme.transitions.duration.enteringScreen,
+        exit: theme.transitions.duration.leavingScreen
+    };
+    const { anchor: anchorProp = "left", BackdropProps, children, className, elevation = 16, hideBackdrop = false, ModalProps: { BackdropProps: BackdropPropsProp } = {}, onClose, open = false, PaperProps = {}, SlideProps, // eslint-disable-next-line react/prop-types
+    TransitionComponent = (0, _slideDefault.default), transitionDuration = defaultTransitionDuration, variant = "temporary" } = props, ModalProps = (0, _objectWithoutPropertiesLooseDefault.default)(props.ModalProps, _excluded), other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded2);
+    // Let's assume that the Drawer will always be rendered on user space.
+    // We use this state is order to skip the appear transition during the
+    // initial mount of the component.
+    const mounted = _react.useRef(false);
+    _react.useEffect(()=>{
+        mounted.current = true;
+    }, []);
+    const anchorInvariant = getAnchor({
+        direction: isRtl ? "rtl" : "ltr"
+    }, anchorProp);
+    const anchor = anchorProp;
+    const ownerState = (0, _extendsDefault.default)({}, props, {
+        anchor,
+        elevation,
+        open,
+        variant
+    }, other);
+    const classes = useUtilityClasses(ownerState);
+    const drawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerPaper, (0, _extendsDefault.default)({
+        elevation: variant === "temporary" ? elevation : 0,
+        square: true
+    }, PaperProps, {
+        className: (0, _clsxDefault.default)(classes.paper, PaperProps.className),
+        ownerState: ownerState,
+        children: children
+    }));
+    if (variant === "permanent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: drawer
+    }));
+    const slidingDrawer = /*#__PURE__*/ (0, _jsxRuntime.jsx)(TransitionComponent, (0, _extendsDefault.default)({
+        in: open,
+        direction: oppositeDirection[anchorInvariant],
+        timeout: transitionDuration,
+        appear: mounted.current
+    }, SlideProps, {
+        children: drawer
+    }));
+    if (variant === "persistent") return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerDockedRoot, (0, _extendsDefault.default)({
+        className: (0, _clsxDefault.default)(classes.root, classes.docked, className),
+        ownerState: ownerState,
+        ref: ref
+    }, other, {
+        children: slidingDrawer
+    }));
+    // variant === temporary
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(DrawerRoot, (0, _extendsDefault.default)({
+        BackdropProps: (0, _extendsDefault.default)({}, BackdropProps, BackdropPropsProp, {
+            transitionDuration
+        }),
+        className: (0, _clsxDefault.default)(classes.root, classes.modal, className),
+        open: open,
+        ownerState: ownerState,
+        onClose: onClose,
+        hideBackdrop: hideBackdrop,
+        ref: ref
+    }, other, ModalProps, {
+        children: slidingDrawer
+    }));
+});
+Drawer.propTypes /* remove-proptypes */  = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+   * Side from which the drawer will appear.
+   * @default 'left'
+   */ anchor: (0, _propTypesDefault.default).oneOf([
+        "bottom",
+        "left",
+        "right",
+        "top"
+    ]),
+    /**
+   * @ignore
+   */ BackdropProps: (0, _propTypesDefault.default).object,
+    /**
+   * The content of the component.
+   */ children: (0, _propTypesDefault.default).node,
+    /**
+   * Override or extend the styles applied to the component.
+   */ classes: (0, _propTypesDefault.default).object,
+    /**
+   * @ignore
+   */ className: (0, _propTypesDefault.default).string,
+    /**
+   * The elevation of the drawer.
+   * @default 16
+   */ elevation: (0, _integerPropTypeDefault.default),
+    /**
+   * If `true`, the backdrop is not rendered.
+   * @default false
+   */ hideBackdrop: (0, _propTypesDefault.default).bool,
+    /**
+   * Props applied to the [`Modal`](/material-ui/api/modal/) element.
+   * @default {}
+   */ ModalProps: (0, _propTypesDefault.default).object,
+    /**
+   * Callback fired when the component requests to be closed.
+   * The `reason` parameter can optionally be used to control the response to `onClose`.
+   *
+   * @param {object} event The event source of the callback.
+   * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
+   */ onClose: (0, _propTypesDefault.default).func,
+    /**
+   * If `true`, the component is shown.
+   * @default false
+   */ open: (0, _propTypesDefault.default).bool,
+    /**
+   * Props applied to the [`Paper`](/material-ui/api/paper/) element.
+   * @default {}
+   */ PaperProps: (0, _propTypesDefault.default).object,
+    /**
+   * Props applied to the [`Slide`](/material-ui/api/slide/) element.
+   */ SlideProps: (0, _propTypesDefault.default).object,
+    /**
+   * The system prop that allows defining system overrides as well as additional CSS styles.
+   */ sx: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
+            (0, _propTypesDefault.default).func,
+            (0, _propTypesDefault.default).object,
+            (0, _propTypesDefault.default).bool
+        ])),
+        (0, _propTypesDefault.default).func,
+        (0, _propTypesDefault.default).object
+    ]),
+    /**
+   * The duration for the transition, in milliseconds.
+   * You may specify a single timeout for all transitions, or individually with an object.
+   * @default {
+   *   enter: theme.transitions.duration.enteringScreen,
+   *   exit: theme.transitions.duration.leavingScreen,
+   * }
+   */ transitionDuration: (0, _propTypesDefault.default).oneOfType([
+        (0, _propTypesDefault.default).number,
+        (0, _propTypesDefault.default).shape({
+            appear: (0, _propTypesDefault.default).number,
+            enter: (0, _propTypesDefault.default).number,
+            exit: (0, _propTypesDefault.default).number
+        })
+    ]),
+    /**
+   * The variant to use.
+   * @default 'temporary'
+   */ variant: (0, _propTypesDefault.default).oneOf([
+        "permanent",
+        "persistent",
+        "temporary"
+    ])
+};
+exports.default = Drawer;
+
+},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/utils/integerPropType":"T93rM","@mui/utils/composeClasses":"4kKno","@mui/system/RtlProvider":"4iqca","../Modal":"lSUh1","../Slide":"fZVcF","../Paper":"6IiTP","../utils/capitalize":"lwNtZ","../styles/useTheme":"5nWMX","../DefaultPropsProvider":"gbkfk","../styles/styled":"32xTg","./drawerClasses":"aFQC1","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZVcF":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _slideDefault.default));
@@ -53492,286 +54656,7 @@ Stack.propTypes /* remove-proptypes */  = {
 };
 exports.default = Stack;
 
-},{"prop-types":"7wKI2","@mui/system":"Q0Zql","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"faxSz":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _typographyDefault.default));
-parcelHelpers.export(exports, "typographyClasses", ()=>(0, _typographyClassesDefault.default));
-var _typography = require("./Typography");
-var _typographyDefault = parcelHelpers.interopDefault(_typography);
-var _typographyClasses = require("./typographyClasses");
-var _typographyClassesDefault = parcelHelpers.interopDefault(_typographyClasses);
-parcelHelpers.exportAll(_typographyClasses, exports);
-"use client";
-
-},{"./Typography":"chcJ4","./typographyClasses":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"chcJ4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "TypographyRoot", ()=>TypographyRoot);
-var _objectWithoutPropertiesLoose = require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose");
-var _objectWithoutPropertiesLooseDefault = parcelHelpers.interopDefault(_objectWithoutPropertiesLoose);
-var _extends = require("@babel/runtime/helpers/esm/extends");
-var _extendsDefault = parcelHelpers.interopDefault(_extends);
-var _react = require("react");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _clsx = require("clsx");
-var _clsxDefault = parcelHelpers.interopDefault(_clsx);
-var _styleFunctionSx = require("@mui/system/styleFunctionSx");
-var _composeClasses = require("@mui/utils/composeClasses");
-var _composeClassesDefault = parcelHelpers.interopDefault(_composeClasses);
-var _styled = require("../styles/styled");
-var _styledDefault = parcelHelpers.interopDefault(_styled);
-var _defaultPropsProvider = require("../DefaultPropsProvider");
-var _capitalize = require("../utils/capitalize");
-var _capitalizeDefault = parcelHelpers.interopDefault(_capitalize);
-var _typographyClasses = require("./typographyClasses");
-var _jsxRuntime = require("react/jsx-runtime");
-"use client";
-const _excluded = [
-    "align",
-    "className",
-    "component",
-    "gutterBottom",
-    "noWrap",
-    "paragraph",
-    "variant",
-    "variantMapping"
-];
-const useUtilityClasses = (ownerState)=>{
-    const { align, gutterBottom, noWrap, paragraph, variant, classes } = ownerState;
-    const slots = {
-        root: [
-            "root",
-            variant,
-            ownerState.align !== "inherit" && `align${(0, _capitalizeDefault.default)(align)}`,
-            gutterBottom && "gutterBottom",
-            noWrap && "noWrap",
-            paragraph && "paragraph"
-        ]
-    };
-    return (0, _composeClassesDefault.default)(slots, (0, _typographyClasses.getTypographyUtilityClass), classes);
-};
-const TypographyRoot = (0, _styledDefault.default)("span", {
-    name: "MuiTypography",
-    slot: "Root",
-    overridesResolver: (props, styles)=>{
-        const { ownerState } = props;
-        return [
-            styles.root,
-            ownerState.variant && styles[ownerState.variant],
-            ownerState.align !== "inherit" && styles[`align${(0, _capitalizeDefault.default)(ownerState.align)}`],
-            ownerState.noWrap && styles.noWrap,
-            ownerState.gutterBottom && styles.gutterBottom,
-            ownerState.paragraph && styles.paragraph
-        ];
-    }
-})(({ theme, ownerState })=>(0, _extendsDefault.default)({
-        margin: 0
-    }, ownerState.variant === "inherit" && {
-        // Some elements, like <button> on Chrome have default font that doesn't inherit, reset this.
-        font: "inherit"
-    }, ownerState.variant !== "inherit" && theme.typography[ownerState.variant], ownerState.align !== "inherit" && {
-        textAlign: ownerState.align
-    }, ownerState.noWrap && {
-        overflow: "hidden",
-        textOverflow: "ellipsis",
-        whiteSpace: "nowrap"
-    }, ownerState.gutterBottom && {
-        marginBottom: "0.35em"
-    }, ownerState.paragraph && {
-        marginBottom: 16
-    }));
-const defaultVariantMapping = {
-    h1: "h1",
-    h2: "h2",
-    h3: "h3",
-    h4: "h4",
-    h5: "h5",
-    h6: "h6",
-    subtitle1: "h6",
-    subtitle2: "h6",
-    body1: "p",
-    body2: "p",
-    inherit: "p"
-};
-// TODO v6: deprecate these color values in v5.x and remove the transformation in v6
-const colorTransformations = {
-    primary: "primary.main",
-    textPrimary: "text.primary",
-    secondary: "secondary.main",
-    textSecondary: "text.secondary",
-    error: "error.main"
-};
-const transformDeprecatedColors = (color)=>{
-    return colorTransformations[color] || color;
-};
-const Typography = /*#__PURE__*/ _react.forwardRef(function Typography(inProps, ref) {
-    const themeProps = (0, _defaultPropsProvider.useDefaultProps)({
-        props: inProps,
-        name: "MuiTypography"
-    });
-    const color = transformDeprecatedColors(themeProps.color);
-    const props = (0, _styleFunctionSx.extendSxProp)((0, _extendsDefault.default)({}, themeProps, {
-        color
-    }));
-    const { align = "inherit", className, component, gutterBottom = false, noWrap = false, paragraph = false, variant = "body1", variantMapping = defaultVariantMapping } = props, other = (0, _objectWithoutPropertiesLooseDefault.default)(props, _excluded);
-    const ownerState = (0, _extendsDefault.default)({}, props, {
-        align,
-        color,
-        className,
-        component,
-        gutterBottom,
-        noWrap,
-        paragraph,
-        variant,
-        variantMapping
-    });
-    const Component = component || (paragraph ? "p" : variantMapping[variant] || defaultVariantMapping[variant]) || "span";
-    const classes = useUtilityClasses(ownerState);
-    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(TypographyRoot, (0, _extendsDefault.default)({
-        as: Component,
-        ref: ref,
-        ownerState: ownerState,
-        className: (0, _clsxDefault.default)(classes.root, className)
-    }, other));
-});
-Typography.propTypes /* remove-proptypes */  = {
-    // ┌────────────────────────────── Warning ──────────────────────────────┐
-    // │ These PropTypes are generated from the TypeScript type definitions. │
-    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
-    // └─────────────────────────────────────────────────────────────────────┘
-    /**
-   * Set the text-align on the component.
-   * @default 'inherit'
-   */ align: (0, _propTypesDefault.default).oneOf([
-        "center",
-        "inherit",
-        "justify",
-        "left",
-        "right"
-    ]),
-    /**
-   * The content of the component.
-   */ children: (0, _propTypesDefault.default).node,
-    /**
-   * Override or extend the styles applied to the component.
-   */ classes: (0, _propTypesDefault.default).object,
-    /**
-   * @ignore
-   */ className: (0, _propTypesDefault.default).string,
-    /**
-   * The component used for the root node.
-   * Either a string to use a HTML element or a component.
-   */ component: (0, _propTypesDefault.default).elementType,
-    /**
-   * If `true`, the text will have a bottom margin.
-   * @default false
-   */ gutterBottom: (0, _propTypesDefault.default).bool,
-    /**
-   * If `true`, the text will not wrap, but instead will truncate with a text overflow ellipsis.
-   *
-   * Note that text overflow can only happen with block or inline-block level elements
-   * (the element needs to have a width in order to overflow).
-   * @default false
-   */ noWrap: (0, _propTypesDefault.default).bool,
-    /**
-   * If `true`, the element will be a paragraph element.
-   * @default false
-   */ paragraph: (0, _propTypesDefault.default).bool,
-    /**
-   * The system prop that allows defining system overrides as well as additional CSS styles.
-   */ sx: (0, _propTypesDefault.default).oneOfType([
-        (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).oneOfType([
-            (0, _propTypesDefault.default).func,
-            (0, _propTypesDefault.default).object,
-            (0, _propTypesDefault.default).bool
-        ])),
-        (0, _propTypesDefault.default).func,
-        (0, _propTypesDefault.default).object
-    ]),
-    /**
-   * Applies the theme typography styles.
-   * @default 'body1'
-   */ variant: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).oneOfType([
-        (0, _propTypesDefault.default).oneOf([
-            "body1",
-            "body2",
-            "button",
-            "caption",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "inherit",
-            "overline",
-            "subtitle1",
-            "subtitle2"
-        ]),
-        (0, _propTypesDefault.default).string
-    ]),
-    /**
-   * The component maps the variant prop to a range of different HTML element types.
-   * For instance, subtitle1 to `<h6>`.
-   * If you wish to change that mapping, you can provide your own.
-   * Alternatively, you can use the `component` prop.
-   * @default {
-   *   h1: 'h1',
-   *   h2: 'h2',
-   *   h3: 'h3',
-   *   h4: 'h4',
-   *   h5: 'h5',
-   *   h6: 'h6',
-   *   subtitle1: 'h6',
-   *   subtitle2: 'h6',
-   *   body1: 'p',
-   *   body2: 'p',
-   *   inherit: 'p',
-   * }
-   */ variantMapping: (0, _propTypesDefault.default /* @typescript-to-proptypes-ignore */ ).object
-};
-exports.default = Typography;
-
-},{"@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"adHgr","@babel/runtime/helpers/esm/extends":"fTBFS","react":"21dqq","prop-types":"7wKI2","clsx":"gocd3","@mui/system/styleFunctionSx":"bRwpN","@mui/utils/composeClasses":"4kKno","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","../utils/capitalize":"lwNtZ","./typographyClasses":"aW8pq","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aW8pq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "getTypographyUtilityClass", ()=>getTypographyUtilityClass);
-var _generateUtilityClasses = require("@mui/utils/generateUtilityClasses");
-var _generateUtilityClassesDefault = parcelHelpers.interopDefault(_generateUtilityClasses);
-var _generateUtilityClass = require("@mui/utils/generateUtilityClass");
-var _generateUtilityClassDefault = parcelHelpers.interopDefault(_generateUtilityClass);
-function getTypographyUtilityClass(slot) {
-    return (0, _generateUtilityClassDefault.default)("MuiTypography", slot);
-}
-const typographyClasses = (0, _generateUtilityClassesDefault.default)("MuiTypography", [
-    "root",
-    "h1",
-    "h2",
-    "h3",
-    "h4",
-    "h5",
-    "h6",
-    "subtitle1",
-    "subtitle2",
-    "body1",
-    "body2",
-    "inherit",
-    "button",
-    "caption",
-    "overline",
-    "alignLeft",
-    "alignRight",
-    "alignCenter",
-    "alignJustify",
-    "noWrap",
-    "gutterBottom",
-    "paragraph"
-]);
-exports.default = typographyClasses;
-
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2PiDA":[function(require,module,exports) {
+},{"prop-types":"7wKI2","@mui/system":"Q0Zql","../styles/styled":"32xTg","../DefaultPropsProvider":"gbkfk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2PiDA":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getFormControlLabelUtilityClasses", ()=>getFormControlLabelUtilityClasses);
@@ -61308,7 +62193,14 @@ const textFieldClasses = (0, _generateUtilityClassesDefault.default)("MuiTextFie
 ]);
 exports.default = textFieldClasses;
 
-},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aMs6C":[function(require,module,exports) {
+},{"@mui/utils/generateUtilityClasses":"7eO93","@mui/utils/generateUtilityClass":"d6tPU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eeOzk":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _useMediaQueryDefault.default));
+var _useMediaQuery = require("@mui/system/useMediaQuery");
+var _useMediaQueryDefault = parcelHelpers.interopDefault(_useMediaQuery);
+
+},{"@mui/system/useMediaQuery":"7wuR6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aMs6C":[function(require,module,exports) {
 module.exports = require("d17ce4a2d8f98711").getBundleURL("bLxZJ") + "chef-bryan-entertainment.079a5731.jpg" + "?" + Date.now();
 
 },{"d17ce4a2d8f98711":"lgJ39"}],"lgJ39":[function(require,module,exports) {
@@ -61543,9 +62435,48 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 var _material = require("@mui/material");
 var _reactScss = require("../../scss/react.scss");
+var _s = $RefreshSig$();
 const contactForm = ()=>{
+    _s();
+    const [formData, setFormData] = (0, _react.useState)({
+        name: "",
+        email: "",
+        phone: "",
+        enquiry: ""
+    });
+    const [errors, setErrors] = (0, _react.useState)({
+        name: false,
+        email: false,
+        phone: false,
+        enquiry: false
+    });
+    const [snackbarOpen, setSnackbarOpen] = (0, _react.useState)(false);
+    const handleChange = (e)=>{
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    const handleSendMessage = ()=>{
+        const newErrors = {
+            name: !formData.name,
+            email: !formData.email,
+            phone: !formData.phone,
+            enquiry: !formData.enquiry
+        };
+        setErrors(newErrors);
+        if (!Object.values(newErrors).includes(true)) {
+            setSnackbarOpen(true);
+            alert("Message sent!");
+        }
+    };
+    const handleCloseSnackbar = ()=>{
+        setSnackbarOpen(false);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
         className: "form-container",
         children: [
@@ -61554,7 +62485,7 @@ const contactForm = ()=>{
                 children: "Contact Us"
             }, void 0, false, {
                 fileName: "src/components/react/sc-contact-form.js",
-                lineNumber: 9,
+                lineNumber: 53,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
@@ -61565,7 +62496,7 @@ const contactForm = ()=>{
                         children: "How can we contact you?"
                     }, void 0, false, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 11,
+                        lineNumber: 55,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
@@ -61573,40 +62504,55 @@ const contactForm = ()=>{
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.TextField), {
                                 variant: "outlined",
                                 label: "Name",
-                                className: "form-text"
+                                className: "form-text",
+                                size: "small",
+                                name: "name",
+                                onChange: handleChange,
+                                error: errors.name,
+                                helperText: errors.name ? "Name is required" : ""
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 13,
+                                lineNumber: 57,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.TextField), {
                                 variant: "outlined",
                                 label: "Email address",
-                                className: "form-text"
+                                className: "form-text",
+                                size: "small",
+                                name: "email",
+                                onChange: handleChange,
+                                error: errors.email,
+                                helperText: errors.email ? "Email is required" : ""
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 14,
+                                lineNumber: 58,
                                 columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.TextField), {
                                 variant: "outlined",
                                 label: "Phone number",
-                                className: "form-text"
+                                className: "form-text",
+                                size: "small",
+                                name: "phone",
+                                onChange: handleChange,
+                                error: errors.phone,
+                                helperText: errors.phone ? "Phone number is required" : ""
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 15,
+                                lineNumber: 59,
                                 columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 12,
+                        lineNumber: 56,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/react/sc-contact-form.js",
-                lineNumber: 10,
+                lineNumber: 54,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
@@ -61617,7 +62563,7 @@ const contactForm = ()=>{
                         children: "How can we help you?"
                     }, void 0, false, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 19,
+                        lineNumber: 63,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.FormGroup), {
@@ -61626,96 +62572,103 @@ const contactForm = ()=>{
                                 className: "form-checkbox",
                                 control: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Checkbox), {}, void 0, false, {
                                     fileName: "src/components/react/sc-contact-form.js",
-                                    lineNumber: 21,
+                                    lineNumber: 65,
                                     columnNumber: 78
                                 }, void 0),
                                 label: "General enquiry"
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 21,
+                                lineNumber: 65,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.FormControlLabel), {
                                 className: "form-checkbox",
                                 control: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Checkbox), {}, void 0, false, {
                                     fileName: "src/components/react/sc-contact-form.js",
-                                    lineNumber: 22,
+                                    lineNumber: 66,
                                     columnNumber: 78
                                 }, void 0),
                                 label: "Expression of interest as vendor"
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 22,
+                                lineNumber: 66,
                                 columnNumber: 25
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.FormControlLabel), {
                                 className: "form-checkbox",
                                 control: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Checkbox), {}, void 0, false, {
                                     fileName: "src/components/react/sc-contact-form.js",
-                                    lineNumber: 23,
+                                    lineNumber: 67,
                                     columnNumber: 78
                                 }, void 0),
                                 label: "Accessibility enquiry"
                             }, void 0, false, {
                                 fileName: "src/components/react/sc-contact-form.js",
-                                lineNumber: 23,
+                                lineNumber: 67,
                                 columnNumber: 25
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 20,
+                        lineNumber: 64,
                         columnNumber: 21
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.TextField), {
                         variant: "outlined",
-                        label: "Add your enquiry...",
+                        label: "Enquiry",
                         className: "form-enquiry",
+                        size: "small",
                         multiline: true,
-                        rows: 4
+                        rows: 4,
+                        name: "enquiry",
+                        onChange: handleChange,
+                        error: errors.enquiry,
+                        helperText: errors.enquiry ? "Enquiry is required" : ""
                     }, void 0, false, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 25,
+                        lineNumber: 69,
                         columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/react/sc-contact-form.js",
-                lineNumber: 18,
+                lineNumber: 62,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
-                className: "form-section",
+                className: "form-controls",
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Button), {
                         className: "form-button",
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 28,
+                        lineNumber: 72,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Button), {
                         className: "form-button",
+                        onClick: handleSendMessage,
                         children: "Send message"
                     }, void 0, false, {
                         fileName: "src/components/react/sc-contact-form.js",
-                        lineNumber: 29,
+                        lineNumber: 73,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/react/sc-contact-form.js",
-                lineNumber: 27,
+                lineNumber: 71,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/react/sc-contact-form.js",
-        lineNumber: 8,
+        lineNumber: 52,
         columnNumber: 9
     }, undefined);
 };
+_s(contactForm, "Qq7EUiURQ/fdQx3wZh+w9cFjoDg=");
 exports.default = contactForm;
 
   $parcel$ReactRefreshHelpers$fe21.postlude(module);
@@ -61723,7 +62676,482 @@ exports.default = contactForm;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../scss/react.scss":"aLSRg"}],"aLSRg":[function() {},{}],"BO0AV":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../scss/react.scss":"aLSRg"}],"aLSRg":[function() {},{}],"jTXWQ":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a168 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a168.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _material = require("@mui/material");
+var _styles = require("@mui/material/styles");
+var _reactScss = require("../../scss/react.scss");
+var _s = $RefreshSig$();
+const venueCards = ()=>{
+    _s();
+    const [activeSection, setActiveSection] = (0, _react.useState)("location");
+    const theme = (0, _styles.useTheme)();
+    const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down("sm"));
+    const handleButtonClick = (section)=>{
+        setActiveSection(section);
+    };
+    const sections = [
+        {
+            id: "location",
+            label: "Location"
+        },
+        {
+            id: "map",
+            label: "Festival Map"
+        },
+        {
+            id: "accessibility",
+            label: "Accessibility"
+        },
+        {
+            id: "parking",
+            label: "Parking"
+        },
+        {
+            id: "transport",
+            label: "Transport"
+        }
+    ];
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            isSmallScreen ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                className: "venue-nav-list",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Select), {
+                    value: activeSection,
+                    onChange: (e)=>handleButtonClick(e.target.value),
+                    sx: {
+                        color: "#FFFFFF"
+                    },
+                    children: sections.map((section)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.MenuItem), {
+                            value: section.id,
+                            children: section.label
+                        }, section.id, false, {
+                            fileName: "src/components/react/sc-venue-cards.js",
+                            lineNumber: 33,
+                            columnNumber: 25
+                        }, undefined))
+                }, void 0, false, {
+                    fileName: "src/components/react/sc-venue-cards.js",
+                    lineNumber: 27,
+                    columnNumber: 17
+                }, undefined)
+            }, void 0, false, {
+                fileName: "src/components/react/sc-venue-cards.js",
+                lineNumber: 26,
+                columnNumber: 13
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Grid), {
+                container: true,
+                spacing: 1,
+                className: "venue-nav",
+                children: sections.map((section)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Grid), {
+                        item: true,
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Button), {
+                            onClick: ()=>handleButtonClick(section.id),
+                            children: section.label
+                        }, void 0, false, {
+                            fileName: "src/components/react/sc-venue-cards.js",
+                            lineNumber: 43,
+                            columnNumber: 25
+                        }, undefined)
+                    }, section.id, false, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 42,
+                        columnNumber: 21
+                    }, undefined))
+            }, void 0, false, {
+                fileName: "src/components/react/sc-venue-cards.js",
+                lineNumber: 40,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                className: "venue-container",
+                children: [
+                    activeSection === "location" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                        id: "location",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "subtitle",
+                                        children: "Location"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 56,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Rippleside Park, Bell Parade Geelong, Victoria, Australia"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 57,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 55,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                                className: "google-map",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("iframe", {
+                                    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.567231010363!2d144.35266371147935!3d-38.12700147178166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad416b703b7800b%3A0xf04567605324bc0!2sRippleside%20Park!5e0!3m2!1sen!2sau!4v1721380831126!5m2!1sen!2sau",
+                                    width: "600",
+                                    height: "450",
+                                    style: {
+                                        border: 0
+                                    },
+                                    allowFullScreen: "",
+                                    loading: "lazy"
+                                }, void 0, false, {
+                                    fileName: "src/components/react/sc-venue-cards.js",
+                                    lineNumber: 60,
+                                    columnNumber: 25
+                                }, undefined)
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 59,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 54,
+                        columnNumber: 17
+                    }, undefined),
+                    activeSection === "map" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                        id: "map",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                                id: "map-img"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 74,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "subtitle",
+                                children: "Festival Map"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 75,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 73,
+                        columnNumber: 17
+                    }, undefined),
+                    activeSection === "accessibility" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                        id: "accessibility",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "subtitle",
+                                children: "Accessibility"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 80,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "paragraph",
+                                children: "We are committed to providing an accommodating experience for all our guests. If you have any specific requirements, don't hesitate to contact us."
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 81,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Parking:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 83,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Designated infoarking spots are located close to the entrance for guests with mobility needs. Display the appropriate permits."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 84,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 82,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Pathways:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 87,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "The event grounds feature smooth pathways to ensure easy navigation for wheelchairs and mobility aids."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 88,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 86,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Restrooms:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 91,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Wheelchair-infoestrooms are available throughout the event site."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 92,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 90,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Viewing:"
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 95,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "We offer designated viewing areas for guests using wheelchairs, ensuring an unobstructed view of the light displays and performances."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 96,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 94,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Assistance: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 99,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Our friendly staff and volunteers are on hand to assist with any needs or questions you may have during your visit."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 100,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 98,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 79,
+                        columnNumber: 17
+                    }, undefined),
+                    activeSection === "parking" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                        id: "parking",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "subtitle",
+                                children: "Parking"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 106,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "On-site: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 108,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Our main event site features ample parking spaces just a short walk from the entrance. Follow signs to designated parking areas upon arrival."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 109,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 107,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "Street: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 112,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "Limited street parking is available around the event site. Be sure to check local signage for any restrictions or time limits."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 113,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 111,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Stack), {
+                                className: "info",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "bold",
+                                        children: "On-site: "
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 116,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                        className: "paragraph",
+                                        children: "During peak times, additional overflow parking is available nearby. Shuttle services will be provided to transport guests to and from the main event area."
+                                    }, void 0, false, {
+                                        fileName: "src/components/react/sc-venue-cards.js",
+                                        lineNumber: 117,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 115,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 105,
+                        columnNumber: 17
+                    }, undefined),
+                    activeSection === "transport" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Box), {
+                        id: "transport",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "subtitle",
+                                children: "Transport"
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 123,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "paragraph",
+                                children: "For convenient infoe light festival, many parking spots are available nearby. Alternatively, infoublic transport is easy with frequent bus services and a nearby train station."
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 124,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Typography), {
+                                className: "paragraph",
+                                children: "Follow signs for designated parking areas or plan your journey using public transport options for a hassle-free visit to this event."
+                            }, void 0, false, {
+                                fileName: "src/components/react/sc-venue-cards.js",
+                                lineNumber: 125,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/react/sc-venue-cards.js",
+                        lineNumber: 122,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/react/sc-venue-cards.js",
+                lineNumber: 52,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true);
+};
+_s(venueCards, "FkVtuWVYDPyj5glrDiFHihA+jVQ=", false, function() {
+    return [
+        (0, _styles.useTheme),
+        (0, _material.useMediaQuery)
+    ];
+});
+exports.default = venueCards;
+
+  $parcel$ReactRefreshHelpers$a168.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","@mui/material":"40376","../../scss/react.scss":"aLSRg","@mui/material/styles":"1lzai"}],"aLSRg":[function() {},{}],"BO0AV":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _app = require("../../App");
@@ -62708,12 +64136,56 @@ module.exports = require("1fa9a0d538b9a17e").getBundleURL("bLxZJ") + "soco-logo.
 module.exports = require("b3fa00abf1a93ad9").getBundleURL("bLxZJ") + "soco-logo-long.ee7e6632.png" + "?" + Date.now();
 
 },{"b3fa00abf1a93ad9":"lgJ39"}],"eSeCb":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$2487 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$2487.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _lit = require("lit");
+var _client = require("react-dom/client");
+var _scDiscDialog = require("./react/sc-disc-dialog");
+var _scDiscDialogDefault = parcelHelpers.interopDefault(_scDiscDialog);
+var _shareIconPng = require("../../static/images/share-icon.png");
+var _shareIconPngDefault = parcelHelpers.interopDefault(_shareIconPng);
+var _instagramIconPng = require("../../static/images/instagram-icon.png");
+var _instagramIconPngDefault = parcelHelpers.interopDefault(_instagramIconPng);
+var _facebookIconPng = require("../../static/images/facebook-icon.png");
+var _facebookIconPngDefault = parcelHelpers.interopDefault(_facebookIconPng);
 class AppFooter extends (0, _lit.LitElement) {
+    static properties = {
+        dialogOpen: {
+            type: Boolean
+        }
+    };
     constructor(){
         super();
+        this.dialogOpen = false;
     }
-    firstUpdated() {}
+    firstUpdated() {
+        this.dialogContainer = document.createElement("div");
+        this.shadowRoot.appendChild(this.dialogContainer);
+        this.reactRoot = (0, _client.createRoot)(this.dialogContainer);
+        this.renderReactDialog();
+    }
+    updated(changedProperties) {
+        if (changedProperties.has("dialogOpen")) this.renderReactDialog();
+    }
+    renderReactDialog() {
+        this.reactRoot.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _scDiscDialogDefault.default), {
+            open: this.dialogOpen,
+            onClose: ()=>this.dialogOpen = false
+        }, void 0, false, {
+            fileName: "src/components/sc-app-footer.js",
+            lineNumber: 33,
+            columnNumber: 13
+        }, this));
+    }
+    toggleDialog() {
+        this.dialogOpen = !this.dialogOpen;
+    }
     render() {
         return (0, _lit.html)`
             <style>
@@ -62725,40 +64197,49 @@ class AppFooter extends (0, _lit.LitElement) {
                     justify-content: space-between;
                     align-items: center;
                     padding-bottom: 1em;
+                }
 
-                    .app-footer-left {
-                        height: 6.5em;
-                        margin: auto 1em;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
+                .app-footer-left {
+                    height: 6.5em;
+                    margin: auto 1em;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .media-icons img {
+                    width: 20px;
+                    margin-top: 0.5em;
+                }
 
-                        h2 {
-                            color: #FFC600;
-                            font-weight: normal;
-                            font-size: 1.25em;
-                            margin: 0;
-                        }
-                    }
-                    .ackn-disc {
-                        margin: auto 1em;
-                        p {
-                            color: #bdbdbd;
-                            font-size: 0.5em;
-                            font-family: var(--base-font-family);
-                        }
-                    }
-                    .app-footer-right {
-                        margin: auto 1em;
-                        a {
-                            font-family: var(--base-font-family);
-                            font-size: 0.6em;
-                            text-decoration: none;
-                            color: #FFC600;
-                            text-align: center;
-                        }
-                    }
+                h2 {
+                    color: #FFC600;
+                    font-weight: normal;
+                    font-size: 1.25em;
+                    margin: 0;
+                }
+
+                .ackn-disc {
+                    margin: auto 1em;
+                }
+
+                p {
+                    color: #bdbdbd;
+                    font-size: 0.5em;
+                    font-family: var(--base-font-family);
+                }
+
+                .app-footer-right {
+                    margin: auto 1em;
+                }
+
+                a {
+                    font-family: var(--base-font-family);
+                    font-size: 0.6em;
+                    text-decoration: none;
+                    color: #FFC600;
+                    text-align: center;
+                    cursor: pointer;
                 }
             </style>
 
@@ -62766,22 +64247,104 @@ class AppFooter extends (0, _lit.LitElement) {
                 <div class="app-footer-left">
                     <div><h2 style="font-family: var(--base-font-family)">Geelong</h2></div>
                     <div><h2 style="font-family: var(--sub-font-family)">2024</h2></div>
+                    <div class="media-icons">
+                        <img src=${0, _shareIconPngDefault.default} />
+                        <img src=${0, _instagramIconPngDefault.default} />
+                        <img src=${0, _facebookIconPngDefault.default} />
+                    </div>
                 </div>
                 <div class="ackn-disc">
                     <p>The Southern Coast Festival of Lights Committee acknowledges Traditional Owners of Country throughout Australia and recognises the continuing connection to lands, waters and communities. We pay our respects to Aboriginal and Torres Strait Islander cultures and to Elders past and present.</p>
                     <p>Aboriginal and Torres Strait Islander peoples should be aware that this website may contain images or names of people who have passed away.</p>
-                    <p>Disclaimer: This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+                    <a @click="${this.toggleDialog}">Disclaimer</a>
                 </div>
                 <div class="app-footer-right">
-                    <a href="admin">Administration Login</a>
+                    <a>Administration Login</a>
                 </div>
             </footer>
-
         `;
     }
 }
 customElements.define("sc-app-footer", AppFooter);
 
-},{"lit":"4antt"}],"gpsI5":[function() {},{}]},["farZc","1xC6H","8lqZg"], "8lqZg", "parcelRequiree1b3")
+  $parcel$ReactRefreshHelpers$2487.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"lit":"4antt","./react/sc-disc-dialog":"ehWSS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../static/images/share-icon.png":"5Hki1","../../static/images/instagram-icon.png":"3xniJ","../../static/images/facebook-icon.png":"jOSLX"}],"ehWSS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d968 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d968.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _material = require("@mui/material");
+var _reactScss = require("../../scss/react.scss");
+const DiscDialog = ({ open, onClose })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Dialog), {
+        open: open,
+        onClose: onClose,
+        className: "disclaimer",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.DialogTitle), {
+                children: "Disclaimer"
+            }, void 0, false, {
+                fileName: "src/components/react/sc-disc-dialog.js",
+                lineNumber: 7,
+                columnNumber: 9
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.DialogContent), {
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.DialogContentText), {
+                        children: "Disclaimer: This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references."
+                    }, void 0, false, {
+                        fileName: "src/components/react/sc-disc-dialog.js",
+                        lineNumber: 9,
+                        columnNumber: 13
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _material.Button), {
+                        onClick: onClose,
+                        children: "Close"
+                    }, void 0, false, {
+                        fileName: "src/components/react/sc-disc-dialog.js",
+                        lineNumber: 10,
+                        columnNumber: 13
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/react/sc-disc-dialog.js",
+                lineNumber: 8,
+                columnNumber: 9
+            }, undefined)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/react/sc-disc-dialog.js",
+        lineNumber: 6,
+        columnNumber: 5
+    }, undefined);
+_c = DiscDialog;
+exports.default = DiscDialog;
+var _c;
+$RefreshReg$(_c, "DiscDialog");
+
+  $parcel$ReactRefreshHelpers$d968.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@mui/material":"40376","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../scss/react.scss":"aLSRg"}],"aLSRg":[function() {},{}],"5Hki1":[function(require,module,exports) {
+module.exports = require("dd6644d7f5f5db0b").getBundleURL("bLxZJ") + "share-icon.51b5076e.png" + "?" + Date.now();
+
+},{"dd6644d7f5f5db0b":"lgJ39"}],"3xniJ":[function(require,module,exports) {
+module.exports = require("fded92679f513fb").getBundleURL("bLxZJ") + "instagram-icon.86148baa.png" + "?" + Date.now();
+
+},{"fded92679f513fb":"lgJ39"}],"jOSLX":[function(require,module,exports) {
+module.exports = require("19503f7d0a9469dc").getBundleURL("bLxZJ") + "facebook-icon.4bcb875c.png" + "?" + Date.now();
+
+},{"19503f7d0a9469dc":"lgJ39"}],"gpsI5":[function() {},{}]},["farZc","1xC6H","8lqZg"], "8lqZg", "parcelRequiree1b3")
 
 //# sourceMappingURL=index.975ef6c8.js.map
