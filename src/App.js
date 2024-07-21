@@ -1,14 +1,14 @@
 import Router from './Router'
 import Auth from './Auth'
 import Toast from './Toast'
-import Event from './Event'
+import User from './User'
 
 class App {
     constructor() {
         this.name = "Southern Coast Festival"
         this.version = "1.0.0"
         // when backend is deployed, change url
-        this.apiBase = "http://localhost:3000"
+        this.apiBase = "https://southerncoastfestival-backend.onrender.com"
         this.rootEl = document.getElementById("root")
     }
 

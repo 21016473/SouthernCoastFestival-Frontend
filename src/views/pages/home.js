@@ -1,33 +1,38 @@
 import App from '../../App'
 import {html, render } from 'lit-html'
 import Utils from '../../Utils'
+import Auth from '../../Auth.js'
+import User from '../../User.js'
 
 import { renderReactComponent } from '../../components/react/reactHelper'
 import EventContainer from '../../components/sc-events-grid.js'
 import ContactForm from '../../components/react/sc-contact-form.js'
 import VenueCard from '../../components/react/sc-venue-cards.js'
+import AdminNav from '../../components/sc-admin-nav.js'
 
 class HomeView {
   constructor() {
-
   }
 
-  init(){
+  async init(){
     console.log('HomeView.init')
+    console.log(Auth.currentUser)
     document.title = 'Home'   
     
     // await this.getEvents() // only use when front and back are talking
     this.render()
     Utils.pageIntroAnim()
 
-    const jumpTo = document.querySelectorAll('.jumpTo')
-    jumpTo.forEach(button => button.addEventListener('click', this.scrollTo))
+    document.querySelector('.jumpTo').addEventListener('click', this.scrollTo)
   }
 
   scrollTo() {
     const eventsSection = document.getElementById('events')
     if (eventsSection) {
-      eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      eventsSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      })
     }
   }
 
@@ -39,6 +44,13 @@ class HomeView {
     const videoUrl = this.getVideoUrl()
 
     const template = html`
+
+    <div id="screen-content" class="${(Auth.currentUser.accessLevel) === 'admin' ? 'shifted' : ''}">
+      ${ (Auth.currentUser.accessLevel) === 'admin' ? html`
+        <div id="admin-nav" class="visible"></div>
+      `: html`
+        <div id="admin-nav"></div>
+      `}
 
       <sc-app-header></sc-app-header>
 
@@ -91,8 +103,14 @@ class HomeView {
       </div>   
 
       <sc-app-footer></sc-app-footer>
+    
     `
     render(template, App.rootEl)
+
+    const adminNavContainer = document.getElementById('admin-nav')
+    if (adminNavContainer) {
+      renderReactComponent(AdminNav, adminNavContainer)
+    }
 
     const filterContainer = document.getElementById('filter-container')
     renderReactComponent(EventContainer, filterContainer)
